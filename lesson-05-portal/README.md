@@ -1,4 +1,4 @@
-# Lesson 4: Using NFTs in Other Contracts Part 2
+# Lesson 5: Using NFTs in Other Contracts Part 2
 
 **Topics:** `cw721-non-transferable`, Custom `cw721` token collections, `WasmQuery`, `NftInfo`
 
