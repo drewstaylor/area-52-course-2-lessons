@@ -1,6 +1,7 @@
 # Lesson 2: Customizing your NFTs
 
 **Topics:** `cw721`, `cw721-base`, `cw721-non-transferable`,
+
 **Path:** [cw721-soulbound](https://github.com/drewstaylor/area-52-course-2/tree/main/nft/cw721-soulbound)
 
 ### Exercises

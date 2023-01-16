@@ -1,6 +1,7 @@
 # Lesson 4: Using NFTs in Other Contracts Part 2
 
 **Topics:** `cw721-non-transferable`, Custom `cw721` token collections, `WasmQuery`, `NftInfo`
+
 **Path:** [passport-token](https://github.com/drewstaylor/area-52-course-2/tree/main/nft/passport-token)
 
 ### Exercises

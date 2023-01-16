@@ -1,6 +1,7 @@
 # Lesson 1: Introduction to CosmWasm NFTs
 
 **Topics:** `cw721`, `cw721-base`
+
 **Path:** [cw721-base](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-base)
 
 ### Exercises

@@ -1,6 +1,7 @@
 # Lesson 3: Creating the Collection Contract
 
 **Topics:** `cw721-non-transferable`, Custom `cw721` token collections
+
 **Path:** [passport-token](https://github.com/drewstaylor/area-52-course-2/tree/main/nft/passport-token)
 
 ### Exercises
