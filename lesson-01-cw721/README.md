@@ -38,8 +38,8 @@
 
 - **Exercise 5:** _When to use `cw721-base`_
   - Content 
-    - Introduces the idea of what it means to change `cw721-base` into our own custom NFT code
     - Creating the token collection contract (e.g. `passport-token`)
+    - Introduces the idea of what it means to change `cw721-base` into our own custom NFT code
   - Exercise
     - Elaborates on exercise 2's code
     - Start creating the token collection contract for an NFT with off-chain metadata (Instantiate)
