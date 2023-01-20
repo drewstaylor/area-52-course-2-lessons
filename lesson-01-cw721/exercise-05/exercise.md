@@ -31,10 +31,6 @@ pub type Extension = Option<Empty>;
 
 2. Adding custom logic means changing `cw721-base` (a public library) so it's not really `cw721-base` anymore.
 
-### Token collection contract?
-
-Luckily, it's quick and easy to import `cw721-base` into a third "token collection" package. `cw721-base` is designed to be used this way and will drastically minimize the amount of code you need to write yourself.
-
 # Exercise
 
 Now we'll create the collection contract for `some_token`. This is the only code needed for creating the collection contract (along with the `Cargo.toml` which imports the dependencies). Your task is to finish writing the entry points.
