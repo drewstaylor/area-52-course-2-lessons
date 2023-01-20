@@ -9,13 +9,11 @@ Storyline placeholder:
 >
 -->
 
-The shorthand "cw721" is commonly used to refer to "CosmWasm NFTs"; but, technically speaking, `cw721` refers to the NFT standard (not the NFTs themselves). This standard is also a public Rust library that can be imported into a CosmWasm project.
+Technically speaking, `cw721` refers to the NFT standard (not the NFTs themselves). This standard is also a public Rust library that can be imported into a CosmWasm project.
 
 Let's think about what the use cases are for importing the `cw721` package into your project.
 
 ### When to import cw721 into your project
-
-Below are common use cases for importing `cw721` into your project.
 
 - Querying an NFT collection from inside a non-NFT contract and enforcing the correct response type
 - Making a new type of NFT with custom logic (e.g. "soulbound" NFTs)
