@@ -40,7 +40,7 @@ Below are common use cases where you likely _won't_ need to import `cw721`.
 Let's extend the code we began in the previous exercise. You're provided with the `WasmQuery` and `QueryMsg`, but you'll need to write the response for it.
 
 1. Create a variable called `query_response` that enforces the `TokensResponse` type imported from `cw721`
-2. For its value use the `query` module from `DepsMut`, it's exposed via the [querier](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.DepsMut.html#structfield.querier) field of the `DepsMut` struct
+2. For its value use the `query` function from `DepsMut`, it's exposed via the [querier](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.DepsMut.html#structfield.querier) field of the `DepsMut` struct
 3. Pass `querier.query` a reference (`&`) to `query_req` as its function argument, and don't forget to capture any errors that could occur by using the `?` operator
 
 # Starter
