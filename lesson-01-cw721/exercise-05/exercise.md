@@ -9,27 +9,21 @@ Storyline placeholder:
 >
 -->
 
-You might have noticed in the last two exercises we've been talking about a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
-
-It's time to dive into the relationship between these three Rust packages:
+In the last two exercises we've been talking about a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
 
 - `cw721` is a package for enforcing your token adheres to the [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) standard
 - `cw721-base` is a package that implements the `cw721` standard and provides minting functionality, but where minting is limited to a single admin (or "creator") called the `minter` (an address that must be declared during contract instantiation and can never be updated)
 - `some_token` is our example token collection contract. It extends from `cw721-base` and is the NFT smart contract that will be deployed to the blockchain
 
-### When to import cw721-base into your project
+### When to import cw721-base
 
-The common use case for importing [cw721-base](https://crates.io/crates/cw721-base) into your project is for making your token collection contract.
+A common use case for importing [cw721-base](https://crates.io/crates/cw721-base) into your project is for making your token collection contract.
 
 ### Do I really need a token collection contract? Can't I just deploy `cw721-base`?
 
-You could just deploy `cw721-base` as the token collection contract". In fact, the [unit tests](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/contract_tests.rs) of [cw721-base](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/) are doing just that.
+You could just deploy `cw721-base`. In fact, the [unit tests](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/contract_tests.rs) of [cw721-base](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/) are doing just that. However, it's preferable to separate `cw721-base` (a template for all NFT projects) from the logic and code of some specific NFT project.
 
-However, it's preferable to separate `cw721-base` (a template for all NFT projects) from the logic and source code of some specific project. 
-
-Here's why:
-
-1. If you deploy `cw721-base` as your collection contract, it won't be able to use on-chain metadata. This happens because [lib.rs](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/lib.rs#L14-L15) exports a default `extension` with a value of `None`:
+1. If you deploy `cw721-base` as your collection contract, on-chain metadata won't work (but off-chain metadata will). This happens because [lib.rs](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/lib.rs#L14-L15) exports a default `extension` with a value of `None`:
 
 ```rs
 pub type Extension = Option<Empty>;
