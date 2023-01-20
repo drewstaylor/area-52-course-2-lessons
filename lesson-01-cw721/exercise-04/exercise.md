@@ -4,6 +4,7 @@ Lesson: 1
 Exercise: 4
 
 Title: When to use `cw721`
+Filename: execute_fns/mint.rs
 
 Storyline placeholder:
 >

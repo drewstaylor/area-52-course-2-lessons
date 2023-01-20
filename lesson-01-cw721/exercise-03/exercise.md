@@ -4,6 +4,7 @@ Lesson: 1
 Exercise: 3
 
 Title: Not all NFT metadata is created equal
+Filename: execute_fns/mint.rs
 
 Storyline placeholder:
 >

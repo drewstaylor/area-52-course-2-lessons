@@ -4,6 +4,7 @@ Lesson: 1
 Exercise: 5
 
 Title: When to use `cw721-base`
+Filename: lib.rs
 
 Storyline placeholder:
 >
@@ -35,20 +36,20 @@ pub type Extension = Option<Empty>;
 
 Now we'll create the collection contract for `some_token`. This is the only code needed for creating the collection contract (along with the `Cargo.toml` which imports the dependencies). Your task is to finish writing the entry points.
 
-1. Save the `minter` address in `instantiate` so that once the contract is deployed, tokens can be minted by the admin address. To save `minter` you'll need the `save` function of `Cw721MetadataContract::default().minter` and pass two arguments to it, which are `deps.storage` and a reference to `minter` (a variable defined and validated just above)
-2. Finish the `execute` entry point by calling the `execute` function of `Cw721MetadataContract::default()`. The arguments to pass to it are the same as what's being sent to `some_token`'s `execute`
-3. Finish the `query` entry point with a call to `query` from `Cw721MetadataContract::default()`. The arguments to pass it are the same as those being sent to the `query` entry point of `some_token`
+1. Save the `minter` address in `instantiate` so that once the contract is deployed, tokens can be minted by the admin address. To save `minter` you'll need the `save` function of `Cw721Contract::default().minter` and pass two arguments to it, which are `deps.storage` and a reference to `minter` (a variable defined and validated just above)
+2. Finish the `execute` entry point by calling the `execute` function of `Cw721Contract::default()`. The arguments to pass to it are the same as what's being sent to `some_token`'s `execute`
+3. Finish the `query` entry point with a call to `query` from `Cw721Contract::default()`. The arguments to pass it are the same as those being sent to the `query` entry point of `some_token`
 
 # Starter
 
 ```rs
 use cosmwasm_std::Empty;
-pub use cw721_base::{
+use cw721_base::{
     ContractError, InstantiateMsg, MintMsg, 
     MinterResponse, QueryMsg
 };
-pub type Extension = Option<Metadata>;
-pub type Cw721MetadataContract<'a> = cw721_base::Cw721Contract<'a, Extension, Empty, Empty, Empty>;
+pub type Extension = Option<Empty>;
+pub type Cw721Contract<'a> = cw721_base::Cw721Contract<'a, Extension, Empty, Empty, Empty>;
 pub type ExecuteMsg = cw721_base::ExecuteMsg<Extension, Empty>;
 
 pub mod entry {
@@ -91,12 +92,12 @@ pub mod entry {
 
 ```rs
 use cosmwasm_std::Empty;
-pub use cw721_base::{
+use cw721_base::{
     ContractError, InstantiateMsg, MintMsg, 
     MinterResponse, QueryMsg
 };
-pub type Extension = Option<Metadata>;
-pub type Cw721MetadataContract<'a> = cw721_base::Cw721Contract<'a, Extension, Empty, Empty, Empty>;
+pub type Extension = Option<Empty>;
+pub type Cw721Contract<'a> = cw721_base::Cw721Contract<'a, Extension, Empty, Empty, Empty>;
 pub type ExecuteMsg = cw721_base::ExecuteMsg<Extension, Empty>;
 
 pub mod entry {
@@ -114,7 +115,7 @@ pub mod entry {
         msg: InstantiateMsg,
     ) -> StdResult<Response> {
         let minter = deps.api.addr_validate(&msg.minter)?;
-        Cw721MetadataContract::default().minter.save(deps.storage, &minter)?;
+        Cw721Contract::default().minter.save(deps.storage, &minter)?;
         Ok(Response::default())
     }
 
@@ -125,12 +126,12 @@ pub mod entry {
         info: MessageInfo,
         msg: ExecuteMsg,
     ) -> Result<Response, ContractError> {
-        Cw721MetadataContract::default().execute(deps, env, info, msg)
+        Cw721Contract::default().execute(deps, env, info, msg)
     }
 
     #[entry_point]
     pub fn query(deps: Deps, env: Env, msg: QueryMsg<Empty>) -> StdResult<Binary> {
-        Cw721MetadataContract::default().query(deps, env, msg)
+        Cw721Contract::default().query(deps, env, msg)
     }
 }
 ```
