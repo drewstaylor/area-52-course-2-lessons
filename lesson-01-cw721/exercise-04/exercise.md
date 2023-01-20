@@ -13,7 +13,7 @@ Technically speaking, `cw721` refers to the NFT standard (not the NFTs themselve
 
 Let's think about what the use cases are for importing the `cw721` package into your project.
 
-### When to import cw721 into your project
+### When to import cw721
 
 - Querying an NFT collection from inside a non-NFT contract and enforcing the correct response type
 - Making a new type of NFT with custom logic (e.g. "soulbound" NFTs)
