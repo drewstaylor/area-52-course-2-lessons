@@ -17,7 +17,7 @@ In the last two exercises we've been talking about a "token collection contract"
 
 ### When to import cw721-base
 
-A common use case for importing [cw721-base](https://crates.io/crates/cw721-base) into your project is for making your token collection contract.
+A common use case for importing [cw721-base](https://crates.io/crates/cw721-base) into your project is for making the token collection contract.
 
 ### Do I really need a token collection contract? Can't I just deploy `cw721-base`?
 
