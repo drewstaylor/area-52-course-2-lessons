@@ -12,9 +12,9 @@ Storyline placeholder:
 
 ### "Contractors" vs "Librarians"
 
-Contractors are developers who keep their code private. They believe most metaverse programs won't need to expose their methods. Rogue, mercantile, opportunistic, they're quite an individualistic and self-reliant group. They work quickly, but things might get a bit messy. Do you like spaghetti?
+Contractors believe most metaverse programs won't need to expose their methods. Rogue, mercantile, opportunistic, they're quite an individualistic and self-reliant group. They work quickly, but things might get a bit messy. Do you like spaghetti?
 
-Librarians are developers who believe metaverse programs should always be compiled with library features enabled to better promote interoperability. Erudite, rigid, jingoistic they're a stuffy breed, but they do build modular programs.
+Librarians are developers who believe metaverse programs should always be compiled with library features enabled, and their methods publicly exposed, to better promote interoperability. Erudite, rigid, jingoistic they're a stuffy breed, but they do build modular programs.
 
 ### Non-transferable NFTs
 
