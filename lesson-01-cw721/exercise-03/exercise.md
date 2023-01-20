@@ -75,7 +75,7 @@ pub fn mint_handler(
     let some_token_address = config.some_token_address;
     
     let token_uri = "ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json";
-    let owner = owner: "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
+    let owner = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
 
     let mint_msg: some_token::ExecuteMsg = Cw721ExecuteMsg::Mint(Cw721MintMsg {
         token_id: "token 1".to_string(),
@@ -115,7 +115,7 @@ pub fn mint_handler(
     let some_token_address = config.some_token_address;
     
     let token_uri = "ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json";
-    let owner = owner: "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
+    let owner = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
 
     let mint_msg: some_token::ExecuteMsg = Cw721ExecuteMsg::Mint(Cw721MintMsg {
         token_id: "token 1".to_string(),
