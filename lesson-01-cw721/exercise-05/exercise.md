@@ -23,7 +23,7 @@ A common use case for importing [cw721-base](https://crates.io/crates/cw721-base
 
 You could just deploy `cw721-base`. In fact, the [unit tests](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/contract_tests.rs) of [cw721-base](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/) are doing just that. However, it's preferable to separate `cw721-base` (a template for all NFT projects) from the logic and code of some specific NFT project.
 
-1. If you deploy `cw721-base` as your collection contract, on-chain metadata won't work (but off-chain metadata will). This happens because [lib.rs](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/lib.rs#L14-L15) of [cw721-base](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/) exports a default `extension` with a value of `None`:
+1. If you deploy `cw721-base` as your collection contract, on-chain metadata won't work (but off-chain metadata will). This happens because [lib.rs](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/lib.rs#L14-L15) of `cw721-base` exports a default `extension` with a value of `None`:
 
 ```rs
 pub type Extension = Option<Empty>;
