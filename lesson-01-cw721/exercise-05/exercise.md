@@ -29,7 +29,7 @@ You could just deploy `cw721-base`. In fact, the [unit tests](https://github.com
 pub type Extension = Option<Empty>;
 ```
 
-2. Adding custom logic becomes messy and difficult. Besides, now you've changed `cw721-base` (a public) so it's not really `cw721-base` anymore. This can be misleading for anyone who encounters the code later, you should at least update the package name in `Cargo.toml`
+2. Adding custom logic means changing `cw721-base` (a public library) so it's not really `cw721-base` anymore.
 
 ### Token collection contract?
 
