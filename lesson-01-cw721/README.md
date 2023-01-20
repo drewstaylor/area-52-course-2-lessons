@@ -15,7 +15,7 @@
     - Quiz format, modified from [prework1](https://github.com/phi-labs-ltd/area-52-course2-prework/blob/main/course-02-cw721/lesson-01_cw721-base_contract-structure/exercise-01/exercise-01.md)
     - Re-phrase central question from [prework1](https://github.com/phi-labs-ltd/area-52-course2-prework/blob/main/course-02-cw721/lesson-01_cw721-base_contract-structure/exercise-01/exercise-01.md) in terminology that hinges on the relationship of `cw721` to `cw721-base`
 
-- **Exercise 2:** _A Basic Overview of cw721_
+- **Exercise 2:** _cw721 Entry Points_
   - Content
     - Overview of all entry points (`Instantiate`, `Query`, `Execute`)
   - Exercise
@@ -44,7 +44,7 @@
     - Elaborates on exercise 2's code
     - Start creating the token collection contract for an NFT with off-chain metadata (Instantiate)
 
-- **Exercise 6:** _Creating the `Execute` and `Query` entry points_
+<!-- - **Exercise 6:** _Creating the `Execute` and `Query` entry points_
   - Content
   - Exercise
     - Elaborates on exercise 4's code
@@ -56,6 +56,6 @@
     - Remind them they've done this before in Course 1
   - Exercise
     - Elaborates on exercise 5's code
-    - Finish creating the token collection contract for an NFT with off-chain metadata (Reply)
+    - Finish creating the token collection contract for an NFT with off-chain metadata (Reply) -->
   
-- **Exercise 8:** _Summary_
+- **Exercise 6:** _Summary_
