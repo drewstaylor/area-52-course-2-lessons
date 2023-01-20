@@ -42,12 +42,12 @@ Using the provided code, finish the `mint_handler` function for executing a mint
 
 1. Finish `mint_msg` by adding the values for `token_uri` and `extension` for an NFT with off-chain metadata
 2. Create a variable called `mint_resp` and explictly enforce the`CosmosMsg` type
-3. For its value use the `ExecuteMsg` variant of the `WasmMsg` enum
+3. For the value of `mint_resp` use the `ExecuteMsg` variant of the `WasmMsg` enum from `CosmosMsg`
 4. `WasmMsg::Execute` has three member attributes, `contract_addr`, `msg` and `funds`, each can be entered on separate lines
 5. The value of `contract_addr` will be the string version of `some_token_address`
-6. For `msg` use a reference (`&`) to `mint_msg`, and don't forget to convert it binary
-7. We won't send extra funds with this transaction, so set `funds` to an empty vector created using the `vec` macro
-8. End the `mint_msg` declaration with a call to the [into](https://doc.rust-lang.org/std/convert/trait.Into.html) function, written on its own line
+6. For `msg` use a reference (`&`) to `mint_msg`, and don't forget to convert it to binary
+7. We won't send extra funds with this transaction so set `funds` to an empty vector created using the `vec` macro
+8. The `mint_msg` declaration ends with a call to [into](https://doc.rust-lang.org/std/convert/trait.Into.html), written on its own line
 
 If you need a refresher on using `WasmMsg::Execute` you can check out [this exercise](https://area-52.io/starting-with-cosm-wasm/3/imbibe_potion-function-part-4) from an earlier course.
 
