@@ -20,6 +20,97 @@ Check out the full code we've covered throughout this lesson. Fork it, tweak it,
 - <ExternalLink href="https://github.com/phi-labs-ltd/area-52-courses
 /">Building with NFTs repo</ExternalLink>
 
+<!--- NEXT UP: -->
 # Exercise
 
 Modifying `cw721-base` with custom logic
+
+# Starter
+
+```rs
+use cosmwasm_std::{
+    CosmosMsg, DepsMut, Env, MessageInfo, to_binary, 
+    Response, WasmMsg,
+};
+use some_token::{
+    ExecuteMsg as Cw721ExecuteMsg, MintMsg as Cw721MintMsg,
+};
+use crate::error::ContractError;
+use crate::state::CONFIG;
+use crate::msg::MintMsg;
+
+pub fn mint_handler(
+    msg: MintMsg,
+    deps: DepsMut,
+    env: Env,
+    info: MessageInfo,
+) -> Result<Response, ContractError> {
+    let config = CONFIG.load(deps.storage)?;
+    let some_token_address = config.some_token_address;
+    
+    let token_uri = "ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json";
+    let owner = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
+
+    let mint_msg: some_token::ExecuteMsg = Cw721ExecuteMsg::Mint(Cw721MintMsg {
+        token_id: "token 1".to_string(),
+        owner: owner.to_string(),
+        token_uri: token_uri.to_string(),
+        extension: None,
+    });
+
+    let mint_resp: CosmosMsg = WasmMsg::Execute {
+        contract_addr: some_token_address.to_string(),
+        msg: to_binary(&mint_msg)?,
+        funds: vec![],
+    }
+    .into();
+
+    let messages = vec![mint_resp];
+    Ok(Response::new().add_messages(messages))
+}
+```
+
+# Answer
+
+```rs
+use cosmwasm_std::{
+    CosmosMsg, DepsMut, Env, MessageInfo, to_binary, 
+    Response, WasmMsg,
+};
+use some_token::{
+    ExecuteMsg as Cw721ExecuteMsg, MintMsg as Cw721MintMsg,
+};
+use crate::error::ContractError;
+use crate::state::CONFIG;
+use crate::msg::MintMsg;
+
+pub fn mint_handler(
+    msg: MintMsg,
+    deps: DepsMut,
+    env: Env,
+    info: MessageInfo,
+) -> Result<Response, ContractError> {
+    let config = CONFIG.load(deps.storage)?;
+    let some_token_address = config.some_token_address;
+    
+    let token_uri = "ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json";
+    let owner = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
+
+    let mint_msg: some_token::ExecuteMsg = Cw721ExecuteMsg::Mint(Cw721MintMsg {
+        token_id: "token 1".to_string(),
+        owner: owner.to_string(),
+        token_uri: token_uri.to_string(),
+        extension: None,
+    });
+
+    let mint_resp: CosmosMsg = WasmMsg::Execute {
+        contract_addr: some_token_address.to_string(),
+        msg: to_binary(&mint_msg)?,
+        funds: vec![],
+    }
+    .into();
+
+    let messages = vec![mint_resp];
+    Ok(Response::new().add_messages(messages))
+}
+```
