@@ -25,7 +25,7 @@ use cw721::{NftInfoResponse, TokensResponse};   // Imports response types for qu
                                                 // metadata and getting token ids
 ```
 
-### When not to import cw721 into your project
+### When not to import cw721
 
 Most NFT projects _will_ import and use `cw721` for enforcing the correct types of query responses, but more often what you need should be imported from the token collection contract.
 
