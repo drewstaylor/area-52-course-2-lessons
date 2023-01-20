@@ -47,7 +47,7 @@ Using the provided code, finish the `mint_handler` function for executing a mint
 5. The value of `contract_addr` will be the string version of `some_token_address`
 6. For `msg` use a reference (`&`) to `mint_msg`, and don't forget to convert it to binary
 7. We won't send extra funds with this transaction so set `funds` to an empty vector created using the `vec` macro
-8. The `mint_msg` declaration ends with a call to [into](https://doc.rust-lang.org/std/convert/trait.Into.html), written on its own line
+8. The `mint_resp` declaration ends with a call to [into](https://doc.rust-lang.org/std/convert/trait.Into.html), written on its own line
 
 If you need a refresher on using `WasmMsg::Execute` you can check out [this exercise](https://area-52.io/starting-with-cosm-wasm/3/imbibe_potion-function-part-4) from an earlier course.
 
