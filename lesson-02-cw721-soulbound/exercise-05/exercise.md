@@ -1,39 +1,37 @@
 <!---
 Course: 2 
 Lesson: 2
-Exercise: 2
+Exercise: 5
 
-Title: A Tale of Two Programmers
+Title: Non-transferable NFTs Part 3
 Filename: execute.rs
 
 Storyline placeholder:
 >
 -->
 
-### "Contractors" vs "Librarians"
+Almost done developing the new package. Soon we can move on to building the token collection contract, but before we do that we'll have to deal with `execute.rs`. We encountered it previously, when we bootstrapped `cw721-base` into our project locally, and modified there.
 
-Contractors believe most metaverse programs won't need to expose their methods. Rogue, mercantile, opportunistic, they're quite an individualistic and self-reliant group. They work quickly, but things might get a bit messy. Do you like spaghetti?
+```rs
+fn transfer_nft(
+    &self,
+    _deps: DepsMut,
+    _env: Env,
+    _info: MessageInfo,
+    _recipient: String,
+    _token_id: String,
+) -> Result<Response<C>, ContractError> {
+    return Err(ContractError::Unauthorized {});
+}
+```
 
-Librarians are developers who believe metaverse programs should always be compiled with library features enabled, and their methods publicly exposed, to better promote interoperability. Erudite, rigid, jingoistic they're a stuffy breed, but they do build modular programs.
-
-### Non-transferable NFTs
-
-We previously learned about an alternative template to `cw721-base`, called [cw721-non-transferable](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-non-transferable). To help learn about customizing NFTs, over the next exercises, we'll be making our own version of `cw721-non-transferable`, which we'll call `cw721-soulbound`.
-
-Last exercise we spoke about several approaches for customizing NFTs. Following the contractors' guidance, let's start by just bootstrapping `cw721-base` locally into our project and changing some things around. Remember, our goal is to disable [TransferNft](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/execute.rs#L132-L147) and [SendNft](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/execute.rs#L149-L174).
+This time, since we already modified the `package/cw721`, we can eliminate those functions from `execute.rs` rather than block their behavior.
 
 # Exercise
 
-All those files, whoa! It would probably get a bit too insane if we also bootstrap the `cw721` spec here in our project. For that reason, we'll not be able to completely remove `TransferNft` and `SendNft`, and since those [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) are still active, in this implementation of `cw721-soulbound` best we can do is block their behavior from executing the transfer.
-
-1. Start by locating the functions `transfer_nft` and `send_nft` (haha!), then remove the code within their function closures
-2. Replace it with code to `return` a Rust `Err`
-3. The `Err` to be returned (in both) will be the `Unauthorized` variant of `ContractError` (have a look at `error.rs` if you want to see its parameters)
-4. Add an underscore prefix (`_`) to each function argument of `transfer_nft` and `send_nft` so the Rust compiler doesn't throw "unused variable" warnings
-5. Locate the helper function `_transfer_nft` and remove it
+Remove the functions `transfer_nft`, `send_nft` and the helper function `_transfer_nft`.
 
 # Starter
-
 ```rs
 use serde::de::DeserializeOwned;
 use serde::Serialize;
@@ -539,29 +537,6 @@ where
     C: CustomMsg,
 {
     type Err = ContractError;
-
-    fn transfer_nft(
-        &self,
-        _deps: DepsMut,
-        _env: Env,
-        _info: MessageInfo,
-        _recipient: String,
-        _token_id: String,
-    ) -> Result<Response<C>, ContractError> {
-        return Err(ContractError::Unauthorized {});
-    }
-
-    fn send_nft(
-        &self,
-        _deps: DepsMut,
-        _env: Env,
-        _info: MessageInfo,
-        _contract: String,
-        _token_id: String,
-        _msg: Binary,
-    ) -> Result<Response<C>, ContractError> {
-        return Err(ContractError::Unauthorized {});
-    }
 
     fn approve(
         &self,
