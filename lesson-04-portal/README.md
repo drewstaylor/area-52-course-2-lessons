@@ -6,24 +6,24 @@
 
 ### Exercises
 
-- **Exercise 1:** _Preparing Your Contract to Become the Minter Part 1_
+- **Exercise 1:** _Preparing Portal to Become the Minter Part 1_
   - Content
     - Saving and updating the NFT contract address in JumpRing
   - Exercise
     - Finish writing the `set_passport_contract` and `set_potion_contract` functions in `execute_fn.rs` of the Portal contract
 
-- **Exercise 2:** _Preparing Your Contract to Become the Minter Part 2_
+- **Exercise 2:** _Preparing Portal to Become the Minter Part 2_
   - Content
     - Exposing the two new execute functions, created in the previous exercise, as entry points to `Execute` of the Portal contract
   - Exercise
-    - Add the two new entrypoints to `execute` in `contract.rs` (look at `msg.rs` for help regarding their types)
+    - Add the two new entrypoints to `execute` in `contract.rs` (look at `msg.rs` and `state.rs` for help regarding their types)
 
 - **Exercise 3:** _Minting NFTs From a Contract Part 1_
   - Content
     - Querying NFTs from another contract
     - `WasmQuery::Smart`
   - Exercise
-    - Write a query to the token collection (entry point: Cw721QueryMsg::Tokens) that checks if a specific user address is holding any passport tokens
+    - Write a query to the token collection (entry point: `Cw721QueryMsg::Tokens`) that checks if a specific user address is holding any passport tokens
     - If the already holding a passport token, fail with an `IllegalAlien` contract error (e.g. `ContractError`; see `error.rs`)
 
 - **Exercise 4:** _Minting NFTs From a Contract Part 2_
@@ -45,10 +45,16 @@
     - Using the `vec` macro, create a variable called `messages` and add `mint_resp` to it
     - Modify `mint_passport` so that it sends the `messages` vector as it's response
 
-- **Exercise 7:** _Finalizing the Mint Passport Entry Point_
+- **Exercise 7:** _Creating a New Message Type_
+  - Content
+    - Reinforcing Cosmos message types
+  - Exercise
+    - Create and add the new message type in `msg.rs`
+
+- **Exercise 8:** _Finalizing the Mint Passport Entry Point_
   - Content
     - Reinforcing how to enable execute entry points
   - Exercise
     - Add the new entry point for `mint_passport` to `execute` in `contract.rs`
 
-- **Exercise 8:** _Summary_
+- **Exercise 9:** _Summary_
