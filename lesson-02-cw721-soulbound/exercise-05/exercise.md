@@ -1,5 +1,5 @@
 <!---
-Course: 2 
+Course: 2
 Lesson: 2
 Exercise: 5
 
@@ -10,7 +10,7 @@ Storyline placeholder:
 >
 -->
 
-Almost done developing the new package. Soon we can move on to building the token collection contract, but before we do that we'll have to deal with `execute.rs`. We encountered it previously, when we bootstrapped `cw721-base` into our project locally, and modified there.
+Almost done developing the new package. Soon we can move on to building the token collection contract, but before we do that we'll have to deal with `execute.rs`. We encountered it previously, when we bootstrapped `cw721-base` into our project locally, and modified it from there.
 
 ```rs
 fn transfer_nft(
@@ -25,7 +25,7 @@ fn transfer_nft(
 }
 ```
 
-This time, since we already modified the `package/cw721`, we can eliminate those functions from `execute.rs` rather than block their behavior.
+This time, since we already removed the [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) from `package/cw721`, we can eliminate those functions from `execute.rs` rather than block their behavior.
 
 # Exercise
 
