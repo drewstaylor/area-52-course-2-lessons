@@ -36,7 +36,9 @@
 
 - **Exercise 5:** _Minting NFTs From a Contract Part 3_
   - Content
+    - Executing the mint
   - Exercise
+    - Execute the `mint_msg` using `WasmMsg::Execute`
 
 - **Exercise 6:** _Using Vectors for Contract Responses_
   - Content
