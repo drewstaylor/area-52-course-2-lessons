@@ -1,62 +1,51 @@
 <!---
 Course: 2
 Lesson: 4
-Exercise: 3
+Exercise: 4
 
-Title: Minting NFTs From a Contract Part 1
+Title: Minting NFTs From a Contract Part 2
 Filename: execute_fns.rs
 
 Storyline placeholder:
 >
 -->
 
-Buckle up travelers, intergalactic speed is about to ramp up real quick. Previously, we devised our identity tokens (`passport-token`), now we've got to use them in Portal and design our identity system.
+In the previous lesson, we worked out a metadata schema for our `passport-token` collection contract. 
 
-Portal functions like an intergalactic embassy and passport control combined. Most pre-flight security checks happen in [Potion](https://github.com/phi-labs-ltd/area-52-courses/tree/main/01_Starting_with_CosmWasm/potion/src/execute_fns), but identity verification happens in the `JumpRing` itself (which can only be called by Potion). An Earthling might say Potion operates like airport security, while Portal handles boarding passengers and flight. If you don't have a passport, Portal can create one for you but you must apply for the passport through Potion.
-
-### Querying Cw721 Tokens
-
-`WasmQuery::Smart` will send our queries to the token collection contract (`passport-token`), if you need a refresher on `WasmQuery` check that out [here](https://area-52.io/starting-with-cosm-wasm/4/check_sapience_level-function-part-1) and [here](https://area-52.io/starting-with-cosm-wasm/4/check_sapience_level-function-part-2).
-
-We want to know if a specific user has any passports. The `Tokens` query entry point (read more [here](https://docs.rs/cw721/latest/cw721/enum.Cw721QueryMsg.html) and [here](https://docs.rs/cw721/latest/cw721/trait.Cw721Query.html#tymethod.tokens)) of cw721 tokens accepts an `owner` address as a parameter, so we'll use that for our check.
+The schema we created looked like this
 
 ```rs
-let query_msg = QueryMsg::Tokens {
-    owner: "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq".to_string(),
-    start_after: None,
-    limit: None,
-};
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
+pub struct Metadata {
+    pub name: Option<String>,
+    pub description: Option<String>,
+    pub image: Option<String>,
+    pub dna: Option<String>,
+    pub species: Option<String>,
+    pub sapience_level: Option<SapienceScale>,
+    pub issuer: Option<Addr>,
+    pub origin: Option<String>,
+    pub identity: Option<Addr>,
+}
 ```
 
-`Tokens` returns a [JSON](https://en.wikipedia.org/wiki/JSON) array. If `owner` has 0 NFTs, the response array will be empty. If they own 1, or more, tokens it returns an array of the owned token IDs.
-
-### Enummerability in Cw721
-
-Like most requests in CosmWasm and Cosmos, `cw721` tokens are [enumerable](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md#enumerable), which is implemented using [pagination](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md#enumerable). 
-
-We can use the `limit` and `start_after` parameters of the `Tokens` query to manage pulling data for `owner`s holding a lot of NFTs. By default (e.g. `limit` and `start_after` set to `None`) enumerable queries return the first 100 records. 
-
-If an `owner` holds more than 100 tokens, the second page of results can be queried by setting `start_after` to `100`.
+And we exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension like this
 
 ```rs
-let query_msg = QueryMsg::Tokens {
-    owner: "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq".to_string(),
-    start_after: 100,
-    limit: None,
-};
+pub type Extension = Option<Metadata>;
 ```
+
+Since they're publicly exported by the `passport-token` library, we can import those types into Portal and make use of them in our `mint_handler`.
 
 # Exercise
 
-Now we being working on a new entry point function called `mint_passport`. Before minting tokens we'll be implementing some guards. Owners cannot hold more than one passport at a time.
+We're almost ready to hook up minting. Since this is the on-chain metadata version of `cw721`, we'll prepare the `extension` metadata we need for the `cw721` execute message.
 
-1. `QueryMsg` has been provided, but you'll need to handle things from there. Create a variable called `query_req` and assign it to `QueryRequest::Wasm`. The function argument to pass the `QueryRequest` is a `WasmQuery::Smart` enum, whose members (`contract_addr` and `msg`) can be written each on their own line.
-2. For `WasmQuery`'s first member, assign `contract_addr` the passport contract's address (accessed from `config.passport_contract`), but we'll need it again later so you'll have to [clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) it and use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to get the right type.
-3. For `WasmQuery`'s second member, assign `msg` a reference to `query_msg`, but don't forget to convert it to binary and [unwrap](https://docs.rs/unwrap/latest/unwrap/) it.
-4. The final line of the `query_req` declaration closes both the `WasmQuery` enum and the `QueryRequest`.
-5. Create a variable called `query_resp` that explicitly enforces a `TokensResponse` type (imported from [cw721](https://docs.rs/cw721/latest/cw721/struct.TokensResponse.html)).
-6. For its value, call the `query` function from `querier.query` which can be accessed from `deps`. The argument to send `query` will be a reference to the `query_req` created in steps 1 through 4, and don't forget to capture any errors that might occur.
-7. If the address is already owner of a passport, fail with an `IllegalAlien` contract error (see `error.rs` for more info).
+1. Create a variable called `metadata_extension` that explicitly enforces the `Extension` type (imported from `passport_token`), and assign it a `Metadata` (also imported from `passport_token`) struct.
+2. For [Serde](https://serde.rs/) to be able to correctly serialize and deserialize, the NFT's `Metadata` struct every value assignment should be wrapped by a `Some` (these [Option] schemas are enforced by the `Metadata` type from `passport_token`).
+3. The values for `Metadata`'s struct fields for `name`, `description`, `image`, `dna`, `species`, `sapience_level` and `identity` all can be accessed from `MintMsg`, which is `mint_handler`'s message type (open `msg.rs` if you'd like to take a look). For the other two fields, `issuer` is the address of Portal itself which can be accessed from the `Env` (`env.contract.address`) but you'll need to [clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) it, and `origin` is the current planet which you get from `config.planet_name`.
+4. Write each `Metadata` member on its own line. The final line of the `metadate_extension` declaration closes both the `Metadata` struct and the first `Some`.
+
 
 # Starter
 
@@ -68,7 +57,7 @@ use cosmwasm_std::{
 
 use cw721::TokensResponse;
 use passport_token::{
-    Extension, QueryMsg as Cw721QueryMsg,
+    Extension, Metadata, QueryMsg as Cw721QueryMsg,
 };
 
 use crate::error::ContractError;
@@ -96,11 +85,16 @@ pub fn mint_passport(
         start_after: None,
         limit: None,
     };
-    // Create the `query_req` variable here
-    // Create the `query_resp` variable here
+    let query_req = QueryRequest::Wasm(WasmQuery::Smart {
+        contract_addr: config.passport_contract.clone().into(),
+        msg: to_binary(&query_msg).unwrap(),
+    });
+    let query_resp: TokensResponse = deps.querier.query(&query_req)?;
     if !query_resp.tokens.is_empty() {
-        // Throw the `IllegalAlien` error here
+        return Err(ContractError::IllegalAlien {});
     }
+
+    // Create the `metadata_extension` variable here
 
     Ok(Response::default())
 }
@@ -194,7 +188,7 @@ use cosmwasm_std::{
 
 use cw721::TokensResponse;
 use passport_token::{
-    Extension, QueryMsg as Cw721QueryMsg,
+    Extension, Metadata, QueryMsg as Cw721QueryMsg,
 };
 
 use crate::error::ContractError;
@@ -230,6 +224,18 @@ pub fn mint_passport(
     if !query_resp.tokens.is_empty() {
         return Err(ContractError::IllegalAlien {});
     }
+
+    let metadata_extension: Extension = Some(Metadata {
+        name: Some(msg.name),
+        description: Some(msg.description),
+        image: Some(msg.image),
+        dna: Some(msg.dna),
+        species: Some(msg.species),
+        sapience_level: Some(msg.sapience_level),
+        issuer: Some(env.contract.address.clone()),
+        origin: Some(config.planet_name),
+        identity: Some(msg.identity.clone()),
+    });
 
     Ok(Response::default())
 }
