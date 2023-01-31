@@ -1,4 +1,4 @@
-# Lesson 3: Creating the Collection Contract
+# Lesson 3: Creating the NFT Collection Contract
 
 **Topics:** `cw721-non-transferable`, Custom `cw721` token collections
 
