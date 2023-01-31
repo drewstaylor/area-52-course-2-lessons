@@ -18,7 +18,7 @@ pub struct MintMsg {
 }
 ```
 
-2. `MintMsg` of the `cw721-soulbound` package (used by the `mint` entry point function)
+2. `MintMsg` of the `cw721-soulbound` package (used by the `mint` entry point function in the `passport-token` collection contract)
 
 ```rs
 // nft/cw721-soulbound/src/msg.rs
