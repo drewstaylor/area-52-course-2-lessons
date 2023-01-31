@@ -10,6 +10,22 @@ Storyline placeholder:
 >
 -->
 
+# Overview
+
+In this lesson we added minting of the token collection contract (`passport-token`), by including it as a library in `Cargo.toml`. Additionally, we secured the identity protocol for these [soulbound](https://vitalik.ca/general/2022/01/26/soulbound.html) NFTs by keying `token_id`s by owner address, and restricting ownership to one passport at a time.
+
+In general we learned about:
+
+- [Generics](https://doc.rust-lang.org/rust-by-example/generics.html) in Rust
+- The Rust [Option](https://doc.rust-lang.org/std/option/) type and `Some` and `None`
+- The `vec![]` macro
+
+From the CosmWasm libraries we touched on:
+
+- Cross-contract queries using `WasmQuery::Smart`
+- Cross-contract executions using `WasmMsg::Execute`
+- Using `add_message` of `cosmwasm_std::Response` to bundle multiple `Response`s
+
 <!--- NEXT UP: -->
 # Exercise
 

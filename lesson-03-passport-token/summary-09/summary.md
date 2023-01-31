@@ -18,7 +18,7 @@ In general we learned about:
 - Declaring custom packages as dependencies
 - Enabling libarary features in `Cargo.toml`
 - Serializing and deserializing NFT metadata with [Serde](https://serde.rs/)
-- Using type aliases
+- Using [type aliases](https://doc.rust-lang.org/reference/items/type-aliases.html)
 - Writing unit tests for smart contracts
 
 From the CosmWasm libraries we touched on:

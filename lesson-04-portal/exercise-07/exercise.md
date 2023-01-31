@@ -3,12 +3,44 @@ Course: 2
 Lesson: 4
 Exercise: 7
 
-Title: Finalizing the Mint Entry Point
+Title: Finalizing the Mint Passport Entry Point
 Filename: contract.rs
 
 Storyline placeholder:
 >
 -->
+
+Now that our [entry point](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/attr.entry_point.html) function is completed, we can import and use it in `execute`.
+
+Take a moment to review the function arguments for `mint_passport`:
+
+```rs
+pub fn mint_passport(
+    msg: MintMsg,
+    deps: DepsMut,
+    env: Env,
+    info: MessageInfo,
+) -> Result<Response, ContractError> { ... }
+```
+
+Its `MintMsg` type (which is different from the `MintMsg<Extension>` of `passport-token`) is the type we've been working with in the previous 2 exercises:
+
+```rs
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct MintMsg {
+    pub name: String,
+    pub description: String,
+    pub image: String,
+    pub dna: String,
+    pub species: String,
+    pub sapience_level: SapienceScale,
+    pub identity: Addr,
+}
+```
+
+Which is the on-chain `cw721` metadata of each passport NFT. Let's go ahead and import `mint_passport` and make sure we call it with the correct parameters (`msg`, `deps`, `env`, and `info`) and that we pass `mint_passport` the correct `msg` (which will be coming from the Potion contract).
+
+Once the `ExecuteMsg` for `MintPassport` has been added to the `execute`, minting passports (and implementing our passport controls) will be enabled!
 
 # Exercise 
 
