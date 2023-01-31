@@ -13,7 +13,7 @@
     - Enable library features for `cw721-soulbound` in `Cargo.toml`
     
 
-- **Exercise 2:** _cw721 with On-chain Metadata_
+- **Exercise 2:** _Cw721 with On-chain Metadata_
   - Content
     - Creating a metadata schema for the token collection
     - Using `serde` for your metadata
