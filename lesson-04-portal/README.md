@@ -37,8 +37,9 @@
 - **Exercise 5:** _Minting NFTs From a Contract Part 3_
   - Content
     - Executing the mint
+    - WasmMsg::Execute
   - Exercise
-    - Execute the `mint_msg` using `WasmMsg::Execute`
+    - Execute the `mint` using `WasmMsg::Execute`
 
 - **Exercise 6:** _Using Vectors for Contract Responses_
   - Content
@@ -47,16 +48,16 @@
     - Using the `vec` macro, create a variable called `messages` and add `mint_resp` to it
     - Modify `mint_passport` so that it sends the `messages` vector as it's response
 
-- **Exercise 7:** _Creating a New Message Type_
+<!-- - **Exercise 7:** _Creating a New Message Type_
   - Content
     - Reinforcing Cosmos message types
   - Exercise
-    - Create and add the new message type in `msg.rs`
+    - Create and add the new message type in `msg.rs` -->
 
-- **Exercise 8:** _Finalizing the Mint Passport Entry Point_
+- **Exercise 7:** _Finalizing the Mint Passport Entry Point_
   - Content
     - Reinforcing how to enable execute entry points
   - Exercise
     - Add the new entry point for `mint_passport` to `execute` in `contract.rs`
 
-- **Exercise 9:** _Summary_
+- **Exercise 8:** _Summary_

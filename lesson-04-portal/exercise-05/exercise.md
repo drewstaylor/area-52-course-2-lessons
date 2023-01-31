@@ -1,62 +1,38 @@
 <!---
 Course: 2
 Lesson: 4
-Exercise: 4
+Exercise: 5
 
-Title: Minting NFTs From a Contract Part 2
+Title: Minting NFTs From a Contract Part 3
 Filename: execute_fns.rs
 
 Storyline placeholder:
 >
 -->
 
-In the previous lesson, we worked out a metadata schema for our `passport-token` collection contract. 
-
-The schema we created looks like this
-
-```rs
-#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
-pub struct Metadata {
-    pub name: Option<String>,
-    pub description: Option<String>,
-    pub image: Option<String>,
-    pub dna: Option<String>,
-    pub species: Option<String>,
-    pub sapience_level: Option<SapienceScale>,
-    pub issuer: Option<Addr>,
-    pub origin: Option<String>,
-    pub identity: Option<Addr>,
-}
-```
-
-We also exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension like this
-
-```rs
-pub type Extension = Option<Metadata>;
-```
-
-Since `Metadata` and `Extension` are publicly exported by the `passport-token` library, we can import those types into Portal and make use of them in our `mint_passport`.
-
 # Exercise
 
-We're almost ready to hook up minting. Since this is the on-chain metadata version of `cw721`, we'll prepare the `extension` metadata needed for the `cw721` execute message (`MintMsg<Extension>`).
-
-1. Create a variable called `metadata_extension` that explicitly enforces the `Extension` type (imported from `passport_token`), and assign it a `Metadata` (also imported from `passport_token`) struct.
-2. For [Serde](https://serde.rs/) to be able to correctly serialize and deserialize, the NFT's `Metadata` struct every value assignment should be wrapped by a `Some` (these [Option] schemas are enforced by the `Metadata` type from `passport_token`).
-3. The values for `Metadata`'s struct fields for `name`, `description`, `image`, `dna`, `species`, `sapience_level` and `identity` all can be accessed from `MintMsg`, which is `mint_passport`'s message type (open `msg.rs` to see their types). For the other two fields, `issuer` is the address of Portal itself which can be accessed from the `Env` (`env.contract.address`) but you'll need to [clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) it, and `origin` is the current planet which you can get from `config.planet_name`.
-4. Write each `Metadata` member on its own line. The final line of the `metadate_extension` declaration closes both the `Metadata` struct and the first `Some`.
+1. Create a variable called `mint_msg` that explictly enforces the `ExecuteMsg` type from `passport_token`. Its value will be a call to `Cw721ExecuteMsg::Mint` which takes a `Cw721MintMsg` struct as its argument.
+2. `Cw721MintMsg` will have four struct fields: `token_id`, `owner`, `token_uri` and `extension`.
+3. `token_id`'s value can be cloned from `msg.identity`, this way we can use a holder's address to query if they have an NFT. It also helps ensure travelers can't hold multiple passports. Use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to make sure it gets the correct type.
+4. `owner`'s value can also be set from `msg.identity`, but since it's the last time we need to use it you won't need to clone it. Use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to make sure it gets the correct type.
+5. Since we're using `cw721` with on-chain metadata, `token_uri` can be set to `None`.
+6. Set `extension` to the `metadata_extension` variable created in the previous exercise.
+7. Create a variable called `mint_resp` that explicitly enforces the `CosmosMsg` type. Set its value to the `Execute` variant of the `WasmMsg` enum. Write each of its members on their own line. `contract_addr` needs to be set to the `passport_contract` which is a state attribute of `config`, and use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to make sure it gets the correct type. Set `msg` to a reference to `mint_msg`, wrapped in a `to_binary` call, and don't forget to capture any errors that might occur using the `?` operator. Since we're already charging our service fee in the Potion contract, we don't require any funds for this contract execution, so the `funds` attribute can be set to an empty vector macro (`vec![]`).
+8. To end the `mint_resp` declaration, put a closing brace on its own line then a call to [into](https://doc.rust-lang.org/std/convert/trait.Into.html) (also on its own line).
 
 # Starter
 
 ```rs
 use cosmwasm_std::{
-    Addr, DepsMut, Env, MessageInfo, QueryRequest, 
-    to_binary, Response, WasmQuery,
+    Addr, CosmosMsg, DepsMut, Env, MessageInfo, QueryRequest, 
+    to_binary, Response, WasmMsg, WasmQuery,
 };
 
 use cw721::TokensResponse;
 use passport_token::{
-    Extension, Metadata, QueryMsg as Cw721QueryMsg,
+    ExecuteMsg as Cw721ExecuteMsg, Extension, Metadata, 
+    MintMsg as Cw721MintMsg, QueryMsg as Cw721QueryMsg,
 };
 
 use crate::error::ContractError;
@@ -93,7 +69,21 @@ pub fn mint_passport(
         return Err(ContractError::IllegalAlien {});
     }
 
-    // Create the `metadata_extension` variable here
+    let metadata_extension: Extension = Some(Metadata {
+        name: Some(msg.name),
+        description: Some(msg.description),
+        image: Some(msg.image),
+        dna: Some(msg.dna),
+        species: Some(msg.species),
+        sapience_level: Some(msg.sapience_level),
+        issuer: Some(env.contract.address.clone()),
+        origin: Some(config.planet_name),
+        identity: Some(msg.identity.clone()),
+    });
+
+    // Create the `mint_msg` variable here
+
+    // Create the `mint_resp` variable here
 
     Ok(Response::default())
 }
@@ -181,13 +171,14 @@ pub fn set_potion_contract(
 
 ```rs
 use cosmwasm_std::{
-    Addr, DepsMut, Env, MessageInfo, QueryRequest, 
-    to_binary, Response, WasmQuery,
+    Addr, CosmosMsg, DepsMut, Env, MessageInfo, QueryRequest, 
+    to_binary, Response, WasmMsg, WasmQuery,
 };
 
 use cw721::TokensResponse;
 use passport_token::{
-    Extension, Metadata, QueryMsg as Cw721QueryMsg,
+    ExecuteMsg as Cw721ExecuteMsg, Extension, Metadata, 
+    MintMsg as Cw721MintMsg, QueryMsg as Cw721QueryMsg,
 };
 
 use crate::error::ContractError;
@@ -235,6 +226,20 @@ pub fn mint_passport(
         origin: Some(config.planet_name),
         identity: Some(msg.identity.clone()),
     });
+
+    let mint_msg: passport_token::ExecuteMsg = Cw721ExecuteMsg::Mint(Cw721MintMsg {
+        token_id: msg.identity.clone().into(),
+        owner: msg.identity.into(),
+        token_uri: None,
+        extension: metadata_extension,
+    });
+
+    let mint_resp: CosmosMsg = WasmMsg::Execute {
+        contract_addr: config.passport_contract.into(),
+        msg: to_binary(&mint_msg)?,
+        funds: vec![],
+    }
+    .into();
 
     Ok(Response::default())
 }
