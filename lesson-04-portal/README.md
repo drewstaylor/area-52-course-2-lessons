@@ -30,7 +30,7 @@
   - Content
     - Serde requirements for NFT's with on-chain metadata
     - `MintMsg<T>`
-    - [Rust Generics](https://doc.rust-lang.org/rust-by-example/generics.html))
+    - [Rust Generics](https://doc.rust-lang.org/rust-by-example/generics.html)
   - Exercise
     - Create a variable called `metadata_extension`, of type `Extension`, and assign it the correct members required by `Extension` as enforced by the token collection contract (See: `passport_token`). Most of it's values will come from the `msg` sent directly to the `mint_passport` function; however, `issuer`'s value will come from the environment (`env.contract.address.clone()`) and `origin` will come from the Portal contract's state (`config.planet_name`).
     - Create a variable called `mint_msg`, of type `passport_token::ExecuteMsg`, and assign it the correct members required
