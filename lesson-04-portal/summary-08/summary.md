@@ -3,7 +3,6 @@ Course: 2
 Lesson: 4
 Exercise: 8 (Summary)
 
-Title: 
 Filename: contract.rs
 
 Storyline placeholder:
@@ -24,6 +23,7 @@ From the CosmWasm libraries we touched on:
 
 - Cross-contract queries using `WasmQuery::Smart`
 - Cross-contract executions using `WasmMsg::Execute`
+- `MintMsg<T>` from `cw721-base` and `cw721-soulbound`
 - Using `add_message` of `cosmwasm_std::Response` to bundle multiple `Response`s
 
 <!--- NEXT UP: -->
