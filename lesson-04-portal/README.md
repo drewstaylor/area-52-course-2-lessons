@@ -1,6 +1,6 @@
 # Lesson 4: Using NFTs in Other Contracts Part 1
 
-**Topics:** `cw721-non-transferable`, Custom `cw721` token collections, `WasmQuery`, `WasmMsg::Execute`, `vec!()` macro
+**Topics:** `cw721-non-transferable`, Custom `cw721` token collections, `WasmQuery`, `WasmMsg::Execute`, the `vec!()` macro
 
 **Path:** [passport-token](https://github.com/drewstaylor/area-52-course-2/tree/main/nft/passport-token)
 
