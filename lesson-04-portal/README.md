@@ -41,7 +41,7 @@
   - Exercise
     - Execute the `mint` using `WasmMsg::Execute`
 
-- **Exercise 6:** _Using Vectors for Contract Responses_
+- **Exercise 6:** _Minting NFTs From a Contract Part 4_
   - Content
     - Vector responses from contracts
   - Exercise
@@ -54,7 +54,7 @@
   - Exercise
     - Create and add the new message type in `msg.rs` -->
 
-- **Exercise 7:** _Finalizing the Mint Passport Entry Point_
+- **Exercise 7:** _Finalizing the Mint Entry Point_
   - Content
     - Reinforcing how to enable execute entry points
   - Exercise
