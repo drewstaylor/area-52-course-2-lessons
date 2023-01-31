@@ -24,7 +24,7 @@
     - `WasmQuery::Smart`
   - Exercise
     - Write a query to the token collection (entry point: `Cw721QueryMsg::Tokens`) that checks if a specific user address is holding any passport tokens
-    - If the already holding a passport token, fail with an `IllegalAlien` contract error (e.g. `ContractError`; see `error.rs`)
+    - If the user is already holding a passport token, fail with an `IllegalAlien` contract error (e.g. `ContractError`; see `error.rs`)
 
 - **Exercise 4:** _Minting NFTs From a Contract Part 2_
   - Content
