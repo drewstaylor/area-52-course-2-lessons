@@ -2,7 +2,7 @@
 
 It's important we don't get confused between our `MintMsg` messages, of which there are two.
 
-1. `MintMsg` of the Portal contract (used by the `mint_passport` entry point function)
+1. `MintMsg` of the Portal contract, is used by the `mint_passport` entry point function
 
 ```rs
 // portal/src/msg.rs
@@ -18,7 +18,7 @@ pub struct MintMsg {
 }
 ```
 
-2. `MintMsg` of the `cw721-soulbound` package (used by the `mint` entry point function in the `passport-token` collection contract)
+2. `MintMsg<T>` of the `cw721-soulbound` package, is used by the `mint` entry point function in the `passport-token` collection contract
 
 ```rs
 // nft/cw721-soulbound/src/msg.rs

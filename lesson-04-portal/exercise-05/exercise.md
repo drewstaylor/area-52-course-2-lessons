@@ -10,6 +10,77 @@ Storyline placeholder:
 >
 -->
 
+In a moment we'll finish the minting logic, but first let's think about `passport-token`'s `ExecuteMsg::Mint`. Its message type looks like this
+
+```rs
+pub struct MintMsg<T> {
+    /// Unique ID of the NFT
+    pub token_id: String,
+    /// The owner of the newly minter NFT
+    pub owner: String,
+    /// Universal resource identifier for this NFT
+    /// Should point to a JSON file that conforms to the ERC721
+    /// Metadata JSON Schema
+    pub token_uri: Option<String>,
+    /// Any custom extension used by this contract
+    pub extension: T,
+}
+```
+
+The [generic](https://doc.rust-lang.org/rust-by-example/generics.html) `T`, of `MintMsg<T>` represents an abstract type which could be any valid on-chain NFT metadata enforced by a token collection contract.
+
+In the `passport-token` collection contract we enforced, and exported, a type called `Metadata`, and we also exported a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) called `Extension`.
+
+```rs
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
+pub struct Metadata {
+    pub name: Option<String>,
+    pub description: Option<String>,
+    pub image: Option<String>,
+    pub dna: Option<String>,
+    pub species: Option<String>,
+    pub sapience_level: Option<SapienceScale>,
+    pub issuer: Option<Addr>,
+    pub origin: Option<String>,
+    pub identity: Option<Addr>,
+}
+
+pub type Extension = Option<Metadata>;
+```
+
+That means for the purposes of minting a `passport-token`, the `Extension` type will be enforced as `T` in the `MintMsg<T>` of `cw721-soulbound`, which looks something like this:
+
+```rs
+let metadata_extension = Some(Metadata {
+    name: Some("some traveler".to_string()),
+    description: Some("some description".into()),
+    image: Some("ipfs://QmZdPdZzZum2jQ7jg1ekfeE3LSz1avAaa42G6mfimw9TEn".into()),
+    dna: Some("some dna".to_string()),
+    species: Some("some cyborg".to_string()),
+    sapience_level: Some(SapienceScale::High),
+    issuer: Some(Addr::unchecked("archway1yvnw8xj5elngcq95e2n2p8f80zl7shfwyxk88858pl6cgzveeqtqy7xtf7")),
+    origin: Some("some planet".),
+    identity: Some(Addr::unchecked("archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq")),
+});
+```
+
+Since the `T` of `MintMsg<T>` is a Rust [generic](https://doc.rust-lang.org/rust-by-example/generics.html), lets think about why it allows token collection contracts extending from `cw721-soulbound` to enforce any valid on-chain metadata.
+
+### Option in Rust
+
+The `Option` type represents an optional value. Every `Option` is either `Some` (contains a value), or `None` (does not). For NFTs created using `cw721-base` (or `cw721-soulbound`) using `Option` is a best practice, since it allows for greater diversity and rarer NFTs to occur within the collection.
+
+### Rust Generics
+
+[Generics](https://doc.rust-lang.org/rust-by-example/generics.html) in Rust is a way of generalizing types and functionalities to broader cases. This is useful for making things like NFTs which require a lot diversity, but using [generics](https://doc.rust-lang.org/rust-by-example/generics.html) calls for rather involved syntax. The simplest and most common use of generics is for type parameters. 
+
+For example, defining a generic function named foo that takes an argument `T` of any type
+```rs
+fn foo<T>(arg: T) { ... }
+```
+
+In `passport-token` the type parameter that we're interested in (`MintMsg<T>` and `extension: T`) is represented by the `Extension` type.
+
 # Exercise
 
 1. Create a variable called `mint_msg` that explictly enforces the `ExecuteMsg` type from `passport_token`. Its value will be a call to `Cw721ExecuteMsg::Mint` which takes a `Cw721MintMsg` struct as its argument.

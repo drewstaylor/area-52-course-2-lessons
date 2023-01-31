@@ -29,7 +29,7 @@ pub struct Metadata {
 }
 ```
 
-We also exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension like this
+We also exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension that like this
 
 ```rs
 pub type Extension = Option<Metadata>;
