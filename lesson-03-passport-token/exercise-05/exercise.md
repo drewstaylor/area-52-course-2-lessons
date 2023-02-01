@@ -10,7 +10,9 @@ Storyline placeholder:
 >
 -->
 
-It's time to set up `query` and `execute` for our token collection contract. After that, the `passport-token` package will be mostly complete. `query` and `execute` will use the defaults from `cw721-soulbound` that we created in Lesson 2. Consider how we used the [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) `Cw721MetadataContract`, in `instantiate`, to access storage methods for the keys `contract_info` and `minter`.
+It's time to set up `query` and `execute` for our token collection contract. After that, the `passport-token` package will be mostly complete. `query` and `execute` will use the defaults from `cw721-soulbound` that we created in [Lesson 2](). 
+
+Consider how we used the [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) `Cw721MetadataContract`, in `instantiate`, to access storage methods for the keys `contract_info` and `minter`:
 
 ```rs
 // Saving to the `contract_info` key
