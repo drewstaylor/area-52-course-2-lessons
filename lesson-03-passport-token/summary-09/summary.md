@@ -34,7 +34,7 @@ From the CosmWasm libraries we touched on:
 <!--- NEXT UP: -->
 # Exercise
 
-Creating the token collection contract for `cw721-soulbound`
+Using the NFT collection in other smart contracts
 
 # Starter
 
