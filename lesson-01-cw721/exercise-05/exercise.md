@@ -20,7 +20,7 @@ In the last two exercises we've been talking about a "token collection contract"
 
 A common use case for importing [cw721-base](https://crates.io/crates/cw721-base) into your project is for making the token collection contract.
 
-### Do I really need a token collection contract? Can't I just deploy `cw721-base`?
+### Can't I just deploy `cw721-base`?
 
 You could just deploy `cw721-base`. In fact, the [unit tests](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/contract_tests.rs) of `cw721-base` are doing just that. However, it's preferable to separate `cw721-base` (a template for all NFT projects) from the logic and code of some specific NFT project.
 
