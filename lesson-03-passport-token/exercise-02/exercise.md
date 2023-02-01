@@ -58,10 +58,10 @@ Using `Option` for NFT metadata fields is considered a best practice. That's so 
 
 # Exercise
 
-1. Create a public structure called `Metadata` to create a metadata schema for the NFTs. We can use it to ensure each NFT conforms to the schema
-2. `Metadata` will have 9 public members, `name`, `description`, `image`, `dna`, `species`, `sapience_level`, `issuer`, `origin` and `identity`
-3. Most of the members will have the `String` type; but, `sapience_level`'s type will be `SapienceScale`, and both `issuer` and `identity` are Cosmos addresses (`Addr` type)
-4. Each of the members can be indented and written on a separate line
+1. Create a public structure called `Metadata` to create a metadata schema for the NFTs. We can use it to ensure each NFT conforms to the schema.
+2. `Metadata` will have 9 public members, `name`, `description`, `image`, `dna`, `species`, `sapience_level`, `issuer`, `origin` and `identity`.
+3. Most of the members will have the `String` type; but, `sapience_level`'s type will be `SapienceScale`, and both `issuer` and `identity` are Cosmos addresses (`Addr` type).
+4. Each of the members can be indented and written on a separate line.
 
 # Starter
 
