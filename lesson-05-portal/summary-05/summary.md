@@ -11,6 +11,24 @@ Storyline placeholder:
 
 # Overview
 
+What's that sound? _*a slow clap 👏 forms in the distance*_
+
+You've just coded an NFT identity protocol from scratch, can you believe it? Do you feel like a CosmWasm NFT expert yet?
+
+Something beyond the scope of this lesson, is creating the unit tests for Portal to guarantee security for the passport controls implemented in `mint_passport` and `initiate_jumpring_travel` of `execute_fns.rs`. We've provided those unit tests here for you to peruse, so feel free to dig in.
+
+In general we learned about:
+
+- Building binaries and compiling tests
+- The [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) compiler
+- The Rust [Result](https://doc.rust-lang.org/std/result/) type and `Ok` and `Err`
+
+From the CosmWasm libraries we touched on:
+
+- Using `NftInfo` to get the metadata of a specific NFT
+- The `query` function from `Deps` and `DepsMut`
+- `attributes`, and `add_attribute`, which are part of CosmWasm `Response`
+- The importance of the `action` attribute
 
 <!--- NEXT UP: -->
 # Exercise
