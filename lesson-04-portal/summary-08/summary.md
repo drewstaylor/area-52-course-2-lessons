@@ -26,6 +26,9 @@ From the CosmWasm libraries we touched on:
 - `MintMsg<T>` from `cw721-base` and `cw721-soulbound`
 - Using `add_message` of `cosmwasm_std::Response` to bundle multiple `Response`
 
+### **SOURCE CODE**
+- <ExternalLink href="https://github.com/phi-labs-ltd/area-52-courses/">Building with NFTs repo</ExternalLink>
+
 <!--- NEXT UP: -->
 # Exercise
 
