@@ -24,7 +24,7 @@ Last exercise we spoke about several approaches for customizing NFTs. Following 
 
 # Exercise
 
-All those files, whoa! It would probably get a bit too insane if we also bootstrap the `cw721` spec here in our project. For that reason, we'll not be able to completely remove `TransferNft` and `SendNft`, and since those [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) are still active, in this implementation of `cw721-soulbound` best we can do is block their behavior from executing the transfer.
+All those files, whoa! It would probably get a bit too insane if we also bootstrap the `cw721` spec here in our project. For that reason, we'll not be able to completely remove `TransferNft` and `SendNft`, and since those [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) are still active, in this implementation of `cw721-soulbound`. The best we can do is block their behavior from executing the transfer.
 
 1. Start by locating the functions `transfer_nft` and `send_nft` (haha!), then remove the code within their function closures
 2. Replace it with code to `return` a Rust `Err`
