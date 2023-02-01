@@ -10,7 +10,7 @@ Storyline placeholder:
 >
 -->
 
-### Overview of cw721 entry points
+### Overview of Cw721 entry points
 
 Forgotten what entry points are? Check out [this](https://area-52.io/starting-with-cosm-wasm/1/cosmwasm-entry-points) lesson if you need to refresh your memory.
 
