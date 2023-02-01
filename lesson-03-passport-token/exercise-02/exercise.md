@@ -33,7 +33,9 @@ let mint_msg = MintMsg {
 };
 ```
 
-In the on-chain version, it's `token_uri` that will be `None` and `extension` that will have data. In Rust `std::option` is a built in type that represents optional data. every `Option` is either `Some` and contains a value, or `None`, and does not. `Option` types are very common in Rust code, as they have a number of uses, you can read more about them [here](https://doc.rust-lang.org/std/option/).
+In the on-chain version, it's `token_uri` that will be `None` and `extension` that will have data. 
+
+In Rust `std::option` is a built in type that represents optional data. Every `Option` is either `Some` (and contains a value), or `None` (does not contain a value). `Option` types are common in Rust code and have a number of uses, read more about them [here](https://doc.rust-lang.org/std/option/).
 
 ```rs
 // Having at least these three member fields ensures 
