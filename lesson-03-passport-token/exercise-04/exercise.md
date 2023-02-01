@@ -17,7 +17,7 @@ let unvalidated_addr: Addr = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
 let validated_addr = deps.api.addr_validate(&unvalidated_addr)?; // addr_validate always takes a reference (`&`)
 ```
 
-You may recall, in our last lesson we created `cw721-soulbound`, and at that time our `InstantiateMsg` looked like this
+In the last lesson we created `cw721-soulbound`, at that time our `InstantiateMsg` looked like this:
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -34,7 +34,7 @@ pub struct InstantiateMsg {
 }
 ```
 
-Being the only individual who can mint NFTs, `minter` has a sort of admin-like privilege in `cw721-base` (and by extension `cw721-soulbound`). Since it can never be updated after deploying, it's probably a good idea if we validate it before saving it to the contract state.
+Being the only account that can mint NFTs, `minter` has an admin-like privilege in `cw721-base` (and by extension `cw721-soulbound`). Since it can never be updated after deploying, it's probably a good idea if we validate it before saving it to the contract state.
 
 # Exercise
 
