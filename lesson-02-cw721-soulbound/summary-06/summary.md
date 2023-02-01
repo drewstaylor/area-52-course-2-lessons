@@ -30,7 +30,7 @@ But there's one more thing...
 <!--- NEXT UP: -->
 # Exercise
 
-Creating the token collection contract for `cw721-soulbound`!
+Creating the token collection contract for `cw721-soulbound`
 
 # Starter
 
