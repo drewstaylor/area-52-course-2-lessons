@@ -16,7 +16,7 @@ Contracts undergoing migration can choose to retain all, or some, of their state
 
 Conveniently, CosmWasm provides the [cw2](https://docs.rs/cw2/0.13.4/cw2/) library for helping manage code versions for contracts that have been, or may become, migrated.
 
-`cw2` compliant contracts store the following data:
+`cw2` compliant contracts store the following [key-value store](https://en.wikipedia.org/wiki/Key%E2%80%93value_database):
 
 - key: `contract_info`
 - data: Json-serialized `ContractVersion`
