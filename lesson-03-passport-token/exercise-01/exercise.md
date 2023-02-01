@@ -12,7 +12,7 @@ Storyline placeholder:
 
 In this lesson we'll be making the token collection contract, but let's take a moment to review what we've done and why.
 
-# Custom NFT Logic
+### Custom NFT Logic
 
 Changing the behavior of `cw721` is undesirable (not to mention dangerous), since it's the rule book functionality CosmWasm NFTs _must_ possess. It was a neccessary evil in our case, because `cw721` was developed with asset transfers in mind. Most times when you need to implement custom behavior, it can be achieved by adding the logic in the token collection, or by modifying `cw721-base` with a new implementation and then changing the package name (e.g. `cw721-my-custom-nft`). Notice when we tried to do it that way, the NFT contract was left with dangling entry points that were always failing, that would charge the users gas fees but were effectively useless.
 
@@ -30,7 +30,7 @@ fn transfer_nft(
 }
 ```
 
-# Modular Package Design
+### Modular Package Design
 
 Additionally, we learned about creating and inheriting our own packages, and how it helps keeps our code clean and modular. Separating code this way lets us compile and work on portions of our project independently. 
 
