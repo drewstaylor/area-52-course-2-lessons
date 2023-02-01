@@ -30,7 +30,7 @@ The default entry point functions from `cw721-soulbound` can be accessed in the 
 
 You might recall from [Course 1](https://area-52.io/starting-with-cosm-wasm/2/execute-vs-query) that `query` uses `Deps` which is read only, while `execute` and `instantiate` use `DepsMut` which is mutable.
 
-1. Write the execute entry point. Its arguments are `deps`, `env`, `info` and `msg`, each of which must be passed to the `execute` default from `Cw721MetadataContract`. Since`cw721_soulbound::ExecuteMsg<Extension, Empty>` uses multiple [generics](https://doc.rust-lang.org/rust-by-example/generics.html), we've provided you with a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for convenience (you'll find it below the metadata schema and other type aliases).
+1. Write the execute entry point. Its arguments are `deps`, `env`, `info` and `msg`, each of which must be passed to the `execute` default from `Cw721MetadataContract`. Since`cw721_soulbound::ExecuteMsg<Extension, Empty>` uses multiple [generics](https://doc.rust-lang.org/rust-by-example/generics.html), we've provided you with a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) (`ExecuteMsg`) for convenience. You'll find it below the metadata schema and other type aliases.
 2. Write the query entry point. Its arguments are `deps`, `env` and `msg`. `QueryMsg` from `cw721-soulbound` implements a [generic](https://doc.rust-lang.org/rust-by-example/generics.html) but we won't be needing it, so set it to an `Empty` value (e.g. `QueryMsg<Empty>`).
 
 # Starter
