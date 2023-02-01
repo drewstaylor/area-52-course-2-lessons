@@ -21,7 +21,7 @@ Remember this `Cargo.toml` code?
 example-local-package = { path = "../example-local-package", version = "0.1.0" }
 ```
 
-It's time we used that approach. Instead of bootstrapping `cw721-base` on directly on top of our project (in the same `src` folder), this time we can start by [cloning](https://git-scm.com/docs/git-clone) the [cw721-base](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-base) repository into a separate folder. After we've made it "soulbound", we'll make the token collection contract and declare `cw721-soulbound` as a dependency.
+It's time we used that approach. Instead of bootstrapping `cw721-base` on top of our project (in the same `src` folder), we can start by [cloning](https://git-scm.com/docs/git-clone) the [cw721-base](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-base) repository into a separate folder. After we've made it "soulbound", we'll make the token collection contract and declare `cw721-soulbound` as a dependency.
 
 # Exercise
 
