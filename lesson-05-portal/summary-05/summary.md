@@ -11,7 +11,7 @@ Storyline placeholder:
 
 # Overview
 
-What's that sound? _*a slow clap 👏 forms in the distance*_
+What's that sound? (_*a slow clap 👏 forms in the distance*_)
 
 You've just coded an NFT identity protocol from scratch, can you believe it? Do you feel like a CosmWasm NFT expert yet?
 
