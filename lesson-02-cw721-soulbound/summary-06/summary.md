@@ -15,14 +15,13 @@ In general we learned about:
 - Using dependencies hosted on [Crates.io](https://crates.io/)
 - Using local dependencies 
 - Compiling Rust programs as libraries vs binaries
-- Visibility scopes of types and type aliases for Rust library programs when other developers inherit a library as a dependency
 
 From CosmWasm we touched on:
 
 - Modifying `cw721-base` with custom logic
-- Re-creating the behavior of `cw721-non-transferable`
+- The composition of `cw721-non-transferable`
 
-But there's one more thing!
+But there's one more thing...
 **Don't forget to update your package name in `Cargo.toml`!**
 
 ### **SOURCE CODE**
