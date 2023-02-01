@@ -25,9 +25,7 @@ It's time we used that approach. Instead of bootstrapping `cw721-base` on top of
 
 # Exercise
 
-Proceeding should be much easier now, we can simply remove references to `TransferNft` and `SendNft` wholesale from our new package (`cw721-soulbound`). There's a few files to be changed, but we'll tackle them one at a time.
-
-`cw721-base` has a `packages` folder, this is where the default (e.g. transferrable) `cw721` spec lives. We'll remove the transfer traits from `cw721` first, to arrive at a soulbound `cw721` spec.
+We can simply remove references to `TransferNft` and `SendNft` wholesale from our new package (`cw721-soulbound`). There's a few files to be changed, but we'll tackle them one at a time. `cw721-base` has a `packages` folder, this is where the default (e.g. transferrable) `cw721` spec lives. We'll remove the transfer traits from `cw721` first, to arrive at a soulbound `cw721` spec.
 
 1. Locate and remove `transfer_nft`, and `send_nft`
 
