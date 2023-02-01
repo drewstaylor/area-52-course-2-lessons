@@ -37,7 +37,7 @@ Once serialized (e.g. by [Serde]()) that data might look like this:
 }
 ```
 
-Instantiating a contract is the first migration
+Instantiating a contract is the first migration:
 
 ```rs
 #[entry_point]
