@@ -18,7 +18,6 @@ In general, we learned about:
 - Creating a token collection contract
 
 ### **SOURCE CODE**
-Check out the full code we've covered throughout this lesson. Fork it, tweak it, and make it your own :)
 - <ExternalLink href="https://github.com/phi-labs-ltd/area-52-courses/">Building with NFTs repo</ExternalLink>
 
 <!--- NEXT UP: -->
