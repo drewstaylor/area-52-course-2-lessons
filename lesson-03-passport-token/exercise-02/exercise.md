@@ -18,7 +18,7 @@ Rather than uploading [JSON](https://developer.mozilla.org/en-US/docs/Learn/Java
 
 ### Serde Package in Rust
 
-[Serde](https://serde.rs/) is a framework for serializing and deserializing Rust data structures efficiently and generically. It consists of data structures that know how to serialize and deserialize themselves along with data formats that know how to serialize and deserialize other things. [Serde](https://serde.rs/) provides the layer by which these two groups interact with each other, allowing any supported data structure to be serialized and deserialized using any supported data format.
+[Serde](https://serde.rs/) is a framework for serializing and deserializing Rust data structures efficiently and generically. It consists of data structures that know how to serialize and deserialize themselves along with data formats that know how to serialize and deserialize other things. [Serde](https://serde.rs/) allows any supported data structure to be serialized and deserialized using any supported data format.
 
 ### MintMsg (again)
 
