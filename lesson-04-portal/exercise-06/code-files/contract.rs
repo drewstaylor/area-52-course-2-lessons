@@ -31,7 +31,7 @@ pub fn execute(
         ExecuteMsg::SetMinimumSapience { to } => set_minimum_sapience(to, deps, info),
         ExecuteMsg::SetPassportContract { contract } => set_passport_contract(contract, deps, info),
         ExecuteMsg::SetPotionContract { contract } => set_potion_contract(contract, deps, info),
-        ExecuteMsg::JumpRingTravel { to, traveler } => initiate_jump_ring_travel(to, traveler, deps, env, info),
+        ExecuteMsg::JumpRingTravel { to } => initiate_jump_ring_travel(to, deps, env, info),
     }
 }
 

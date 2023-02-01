@@ -10,23 +10,21 @@ Storyline placeholder:
 >
 -->
 
-Remeber the `JumpRing` portal? 
+Remember the `JumpRing` portal? 
 
 Now that we have our token collection contract and non-transferable NFTs (with on-chain metadata), we're going to implement them in Portal. 
 
-We're creating a secure (and decentralized) identity system for `Traveler` access.
+We're creating a secure (and decentralized) identity system for `Traveler` access. The system works like this:
 
-Roughly speaking, the system works like this
-
-1. Travel passports (`passport-token`) are non-transferable (`cw721-soulbound1`)
+1. Travel passports (`passport-token`s) are non-transferable (`cw721-soulbound1`)
 2. Only a Portal contract (`JumpRing`) can mint passports (`Cw721MetadataContract::default().minter`)
-3. A Traveler can hold only one passport at a time (for each planet)
-4. `token_id`'s are keyed by holder address (helpful for lookups and proofs)
-5. Only a verified Potion contract can call the `JumpRing` Portal (since Potion enforces payment and cyberdization checks)
+3. A Traveler can hold only one passport at a time
+4. `token_id`'s are wallet addresses of their owner (helpful for lookups and proofs)
+5. Only Potion contract can call the `JumpRing` Portal (since Potion enforces payment and cyberdization checks)
 
 ### A State Saving Refresher
 
-Last we worked on Portal, we created two functions in `execute_fns.rs` to save state. Both are nearly identical, the only difference being the storage key they're saving to (`planet_name` vs `planet_sapients`).
+Last time we worked on Portal, we created two functions in `execute_fns.rs` to save state. Both are nearly identical, the only difference being the storage key they're saving to (`planet_name` vs `planet_sapients`).
 
 ```rs
 pub fn set_planet_name(

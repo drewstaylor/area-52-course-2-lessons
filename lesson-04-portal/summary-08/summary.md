@@ -68,7 +68,7 @@ pub fn execute(
         ExecuteMsg::SetPassportContract { contract } => set_passport_contract(contract, deps, info),
         ExecuteMsg::SetPotionContract { contract } => set_potion_contract(contract, deps, info),
         // Add the `ExecuteMsg` for `MintPassport` here
-        ExecuteMsg::JumpRingTravel { to, traveler } => initiate_jump_ring_travel(to, traveler, deps, env, info),
+        ExecuteMsg::JumpRingTravel { to } => initiate_jump_ring_travel(to, deps, env, info),
     }
 }
 
@@ -131,7 +131,7 @@ pub fn execute(
         ExecuteMsg::SetPassportContract { contract } => set_passport_contract(contract, deps, info),
         ExecuteMsg::SetPotionContract { contract } => set_potion_contract(contract, deps, info),
         ExecuteMsg::MintPassport { msg } => mint_passport(msg, deps, env, info),
-        ExecuteMsg::JumpRingTravel { to, traveler } => initiate_jump_ring_travel(to, traveler, deps, env, info),
+        ExecuteMsg::JumpRingTravel { to } => initiate_jump_ring_travel(to, deps, env, info),
     }
 }
 
