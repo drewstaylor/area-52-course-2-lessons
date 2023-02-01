@@ -30,6 +30,9 @@ From the CosmWasm libraries we touched on:
 - `attributes`, and `add_attribute`, which are part of CosmWasm `Response`
 - The importance of the `action` attribute
 
+### **SOURCE CODE**
+- <ExternalLink href="https://github.com/phi-labs-ltd/area-52-courses/">Building with NFTs repo</ExternalLink>
+
 <!--- NEXT UP: -->
 # Exercise
 
