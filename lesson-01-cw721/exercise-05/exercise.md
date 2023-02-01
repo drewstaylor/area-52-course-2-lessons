@@ -20,6 +20,8 @@ In the last two exercises we've been talking about a "token collection contract"
 
 A common use case for importing [cw721-base](https://crates.io/crates/cw721-base) into your project is for making the token collection contract.
 
+
+
 ### Can't I just deploy `cw721-base`?
 
 You could just deploy `cw721-base`. In fact, the [unit tests](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/contract_tests.rs) of `cw721-base` are doing just that. However, it's preferable to separate `cw721-base` (a template for all NFT projects) from the logic and code of some specific NFT project.
@@ -34,7 +36,7 @@ pub type Extension = Option<Empty>;
 
 # Exercise
 
-Now we'll create the collection contract for `some_token`. This is the only code needed for creating the collection contract (along with the `Cargo.toml` which imports the dependencies). Your task is to finish writing the entry points.
+Now we'll create the collection contract for `some_token` using `cw721-base`. This is the only code needed for creating the collection contract (along with the `Cargo.toml` which imports the dependencies). Your task is to finish writing the entry points.
 
 1. Save the `minter` address in `instantiate` so that once the contract is deployed, tokens can be minted by the admin address. To save `minter` you'll need the `save` function of `Cw721Contract::default().minter` and pass two arguments to it, which are `deps.storage` and a reference to `minter` (a variable defined and validated just above)
 2. Finish the `execute` entry point by calling the `execute` function of `Cw721Contract::default()`. The arguments to pass to it are the same as what's being sent to `some_token`'s `execute`
