@@ -25,7 +25,7 @@ fn transfer_nft(
 }
 ```
 
-This time, since we already removed the [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) from `package/cw721`, we can eliminate those functions from `execute.rs` rather than block their behavior.
+This time, since we already removed the [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) from `package/cw721`, we can eliminate those functions from `execute.rs` rather than just blocking their behavior.
 
 # Exercise
 
