@@ -39,8 +39,8 @@ pub type Extension = Option<Empty>;
 Now we'll create the collection contract for `some_token` using `cw721-base`. This is the only code needed for creating the collection contract (along with the `Cargo.toml` which imports the dependencies). Your task is to finish writing the entry points.
 
 1. Save the `minter` address in `instantiate` so that once the contract is deployed, tokens can be minted by the admin address. To save `minter` you'll need the `save` function of `Cw721Contract::default().minter` and pass two arguments to it, which are `deps.storage` and a reference to `minter` (a variable defined and validated just above)
-2. Finish the `execute` entry point by calling the `execute` function of `Cw721Contract::default()`. The arguments to pass to it are the same as what's being sent to `some_token`'s `execute`
-3. Finish the `query` entry point with a call to `query` from `Cw721Contract::default()`. The arguments to pass it are the same as those being sent to the `query` entry point of `some_token`
+2. Finish the `execute` entry point by calling the `execute` function of `Cw721Contract::default()`. The arguments to pass to it are the same as those being sent to `pub fn execute`
+3. Finish the `query` entry point with a call to `query` from `Cw721Contract::default()`. The arguments to pass it are the same as those being sent to `pub fn query`.
 
 # Starter
 
