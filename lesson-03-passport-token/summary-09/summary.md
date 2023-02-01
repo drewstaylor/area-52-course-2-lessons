@@ -11,7 +11,7 @@ Storyline placeholder:
 
 # Overview
 
-In this lesson we developed the token contract for an NFT collection that implements the `cw721-soulbound` package we created in Lesson 2.
+In this lesson we developed the token contract for an NFT collection that implements the `cw721-soulbound` package from [Lesson 2]().
 
 In general we learned about:
 
