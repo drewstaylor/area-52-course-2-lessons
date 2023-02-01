@@ -28,7 +28,7 @@ pub struct ContractVersion {
 }
 ```
 
-Once serialized (e.g. by [Serde]()) that data might look like this
+Once serialized (e.g. by [Serde]()) that data might look like this:
 
 ```json
 {
