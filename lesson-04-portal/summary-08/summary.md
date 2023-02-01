@@ -24,7 +24,7 @@ From the CosmWasm libraries we touched on:
 - `WasmQuery::Smart` and cross-contract queries
 - `WasmMsg::Execute` and cross-contract executions
 - `MintMsg<T>` from `cw721-base` and `cw721-soulbound`
-- Using `add_message` of `cosmwasm_std::Response` to bundle multiple `Response`s
+- Using `add_message` of `cosmwasm_std::Response` to bundle multiple `Response`
 
 <!--- NEXT UP: -->
 # Exercise
