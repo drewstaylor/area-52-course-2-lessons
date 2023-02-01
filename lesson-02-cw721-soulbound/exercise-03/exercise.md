@@ -10,7 +10,9 @@ Storyline placeholder:
 >
 -->
 
-Whoa, speaking of the previous exercise, was it easy to get lost in that code? There must be a better to implement our custom behavior for [soulbound](https://vitalik.ca/general/2022/01/26/soulbound.html) CosmWasm NFTs. Taking a stern gaze from the libarians, let's try again with a modular package design.
+Whoa, speaking of the previous exercise, was it easy to get lost in that code? There must be a better way to implement the custom behavior for [soulbound](https://vitalik.ca/general/2022/01/26/soulbound.html) NFTs in CosmWasm. 
+
+Taking a stern gaze from the libarians, let's try again with a modular package design.
 
 Remember this `Cargo.toml` code?
 
