@@ -29,7 +29,6 @@ From the CosmWasm libraries we touched on:
 - Using `mock_dependencies`, `mock_env`, `mock_info` from `cosmwasm_std::testing` to simulate blockchain queries and transactions
 
 ### **SOURCE CODE**
-Check out the full code we've covered throughout this lesson. Fork it, tweak it, and make it your own :)
 - <ExternalLink href="https://github.com/phi-labs-ltd/area-52-courses/">Building with NFTs repo</ExternalLink>
 
 <!--- NEXT UP: -->
