@@ -28,89 +28,95 @@ Modifying `cw721-base` with custom logic
 # Starter
 
 ```rs
-use cosmwasm_std::{
-    CosmosMsg, DepsMut, Env, MessageInfo, to_binary, 
-    Response, WasmMsg,
+use cosmwasm_std::Empty;
+use cw721_base::{
+    ContractError, InstantiateMsg, MintMsg, 
+    MinterResponse, QueryMsg
 };
-use some_token::{
-    ExecuteMsg as Cw721ExecuteMsg, MintMsg as Cw721MintMsg,
-};
-use crate::error::ContractError;
-use crate::state::CONFIG;
-use crate::msg::MintMsg;
+pub type Extension = Option<Empty>;
+pub type Cw721Contract<'a> = cw721_base::Cw721Contract<'a, Extension, Empty, Empty, Empty>;
+pub type ExecuteMsg = cw721_base::ExecuteMsg<Extension, Empty>;
 
-pub fn mint_handler(
-    msg: MintMsg,
-    deps: DepsMut,
-    env: Env,
-    info: MessageInfo,
-) -> Result<Response, ContractError> {
-    let config = CONFIG.load(deps.storage)?;
-    let some_token_address = config.some_token_address;
-    
-    let token_uri = "ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json";
-    let owner = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
+pub mod entry {
+    use super::*;
 
-    let mint_msg: some_token::ExecuteMsg = Cw721ExecuteMsg::Mint(Cw721MintMsg {
-        token_id: "token 1".to_string(),
-        owner: owner.to_string(),
-        token_uri: token_uri.to_string(),
-        extension: None,
-    });
+    #[cfg(not(feature = "library"))]
+    use cosmwasm_std::entry_point;
+    use cosmwasm_std::{Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
 
-    let mint_resp: CosmosMsg = WasmMsg::Execute {
-        contract_addr: some_token_address.to_string(),
-        msg: to_binary(&mint_msg)?,
-        funds: vec![],
+    #[entry_point]
+    pub fn instantiate(
+        deps: DepsMut,
+        _env: Env,
+        _info: MessageInfo,
+        msg: InstantiateMsg,
+    ) -> StdResult<Response> {
+        let minter = deps.api.addr_validate(&msg.minter)?;
+        Cw721Contract::default().minter.save(deps.storage, &minter)?;
+        Ok(Response::default())
     }
-    .into();
 
-    let messages = vec![mint_resp];
-    Ok(Response::new().add_messages(messages))
+    #[entry_point]
+    pub fn execute(
+        deps: DepsMut,
+        env: Env,
+        info: MessageInfo,
+        msg: ExecuteMsg,
+    ) -> Result<Response, ContractError> {
+        Cw721Contract::default().execute(deps, env, info, msg)
+    }
+
+    #[entry_point]
+    pub fn query(deps: Deps, env: Env, msg: QueryMsg<Empty>) -> StdResult<Binary> {
+        Cw721Contract::default().query(deps, env, msg)
+    }
 }
 ```
 
 # Answer
 
 ```rs
-use cosmwasm_std::{
-    CosmosMsg, DepsMut, Env, MessageInfo, to_binary, 
-    Response, WasmMsg,
+use cosmwasm_std::Empty;
+use cw721_base::{
+    ContractError, InstantiateMsg, MintMsg, 
+    MinterResponse, QueryMsg
 };
-use some_token::{
-    ExecuteMsg as Cw721ExecuteMsg, MintMsg as Cw721MintMsg,
-};
-use crate::error::ContractError;
-use crate::state::CONFIG;
-use crate::msg::MintMsg;
+pub type Extension = Option<Empty>;
+pub type Cw721Contract<'a> = cw721_base::Cw721Contract<'a, Extension, Empty, Empty, Empty>;
+pub type ExecuteMsg = cw721_base::ExecuteMsg<Extension, Empty>;
 
-pub fn mint_handler(
-    msg: MintMsg,
-    deps: DepsMut,
-    env: Env,
-    info: MessageInfo,
-) -> Result<Response, ContractError> {
-    let config = CONFIG.load(deps.storage)?;
-    let some_token_address = config.some_token_address;
-    
-    let token_uri = "ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json";
-    let owner = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
+pub mod entry {
+    use super::*;
 
-    let mint_msg: some_token::ExecuteMsg = Cw721ExecuteMsg::Mint(Cw721MintMsg {
-        token_id: "token 1".to_string(),
-        owner: owner.to_string(),
-        token_uri: token_uri.to_string(),
-        extension: None,
-    });
+    #[cfg(not(feature = "library"))]
+    use cosmwasm_std::entry_point;
+    use cosmwasm_std::{Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
 
-    let mint_resp: CosmosMsg = WasmMsg::Execute {
-        contract_addr: some_token_address.to_string(),
-        msg: to_binary(&mint_msg)?,
-        funds: vec![],
+    #[entry_point]
+    pub fn instantiate(
+        deps: DepsMut,
+        _env: Env,
+        _info: MessageInfo,
+        msg: InstantiateMsg,
+    ) -> StdResult<Response> {
+        let minter = deps.api.addr_validate(&msg.minter)?;
+        Cw721Contract::default().minter.save(deps.storage, &minter)?;
+        Ok(Response::default())
     }
-    .into();
 
-    let messages = vec![mint_resp];
-    Ok(Response::new().add_messages(messages))
+    #[entry_point]
+    pub fn execute(
+        deps: DepsMut,
+        env: Env,
+        info: MessageInfo,
+        msg: ExecuteMsg,
+    ) -> Result<Response, ContractError> {
+        Cw721Contract::default().execute(deps, env, info, msg)
+    }
+
+    #[entry_point]
+    pub fn query(deps: Deps, env: Env, msg: QueryMsg<Empty>) -> StdResult<Binary> {
+        Cw721Contract::default().query(deps, env, msg)
+    }
 }
 ```
