@@ -10,7 +10,7 @@ Storyline placeholder:
 >
 -->
 
-The `initiate_jump_ring_travel` entry point function is already being imported in `contract.rs`, but since its message type has been modified in `msg.rs` the Portal project doesn't [compile](https://doc.rust-lang.org/cargo/commands/cargo-build.html) yet.
+The `initiate_jump_ring_travel` entry point function is already imported in `contract.rs`, but since its message type has been modified in `msg.rs` the Portal project doesn't [compile](https://doc.rust-lang.org/cargo/commands/cargo-build.html) yet.
 
 If we try to compile the project as is, the [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) compiler throws two errors.
 
