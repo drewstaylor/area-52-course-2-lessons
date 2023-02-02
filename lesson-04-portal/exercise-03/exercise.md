@@ -10,15 +10,19 @@ Storyline placeholder:
 >
 -->
 
-Buckle up travelers, intergalactic speed is about to ramp up real quick. Previously, we devised our identity tokens (`passport-token`), now we've got to use them in Portal and design our identity system.
+Buckle up travelers, intergalactic speed is about to ramp up real quick. 
 
-Portal functions like an intergalactic embassy and passport control combined. Most pre-flight security checks happen in [Potion](https://github.com/phi-labs-ltd/area-52-courses/tree/main/01_Starting_with_CosmWasm/potion/src/execute_fns), but identity verification happens in the `JumpRing` itself (which can only be called by Potion). An Earthling might say Potion operates like airport security, while Portal handles boarding passengers and flight. If you don't have a passport, Portal can create one for you but you must apply for the passport through Potion.
+Previously, we devised our identity tokens (`passport-token`), now we've got to use `passport-token` in Portal and design our identity system.
+
+Portal functions like an intergalactic embassy and passport control combined. Most pre-flight security checks happen in [Potion](https://github.com/phi-labs-ltd/area-52-courses/tree/main/01_Starting_with_CosmWasm/potion/src/execute_fns), but identity verification happens in the `JumpRing` itself (which can only be called by Potion). 
+
+An Earthling might say Potion operates like airport security, while Portal handles boarding passengers and flight. If you don't have a passport, Portal can create one for you but you must apply for the passport through Potion.
 
 ### Querying Cw721 Tokens
 
 `WasmQuery::Smart` will send our queries to the token collection contract (`passport-token`), if you need a refresher on `WasmQuery` check that out [here](https://area-52.io/starting-with-cosm-wasm/4/check_sapience_level-function-part-1) and [here](https://area-52.io/starting-with-cosm-wasm/4/check_sapience_level-function-part-2).
 
-We want to know if a specific user has any passports. The `Tokens` query entry point (read more [here](https://docs.rs/cw721/latest/cw721/enum.Cw721QueryMsg.html) and [here](https://docs.rs/cw721/latest/cw721/trait.Cw721Query.html#tymethod.tokens)) of cw721 tokens accepts an `owner` address as a parameter, so we'll use that for our check.
+We want to know if a specific user has any passports. The `Tokens` query entry point (read more [here](https://docs.rs/cw721/latest/cw721/enum.Cw721QueryMsg.html) and [here](https://docs.rs/cw721/latest/cw721/trait.Cw721Query.html#tymethod.tokens)) of `cw721` tokens accepts an `owner` address as a parameter, so we'll use that for our check.
 
 ```rs
 let query_msg = QueryMsg::Tokens {
@@ -28,15 +32,17 @@ let query_msg = QueryMsg::Tokens {
 };
 ```
 
-`Tokens` returns a [JSON](https://en.wikipedia.org/wiki/JSON) array. If `owner` has 0 NFTs, the response array will be empty. If they own 1, or more, tokens it returns an array of the owned token IDs.
+`Tokens` returns a [JSON](https://en.wikipedia.org/wiki/JSON) array. If `owner` has 0 NFTs, the response array will be empty. If they own 1 or more tokens, it returns an array of the owned `token_id`s.
 
 ### Enummerability in Cw721
 
-Like most requests in CosmWasm and Cosmos, `cw721` tokens are [enumerable](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md#enumerable), which is implemented using [pagination](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md#enumerable). 
+`cw721` tokens are [enumerable](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md#enumerable), which is implemented using [pagination](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md#enumerable). 
 
-We can use the `limit` and `start_after` parameters of the `Tokens` query to manage pulling data for `owner`s holding a lot of NFTs. By default (e.g. `limit` and `start_after` set to `None`) enumerable queries return the first 100 records. 
+Use the `limit` and `start_after` parameters of the `Tokens` query for pulling data for those greedy whales holding _a lot_ of NFTs. 
 
-If an `owner` holds more than 100 tokens, the second page of results can be queried by setting `start_after` to `100`.
+By default (e.g. `limit` and `start_after` set to `None`) enumerable queries return the first 100 records. 
+
+If an `owner` holds more than 100 tokens, the second page of results can be queried by setting `start_after` to `100`:
 
 ```rs
 let query_msg = QueryMsg::Tokens {
@@ -48,7 +54,7 @@ let query_msg = QueryMsg::Tokens {
 
 # Exercise
 
-Now we being working on a new entry point function called `mint_passport`. Before minting tokens we'll be implementing some guards. Owners cannot hold more than one passport at a time.
+Let's begin working on a new entry point function called `mint_passport`. Before minting tokens we'll be add some restrictions (so owners cannot hold more than one passport at a time).
 
 1. `QueryMsg` has been provided, but you'll need to handle things from there. Create a variable called `query_req` and assign it to `QueryRequest::Wasm`. The function argument to pass the `QueryRequest` is a `WasmQuery::Smart` enum, whose members (`contract_addr` and `msg`) can be written each on their own line.
 2. For `WasmQuery`'s first member, assign `contract_addr` the passport contract's address (accessed from `config.passport_contract`), but we'll need it again later so you'll have to [clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) it and use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to get the right type.
