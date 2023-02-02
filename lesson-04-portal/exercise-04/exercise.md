@@ -10,7 +10,7 @@ Storyline placeholder:
 >
 -->
 
-In the previous lesson, we worked out a metadata schema for our `passport-token` collection contract. 
+In the previous [Lesson](), we worked out a metadata schema for our `passport-token` collection contract. 
 
 The schema we created looks like this
 
@@ -29,17 +29,17 @@ pub struct Metadata {
 }
 ```
 
-We also exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension that like this
+We also exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension that like this:
 
 ```rs
 pub type Extension = Option<Metadata>;
 ```
 
-Since `Metadata` and `Extension` are publicly exported by the `passport-token` library, we can import those types into Portal and make use of them in our `mint_passport`.
+Since `Metadata` and `Extension` are publicly exported by the `passport-token` library, we can import those types into Portal and make use of them in our `mint_passport` function.
 
 # Exercise
 
-We're almost ready to hook up minting. Since this is the on-chain metadata version of `cw721`, we'll prepare the `extension` metadata needed for the `cw721` execute message (`MintMsg<Extension>`).
+Since this is the on-chain metadata version of `cw721`, we'll prepare the `extension` metadata needed for the `cw721` execute message (`MintMsg<Extension>`).
 
 1. Create a variable called `metadata_extension` that explicitly enforces the `Extension` type (imported from `passport_token`), and assign it a `Metadata` (also imported from `passport_token`) struct.
 2. For [Serde](https://serde.rs/) to be able to correctly serialize and deserialize, the NFT's `Metadata` struct every value assignment should be wrapped by a `Some` (these [Option] schemas are enforced by the `Metadata` type from `passport_token`).
