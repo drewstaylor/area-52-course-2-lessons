@@ -7,6 +7,8 @@ Title: When to use `cw721-base`
 Filename: lib.rs
 -->
 
+> Your head is spinning with new NFT knowledge. Unfortunately, so far, none of it seems helpful for escaping from SECTION 31's passport-control holding cell.
+
 In the last two exercises we've been talking about a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
 
 - `cw721` is a package for enforcing your token adheres to the [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) standard

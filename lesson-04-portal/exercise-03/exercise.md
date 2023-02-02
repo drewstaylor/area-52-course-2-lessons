@@ -5,12 +5,9 @@ Exercise: 3
 
 Title: Minting NFTs From a Contract Part 1
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
 
-Buckle up travelers, intergalactic speed is about to ramp up real quick. 
+> Buckle up travelers, your intergalactic learning curve is about to ramp up real quick.
 
 Previously, we devised our identity tokens (`passport-token`), now we've got to use `passport-token` in Portal and design our identity system.
 

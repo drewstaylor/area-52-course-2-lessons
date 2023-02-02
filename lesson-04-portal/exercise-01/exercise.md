@@ -7,9 +7,9 @@ Title: Preparing Portal to Become the Minter Part 1
 Filename: execute_fns.rs
 -->
 
-> With slight trepidation you run the test diagnostic. `test integration_tests::use_metadata_extension ... ok`, it worked! You watch as the **STATUS** screen on SECTION 31's Ring updates itself. Now, it reads "Online" (in cybernetic-green).
+> With slight trepidation you run the test diagnostic. `test integration_tests::use_metadata_extension ... ok`, it worked! You watch as the **STATUS** screen on SECTION 31's Ring updates itself. Now it reads "Online" (in cybernetic-green).
 
-Remember the `JumpRing` portal? 
+Remember the `JumpRing` portal? Looking at SECTION 31's Ring, it seems so much more sophisticated.
 
 Now that we have our token collection contract and non-transferable NFTs (with on-chain metadata), we're going to implement them in Portal. 
 

@@ -5,10 +5,9 @@ Exercise: 5
 
 Title: Minting NFTs From a Contract Part 3
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
+
+> 
 
 In a moment we'll finish the minting logic, but first let's think about `passport-token`'s `ExecuteMsg::Mint`. Its message type looks like this:
 

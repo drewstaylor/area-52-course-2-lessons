@@ -5,14 +5,13 @@ Exercise: 4
 
 Title: Minting NFTs From a Contract Part 2
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
+
+> Try as you might, you can't shake the memory of having been trapped in passport-control with SECTION 31's Jump Ring. Your muddied thoughts flip back and forth, hither and thither. Was it really all a dream? It seemed so _real_. Besides, these improvements you're making to `JumpRing` seem _out of this world_.
 
 In the previous [Lesson](), we worked out a metadata schema for our `passport-token` collection contract. 
 
-The schema we created looks like this
+The schema we created looks like this:
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
