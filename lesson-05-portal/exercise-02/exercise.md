@@ -26,7 +26,7 @@ Some things to keep in mind:
 - We're using soulbound NFTs
 - Only the Portal contract (`JumpRing`) can mint
 - Each NFT owner can only hold one `passport-token` at a time
-- `token_id`s are keyed by holder address
+- Token IDs are keyed by holder address
 - Only the Potion contract (`Imbiber`) can call `mint_passport`
 
 For the above reasons, identity theft already isn't possible. The reason is because each [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) `token_id` must be unique, and the `token_id` of each `passport-token` is the wallet address of its holder.
