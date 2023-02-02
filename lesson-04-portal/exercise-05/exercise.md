@@ -29,7 +29,7 @@ pub struct MintMsg<T> {
 
 The [generic](https://doc.rust-lang.org/rust-by-example/generics.html) `T`, of `MintMsg<T>` represents an abstract type which could be any valid on-chain NFT metadata enforced by a token collection contract.
 
-In the `passport-token` collection contract we enforced, and exported, a type called `Metadata`, and we also exported a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) called `Extension`.
+In the `passport-token` collection contract we enforced, and exported, a type called `Metadata`, and we also exported a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) called `Extension`:
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
