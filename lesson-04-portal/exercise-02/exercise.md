@@ -12,7 +12,7 @@ Storyline placeholder:
 
 Moving right along, let's enable these two new state saving entry points in `contract.rs`. 
 
-Since the decentralized identity system won't work without the contract addressses of `Imbiber` (Potion) and `passport-token`, we also need to add them to `instantiate`.
+Since the decentralized identity system won't work without the contract addressses of Potion and `passport-token`, we also need to add them to `instantiate`.
 
 After adding our new parameters the messages for `instantiate` and `execute`, in Portal, look like this
 
@@ -37,7 +37,7 @@ pub struct InstantiateMsg {
 }
 ```
 
-Let's go ahead and enable these messages as contract entry points.
+Let's go ahead and enable these messages as contract entry points in `contract.rs`.
 
 # Exercise
 
