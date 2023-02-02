@@ -12,7 +12,15 @@ Storyline placeholder:
 
 Now `passport-token`, our token collection contract, just needs one more thing. It already works, but it's methods can only be called by users. If we want to make it so other contracts can interact with it, we need to add the `reply` entry point.
 
-For a refresher on `reply`, you can check out [this exercise](https://area-52.io/starting-with-cosm-wasm/4/reply:-a-new-entry-point) from [Course 1](https://area-52.io/starting-with-cosm-wasm). We'll be using the same implementation.
+The message struct for `Reply` can be imported from `cosmwasm_std`, and has the following struct fields:
+```rs
+pub struct Reply {
+    pub id: u64,
+    pub result: ContractResult<SubcallResponse>,
+}
+```
+
+For a refresher on implementing `reply`, you can check out [this exercise](https://area-52.io/starting-with-cosm-wasm/4/reply:-a-new-entry-point) from [Course 1](https://area-52.io/starting-with-cosm-wasm). We'll be using the same implementation, except for the `Err` CosmWasm `Response`, which will be the `ContractError::Unauthorized {}` variant from `error.rs`.
 
 # Exercise
 
