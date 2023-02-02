@@ -10,7 +10,9 @@ Storyline placeholder:
 >
 -->
 
-Our `passport-token` identity system, for the Portal contract, is nearly feature complete, but at the moment `initiate_jumpring_travel` doesn't return useful data if its called. Currently its CosmWasm `Response` looks like this:
+Our `passport-token` identity system is nearly feature complete, but at the moment `initiate_jumpring_travel` doesn't return useful data. 
+
+Currently its CosmWasm `Response` looks like this:
 
 ```rs
 Ok(Response::default())
