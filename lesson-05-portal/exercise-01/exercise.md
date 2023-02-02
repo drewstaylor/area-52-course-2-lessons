@@ -10,7 +10,7 @@ Storyline placeholder:
 >
 -->
 
-In the previous lesson we enabled minting `passport-token` NFTs from the Portal contract (which can only be called by the Potion contract). In this lesson we'll boarding our `JumpRing` passengers and checking their passports. 
+In the previous [Lesson]() we enabled minting `passport-token` NFTs from the Portal contract (which can only be called by the Potion contract). In this lesson we'll boarding our `JumpRing` passengers and checking their passports. 
 
 In `mint_passport` we wrote a query that checks whether some `Traveler` holds any `passport-token` NFTs, and returns an `ContractError` if they do:
 
