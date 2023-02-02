@@ -51,7 +51,7 @@ Building an optimized Rust binary:
 cargo build --release
 ```
 
-_**Note:** that building a Rust binary is not the same as building the [wasm](https://webassembly.org/) that will be uploaded to and instantiated on the blockchain_
+#### _Note: that building a Rust binary is not the same as building the [wasm](https://webassembly.org/) that will be uploaded to and instantiated on the blockchain._
 
 Running a project's unit tests:
 
