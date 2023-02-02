@@ -10,7 +10,9 @@ Storyline placeholder:
 >
 -->
 
-In a moment we'll finish the minting logic, but first let's think about `passport-token`'s `ExecuteMsg::Mint`. Its message type looks like this
+In a moment we'll finish the minting logic, but first let's think about `passport-token`'s `ExecuteMsg::Mint`.
+
+Its message type looks like this:
 
 ```rs
 pub struct MintMsg<T> {
