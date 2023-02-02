@@ -37,7 +37,7 @@ let query_msg = Cw721QueryMsg::NftInfo {
 };
 ```
 
-`NftInfo` is the same query entry point we'd use to get the on-chain (or off-chain) metadata [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) for some NFT, minted by some token collection contract.
+The `NftInfo` query entry can also be used to get the on-chain (or off-chain) metadata for NFTs minted by a token collection contract.
 
 # Exercise 
 
