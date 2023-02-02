@@ -38,11 +38,11 @@ pub struct MintMsg {
 }
 ```
 
-Which is the on-chain `cw721` metadata of each passport NFT. Let's go ahead and import `mint_passport` and make sure we call it with the correct parameters (`msg`, `deps`, `env`, and `info`) and that we pass `mint_passport` the correct `msg` (which will be coming from the Potion contract).
-
-Once the `ExecuteMsg` for `MintPassport` has been added to the `execute`, minting passports (and implementing our passport controls) will be enabled!
+Which is the on-chain `cw721` metadata of each passport NFT. 
 
 # Exercise 
+
+Let's go ahead and import `mint_passport` and make sure we call it with the correct parameters (`msg`, `deps`, `env`, and `info`). Once the `ExecuteMsg` for `MintPassport` has been added to `execute` in `contract.rs`, minting passports (and our passport controls) will be enabled!
 
 1. Locate the imports for the `execute_fns` crate and import the `mint_passport` function we recently finalized.
 2. In the `execute` entry point, add the `ExecuteMsg` for `MintPassport` and point it to the `mint_passport` function imported in step 1. Have a look at `msg.rs` and `execute_fns.rs` if you're confused about any parameters.
