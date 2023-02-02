@@ -29,11 +29,11 @@ Some things to keep in mind:
 - Token IDs are keyed by holder address
 - Only the Potion contract (`Imbiber`) can call `mint_passport`
 
-For the above reasons, identity theft already isn't possible. The reason is because each [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) `token_id` must be unique, and the `token_id` of each `passport-token` is the wallet address of its holder.
+Identity theft already isn't possible because of `cw721-soulbound. Each [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) `token_id` must be unique, and the `token_id` of each `passport-token` is the wallet address of its holder. That means the query to `NftInfo` will fail if we try to teleport someone not holding a `passport-token` that matches their Cosmos address.
 
 ### Using NFT Metadata Returned by `NftInfo`
 
-The `NftInfo` query returns a `Response` type called `NftInfoResponse` (this type can be imported from `cw721`). 
+The `NftInfo` query returns a `Response` type called `NftInfoResponse` (which can be imported from `cw721`).
 
 Since `passport-token` is using on-chain metadata, we can read the metadata of its NFTs using the `extension` field like this:
 
@@ -57,9 +57,11 @@ let query_req = QueryRequest::Wasm(WasmQuery::Smart {
 let some_token_uri = query_req.token_uri;
 ```
 
-The above example seems rather strange. `some_token_uri` is just a `String` type. Imagine an NFT with a `token_uri` like `"ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json"`, since the blockchain can't access data from [IPFS](https://ipfs.tech/), a smart contract querying the NFT's metadata likewise won't be able to parse or interpret the json stored at `"ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json"`.
+Since the blockchain can't access data from [IPFS](https://ipfs.tech/), or hosted on some website. A smart contract querying the NFT's metadata, won't be able to parse or interpret the json stored at an external link (e.g. `"ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json"`) because the blockchain is an isolated universe, and doesn't know about the Internet or [IPFS](https://ipfs.tech/).
 
-A powerful feature of [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) tokens with on-chain metadata, is other smart contracts have access to, and can utilize, the rare and unique properties of NFTs. An example of that could look like this:
+A powerful feature of [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) tokens with on-chain metadata, is that other smart contracts have access to, and can utilize, the rare and unique properties of NFTs. 
+
+An example of that could look like this:
 
 ```rs
 let query_req = QueryRequest::Wasm(WasmQuery::Smart {
@@ -69,14 +71,14 @@ let query_req = QueryRequest::Wasm(WasmQuery::Smart {
 
 let some_extension = query_req.extension;
 
-if some_extension.name.unwrap() == "Richard Bissell Jr.".to_string() {
+if some_extension.name.unwrap() == "Richard Bissell Jr".to_string() {
     // Do something ...
 }
 ```
 
 # Exercise 
 
-Here's how we can make sure `Traveler`s teleporting through the `JumpRing` possess a valid `passport-token`
+Here's how we can make sure `Traveler`s teleporting through the `JumpRing` possess a valid `passport-token`.
 
 1. From `cw721` import the `NftInfoResponse`.
 2. In `initiate_jumpring_travel`, create a variable called `query_resp` that explicitly enforces `NftInfoResponse<Metadata>` as its type.
