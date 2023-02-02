@@ -14,7 +14,7 @@ Remember the `JumpRing` portal?
 
 Now that we have our token collection contract and non-transferable NFTs (with on-chain metadata), we're going to implement them in Portal. 
 
-We're creating a secure (and decentralized) identity system for `Traveler` access. The system works like this:
+We're creating a secure (and decentralized) identity system for `Traveler` flight control. The system works like this:
 
 1. Travel passports (`passport-token`s) are non-transferable (`cw721-soulbound1`)
 2. Only a Portal contract (`JumpRing`) can mint passports (`Cw721MetadataContract::default().minter`)
