@@ -42,9 +42,10 @@ pub fn set_planet_name(
 }
 ```
 
-We'll need to save a couple more items now for the decentralized identity system to work.
+We'll need to save a couple more items for the identity system to work. More specifically, Portal needs to know two Cosmos addresses: 
 
-Portal needs to know two Cosmos addresses: i) the address of the Potion contract allowed to `initiate_jump_ring_travel`, and ii) the address of the `passport-token` it needs to call in order to mint a passport token.
+1. The address of the Potion contract allowed to call `initiate_jump_ring_travel` and `mint_passport`
+2. The address of the `passport-token` to be called in order to mint the passport
 
 # Exercise
 
