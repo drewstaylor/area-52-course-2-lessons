@@ -23,7 +23,7 @@ pub fn mint_passport(
 ) -> Result<Response, ContractError> { ... }
 ```
 
-Its `MintMsg` type (which is different from the `MintMsg<Extension>` of `passport-token`) is the type we've been working with in the previous exercises, and looks like this:
+Its `MintMsg` type (which is different from the `MintMsg<Extension>` of `passport-token`) is the type we've been working with in the previous exercises:
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
