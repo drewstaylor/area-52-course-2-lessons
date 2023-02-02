@@ -63,7 +63,7 @@ use crate::state::config;
 use cosmwasm_std::{Addr, DepsMut, MessageInfo, Response};
 use universe::species::{SapienceScale, Sapient};
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,
@@ -126,7 +126,7 @@ use crate::state::config;
 use cosmwasm_std::{Addr, DepsMut, MessageInfo, Response};
 use universe::species::{SapienceScale, Sapient};
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,

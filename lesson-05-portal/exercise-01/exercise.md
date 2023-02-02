@@ -5,10 +5,9 @@ Exercise: 1
 
 Title: Verifying Identity With NFTs Part 1
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
+
+> A-ha, that's right! It was in ` initiate_jump_ring_travel`. Hang on to the vision WAGMI!
 
 In the previous [Lesson]() we enabled minting `passport-token` NFTs from the Portal contract (which can only be called by the Potion contract). In this lesson we'll boarding our `JumpRing` passengers and checking their passports. 
 
@@ -25,7 +24,7 @@ if !query_resp.tokens.is_empty() {
 }
 ```
 
-We could reuse the same query in `initiate_jumpring_travel`, but there's a more efficient query for verifying `Traveler`s. Each `token_id` is keyed by `Traveler` Cosmos address, that means we can query for a single token matching that `Addr` (rather than asking the blockchain for a [vector](https://doc.rust-lang.org/rust-by-example/std/vec.html) of `token_id`s). 
+We could reuse the same query in ` initiate_jump_ring_travel`, but there's a more efficient query for verifying `Traveler`s. Each `token_id` is keyed by `Traveler` Cosmos address, that means we can query for a single token matching that `Addr` (rather than asking the blockchain for a [vector](https://doc.rust-lang.org/rust-by-example/std/vec.html) of `token_id`s). 
 
 We do that using the `NftInfo` query entry point, which looks like this:
 
@@ -43,7 +42,7 @@ The `NftInfo` query entry can also be used to get the on-chain (or off-chain) me
 
 Let's write a query to get `NftInfo` for an NFT from `passport-token`.
 
-1. Now that you're pro at using [generics](https://doc.rust-lang.org/rust-by-example/generics.html), create a variable called `query_msg` that explicitly enforces the type `passport_token::QueryMsg<Extension>`. To verify that a `Traveler` holds a `passport-token`, use the `NftInfo` query entry point (`Cw721QueryMsg::NftInfo`) with its `token_id` parameter set to `traveler` (which is a new function argument of `initiate_jumpring_travel`). [Clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) `traveler` so we can use it again, and use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to make sure it gets the correct type.
+1. Now that you're pro at using [generics](https://doc.rust-lang.org/rust-by-example/generics.html), create a variable called `query_msg` that explicitly enforces the type `passport_token::QueryMsg<Extension>`. To verify that a `Traveler` holds a `passport-token`, use the `NftInfo` query entry point (`Cw721QueryMsg::NftInfo`) with its `token_id` parameter set to `traveler` (which is a new function argument of ` initiate_jump_ring_travel`). [Clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) `traveler` so we can use it again, and use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to make sure it gets the correct type.
 2. Create a variable called `query_req` and a assign it a call to `QueryRequest::Wasm`. For its argument, use the `Smart` variant of `WasmQuery` (take a look at [exercise 3]() of [lesson 4]() if you're wondering how to do it).
 3. For `WasmQuery::Smart`'s member fields, the value of `contract_addr` will be the `passport_contract` address (which you can read from `config`). Don't forget to use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to ensure it gets the correct type. Set the second member field (`msg`) to a reference to the `query_msg` variable created in step 1. Wrap the refence in a `to_binary` call, and don't forget to [unwrap](https://doc.rust-lang.org/rust-by-example/error/option_unwrap.html) it.
 
@@ -125,7 +124,7 @@ pub fn mint_passport(
     Ok(Response::new().add_messages(messages))
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     traveler: Addr,
     deps: DepsMut,
@@ -295,7 +294,7 @@ pub fn mint_passport(
     Ok(Response::new().add_messages(messages))
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     traveler: Addr,
     deps: DepsMut,

@@ -108,7 +108,7 @@ pub fn mint_passport(
     Ok(Response::default())
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,
@@ -237,7 +237,7 @@ pub fn mint_passport(
     Ok(Response::default())
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,

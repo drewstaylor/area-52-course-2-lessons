@@ -5,10 +5,9 @@ Exercise: 7
 
 Title: Finalizing the Mint Passport Entry Point
 Filename: contract.rs
-
-Storyline placeholder:
->
 -->
+
+> Just as you're ready to put the final touches on `mint_passport` your memory of the fever dream is fading. What did it say in **Appendix cbc471**? Something about on-flight boarding protocols and security in ` initiate_jump_ring_travel`, or was it in `jump_ring_check`. You can scarce remember...
 
 Now that our [entry point](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/attr.entry_point.html) function is completed, we can import and use it in `execute`.
 
@@ -57,7 +56,7 @@ use crate::error::ContractError;
 use crate::msg::{ExecuteMsg, InstantiateMsg, QueryMsg};
 use crate::query_fns::{jump_ring_check, minimum_sapience};
 use crate::execute_fns::{
-    initiate_jump_ring_travel, /* Import minting here */, set_minimum_sapience, set_passport_contract, 
+     initiate_jump_ring_travel, /* Import minting here */, set_minimum_sapience, set_passport_contract, 
     set_planet_name, set_potion_contract, set_sapient_names,
 };
 use crate::state::{Config, CONFIG};
@@ -84,7 +83,7 @@ pub fn execute(
         ExecuteMsg::SetPassportContract { contract } => set_passport_contract(contract, deps, info),
         ExecuteMsg::SetPotionContract { contract } => set_potion_contract(contract, deps, info),
         // Add the `ExecuteMsg` for `MintPassport` here
-        ExecuteMsg::JumpRingTravel { to } => initiate_jump_ring_travel(to, deps, env, info),
+        ExecuteMsg::JumpRingTravel { to } =>  initiate_jump_ring_travel(to, deps, env, info),
     }
 }
 

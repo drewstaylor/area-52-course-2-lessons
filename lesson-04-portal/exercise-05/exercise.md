@@ -7,7 +7,7 @@ Title: Minting NFTs From a Contract Part 3
 Filename: execute_fns.rs
 -->
 
-> 
+> Hey, maybe it was all just a dream. Just another cyborg fever dream, a biological quirk of your electro-chemical psyche. These Portal modifications, wouldn't it be great to take the credit for this work?
 
 In a moment we'll finish the minting logic, but first let's think about `passport-token`'s `ExecuteMsg::Mint`. Its message type looks like this:
 
@@ -158,7 +158,7 @@ pub fn mint_passport(
     Ok(Response::default())
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,
@@ -314,7 +314,7 @@ pub fn mint_passport(
     Ok(Response::default())
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,

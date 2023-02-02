@@ -5,10 +5,9 @@ Exercise: 6
 
 Title: Minting NFTs From a Contract Part 4
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
+
+> It's reassuring to see our passport-control protocols coming together now, but let's not code ahead of ourselves, there's still a messaging quirk to work out.
 
 Currently, our mint is being executed on the `passport-token` contract like this
 
@@ -119,7 +118,7 @@ pub fn mint_passport(
     Ok(Response::default()) // Modify the `Response` here
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,
@@ -276,7 +275,7 @@ pub fn mint_passport(
     Ok(Response::new().add_messages(messages))
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,

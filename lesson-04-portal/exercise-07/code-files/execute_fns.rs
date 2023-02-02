@@ -73,7 +73,7 @@ pub fn mint_passport(
     Ok(Response::new().add_messages(messages))
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     _deps: DepsMut,
     _info: MessageInfo,

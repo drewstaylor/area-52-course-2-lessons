@@ -5,10 +5,9 @@ Exercise: 2
 
 Title: Verifying Identity With NFTs Part 2
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
+
+> Err (the onomatopoeia not the Rust kind), well actually, maybe you should write all this down so you don't forget again how everything is supposed to work. You chuckle to yourself, and cringe, knowing if those Librarian scribes at SECTION 31 saw you scribbling out your system design so furiously they'd be grinning.
 
 Before teleporting through the `JumpRing` portal, we need to verify the `Traveler` is holding a valid passport. 
 
@@ -81,9 +80,9 @@ if some_extension.name.unwrap() == "Richard Bissell Jr".to_string() {
 Here's how we can make sure `Traveler`s teleporting through the `JumpRing` possess a valid `passport-token`.
 
 1. From `cw721` import the `NftInfoResponse`.
-2. In `initiate_jumpring_travel`, create a variable called `query_resp` that explicitly enforces `NftInfoResponse<Metadata>` as its type.
+2. In ` initiate_jump_ring_travel`, create a variable called `query_resp` that explicitly enforces `NftInfoResponse<Metadata>` as its type.
 3. Assign `query_resp` a call to the `query` function, which is an attribute of the `querier` dependency (`DepsMut`). For its function argument, pass `query` a reference to `query_req`, and don't forget to capture any errors that could occur.
-4. Write an `if` condition to verify the NFT's `identity` field matches the `traveler`'s Cosmos address that was forwarded to `initiate_jumpring_travel` by the Potion contract. You can the `identity` metadata field from `query_resp.extension`, but you'll have to [unwrap]() it. If `identity` and `traveler` are _not_ equal, return an [Err](https://doc.rust-lang.org/std/result/enum.Result.html) of type `ContractError::Unauthorized {}`.
+4. Write an `if` condition to verify the NFT's `identity` field matches the `traveler`'s Cosmos address that was forwarded to ` initiate_jump_ring_travel` by the Potion contract. You can the `identity` metadata field from `query_resp.extension`, but you'll have to [unwrap]() it. If `identity` and `traveler` are _not_ equal, return an [Err](https://doc.rust-lang.org/std/result/enum.Result.html) of type `ContractError::Unauthorized {}`.
 
 # Starter
 
@@ -163,7 +162,7 @@ pub fn mint_passport(
     Ok(Response::new().add_messages(messages))
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     traveler: Addr,
     deps: DepsMut,
@@ -342,7 +341,7 @@ pub fn mint_passport(
     Ok(Response::new().add_messages(messages))
 }
 
-pub fn initiate_jumpring_travel(
+pub fn  initiate_jump_ring_travel(
     _to: Addr,
     traveler: Addr,
     deps: DepsMut,
