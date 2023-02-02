@@ -27,7 +27,7 @@ More specifically, the [attributes](https://docs.rs/cosmwasm-std/latest/cosmwasm
 
 Convention dictates that `action` should always be the first [attribute](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.Response.html#method.add_attribute) of a CosmWasm `Response`, and that its value should be the name of the entry point function that was called.
 
-Our `Response` should also add the address of `traveler` who is stepping through the `JumpRing`. This will limit the confusion that could arise when someone suddenly disappears as they're teleported across the [Interchain](https://ibcprotocol.org/)
+Our `Response` should also include the address of `traveler` who is stepping through the `JumpRing`. This will limit the confusion that could arise when someone suddenly disappears as they're teleported across the [Interchain](https://ibcprotocol.org/)
 
 # Exercise 
 
