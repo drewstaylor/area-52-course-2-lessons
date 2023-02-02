@@ -5,10 +5,9 @@ Exercise: 5
 
 Title: Non-transferable NFTs Part 3
 Filename: execute.rs
-
-Storyline placeholder:
->
 -->
+
+> After this, you can build the `passport-token` and use it to activate SECTION 31's Ring! Activate their Ring, and teleport yourself back to your home world. We wish you luck in your Escape From SECTION 31.
 
 Almost done developing the new package. Soon we can move on to building the token collection contract, but before we do that we'll have to deal with `execute.rs`. We encountered it previously, when we bootstrapped `cw721-base` into our project locally, and modified it from there.
 

@@ -5,10 +5,9 @@ Exercise: 2
 
 Title: A Tale of Two Programmers
 Filename: execute.rs
-
-Storyline placeholder:
->
 -->
+
+> Flipping over the _quasi-digital_ portrait from _SECTION 31_. Hey, wait a minute. There's a small red switch in the top left corner. Is that a power button?
 
 ### "Contractors" vs "Librarians"
 

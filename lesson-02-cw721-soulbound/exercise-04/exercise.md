@@ -5,12 +5,13 @@ Exercise: 4
 
 Title: Non-transferable NFTs Part 2
 Filename: msg.rs
-
-Storyline placeholder:
->
 -->
 
-Great! Our soulbound system is coming together now, there's just two more files we need to update.
+> There's no food or water in this room. Yeah, you're cyberdized, but it's only a matter of time before your lingering biology causes you to starve. Seems there'll be no "get-out-of-jail-free" card in this dangerous game. Now, it’s a race against the clock.
+
+Great! Our soulbound system is coming together now, there's just two more files we need to update. Hurry up and you can get yourself back to the home planet without missing lunch.
+
+### Cosmos Actor Model
 
 Cosmos uses the Actor Model, where "actors" do not talk directly to one another (i.e., do not call functions directly) but rather send messages to one another. So, next we'll need to remove the message types for NFT ownership transfers.
 

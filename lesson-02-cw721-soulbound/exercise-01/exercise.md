@@ -5,18 +5,19 @@ Exercise: 1
 
 Title: Contracts and Libraries
 Filename: lib.rs
-
-Storyline placeholder:
->
 -->
 
-When it comes to making NFT collections with custom logic there are a few strategies that could be followed.
+> If Section 31 didn’t like what you were doing, they could have just vapourized the teleporter (not to mention your entire DNA). So why’d you end up in their cyber jail? It’s got to have something to do with this missing `passport-token`.
+
+It occurs to you that you may need to build an NFT just get out of here!
+
+When it comes to making NFT collections with custom logic, there are a few strategies that could be followed.
 
 For example:
 
 1. Add customizations in the token collection contract
-2. Bootstrap a modified version of `cw721-base` locally within our project
-3. Import modified versions of `cw721-base` (and rarely `cw721`) as package dependencies
+2. Bootstrap a version of `cw721-base` locally within our project and modify it
+3. Import modified versions of `cw721-base` as package dependencies
 
 We'll be reviewing and comparing these approaches, but before we do that lets talk a bit about [Rust's dependency model](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
 
