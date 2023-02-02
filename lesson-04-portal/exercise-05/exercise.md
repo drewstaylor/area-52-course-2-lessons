@@ -64,22 +64,22 @@ let metadata_extension = Some(Metadata {
 });
 ```
 
-Since the `T` of `MintMsg<T>` is a Rust [generic](https://doc.rust-lang.org/rust-by-example/generics.html), lets think about why it allows token collection contracts extending from `cw721-soulbound` to enforce any valid on-chain metadata.
-
-### Option in Rust
-
-The `Option` type represents an optional value. Every `Option` is either `Some` (contains a value), or `None` (does not). For NFTs created using `cw721-base` (or `cw721-soulbound`) using `Option` is a best practice, since it allows for greater diversity and rarer NFTs to occur within the collection.
+We mentioned the `T` of `MintMsg<T>` is a Rust [generic](https://doc.rust-lang.org/rust-by-example/generics.html), lets think about why it allows token collection contracts extending from `cw721-soulbound` to enforce any valid on-chain metadata.
 
 ### Rust Generics
 
 [Generics](https://doc.rust-lang.org/rust-by-example/generics.html) in Rust is a way of generalizing types and functionalities to broader cases. This is useful for making things like NFTs which require a lot diversity, but using [generics](https://doc.rust-lang.org/rust-by-example/generics.html) calls for rather involved syntax. The simplest and most common use of generics is for type parameters. 
 
-For example, defining a generic function named foo that takes an argument `T` of any type
+For example, defining a generic function named foo that takes an argument `T` of any type:
 ```rs
 fn foo<T>(arg: T) { ... }
 ```
 
 In `passport-token` the type parameter that we're interested in (`MintMsg<T>` and `extension: T`) is represented by the `Extension` type.
+
+### Option in Rust
+
+The `Option` type represents an optional value. Every `Option` is either `Some` (contains a value), or `None` (does not contain a value). For NFTs created using `cw721-base` (or `cw721-soulbound`) using `Option` is a best practice, since it allows for greater diversity and rarer NFTs to occur within the collection.
 
 # Exercise
 
