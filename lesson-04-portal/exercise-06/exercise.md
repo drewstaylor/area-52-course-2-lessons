@@ -25,7 +25,9 @@ But the mint won't take effect until we add to the messages being executed by `m
 
 When we wrote a cross contract execution in [Course 1](https://area-52.io/starting-with-cosm-wasm/3/imbibe_potion-function-part-3) we used CosmWasm's [SubMsg](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.SubMsg.html). Howevever, this time we're going to use [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) of messages.
 
-[vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) is a handy type for returning responses of multiple executions. Imagine a smart contract function that calls and also wants to return its own response. Its `Response`, using a [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html), might look like this:
+[vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) is a handy type for returning responses of multiple executions. Imagine a smart contract function that calls `execute` of two different contracts, and also wants to return its own `Response`. 
+
+Using a [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html), that might look like this:
 
 ```rs
 let messages = vec![contract_resp1, contract_resp2, this_contract_resp];
