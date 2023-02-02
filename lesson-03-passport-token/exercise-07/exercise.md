@@ -10,13 +10,13 @@ Storyline placeholder:
 >
 -->
 
-[Tests](https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html) are Rust functions that verify that the non-test code is functioning in the expected manner. The bodies of test functions typically perform some setup, run the code we want to test, then assert whether the results are what we expect.
+[Tests](https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html) are Rust functions that verify your non-test code is functioning as expected. Test functions typically perform some setup, run the code we want to test, then use [assert](https://doc.rust-lang.org/std/macro.assert.html), or [assert_eq](https://doc.rust-lang.org/std/macro.assert_eq.html) to confirm the test results are what we expect.
 
-Writing unit tests for CosmWasm contracts is important, because it allows you to prove your code is safe before users do financial transactions with it (such as buying, or trading NFTs).
+Writing unit tests for CosmWasm contracts is important because it allows you to prove your code is safe before users do financial transactions with it (such as buying, or trading NFTs).
 
 Tests can either be written in the same file as the code being tested, or in a separate file (especially if the test coverage is large).
 
-We care declare test like this
+We can declare a test like this:
 
 ```rs
 #[cfg(test)]
@@ -31,7 +31,9 @@ mod tests {
 }
 ```
 
-In the case of writing tests in a separate file (e.g. `integration_tests.rs`), your `lib.rs` must instance them as a [module](https://doc.rust-lang.org/reference/items/modules.html) using the `mod` keyword. The `mod` for tests should _not_ be public since it does not provide utility or types for other developers to use when inheriting your package as a library.
+In the case of writing tests in a separate file (e.g. `integration_tests.rs`), `lib.rs` must declare them as a [module](https://doc.rust-lang.org/reference/items/modules.html) using the `mod` keyword. 
+
+The `mod` for tests should _not_ be public since it does not provide utility, or types, for other developers to use when inheriting your package as a library.
 
 ```rs
 mod integration_tests;
@@ -52,24 +54,22 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 ### Testing Pitfalls
 
-When it comes to writing tests, avoid being lulled into a false sense of security. Below are some common issues developers may face when writing tests.
+When it comes to writing your tests, avoid being lulled into a false sense of security. Below are some common issues developers face when writing tests:
 
 - Tests don't prove what they set out to (missed edge case)
 - Tests don't simulate how code would behave on the blockchain (inadequate environment)
 - Incomplete test coverage (test cases missing)
-- Hard coded parameters not indicative of real world performance (inadequate environment)
+- Hard coded parameters not indicative of real world usage (inadequate environment)
 
 # Exercise
 
-In this exercise we'll set up a mock test environment to simulate a blockchain transaction in our unit test. Our end goal is to mint a `passport-token` in this test environment, and verify its on-chain metadata works as expected.
+In this exercise we'll set up a mock test environment and simulate a blockchain transaction in our unit test. The goal is to mint a `passport-token` in the test environment and verify its on-chain metadata works as expected.
 
 1. Create a mutable variable called `deps` and assign it a call to [mock_dependencies](https://docs.rs/cosmwasm-std/0.9.2/cosmwasm_std/testing/fn.mock_dependencies.html) without passing in any function arguments
 2. Create a variable called `contract` and assign it to `Cw721MetadataContract::default()`
 3. Create a variable called `info` and assign it a call to [mock_info](https://docs.rs/cosmwasm-std/0.16.0-rc1/cosmwasm_std/testing/fn.mock_info.html) and pass it two arguments. The first argument is the `MINTER` constant, the second is an empty array reference (`&[]`).
 4. Instantiate the contract call the `instantiate` function, which is an attribute of `contract`, and pass it the usual `instantiate` parameters (`deps`, `env`, `info`, and `msg`). You can get a mock instance of `DepsMut` by calling `deps.as_mut`. You can get a mock instance of `env` by calling [mock_env](https://docs.rs/cosmwasm-std/0.16.0-rc1/cosmwasm_std/testing/fn.mock_env.html). For the other two (`info` and `msg`), use the `info` variable you created in step 3, and the `instantiate_msg` you've been provided with.
 5. Write the contract instantiation on a single line, and [unwrap](https://docs.rs/unwrap/latest/unwrap/) it at the end.
-
-<!-- contract.instantiate(deps.as_mut(), mock_env(), info.clone(), instantiate_msg).unwrap(); -->
 
 # Starter
 
