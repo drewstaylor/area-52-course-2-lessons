@@ -27,13 +27,11 @@ More specifically, the [attributes](https://docs.rs/cosmwasm-std/latest/cosmwasm
 
 Convention dictates that `action` should always be the first [attribute](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.Response.html#method.add_attribute) of a CosmWasm `Response`, and that its value should be the name of the entry point function that was called.
 
-Our `Response` should also include the address (`traveler`) of who is stepping through the `JumpRing`. This will limit the confusion that could arise when someone suddenly disappears as they're teleported across the [Interchain](https://ibcprotocol.org/)
+Our `Response` should also include the address (`traveler`) of who is stepping through the `JumpRing`. This helps limit the confusion that arises when someone suddenly disappears as they're teleported across the [Interchain](https://ibcprotocol.org/)
 
 # Exercise 
 
-These are the final changes we'll be making to `initiate_jumpring_travel` in this course. 
-
-There's still a bit of work to do before `initiate_jumpring_travel` can (_finally_) teleport `Traveler`s, so we've left a `TODO` comment in the code. We'll be working on that in the next course, so you can ignore the `TODO` for now.
+These are the final changes we'll be making to `initiate_jumpring_travel` in this course.
 
 1. Modify the `Response::default()` of `initiate_jumpring_travel` to use `new` instead of `default`, but don't get rid of the [Ok](https://doc.rust-lang.org/std/result/) Rust `Result`.
 2. On separate (indented) lines add the two new attributes using `add_attribute` calls. The attributes to be added are `action` and `traveler`.
