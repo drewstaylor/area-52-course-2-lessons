@@ -5,10 +5,9 @@ Exercise: 4
 
 Title: Modifying the JumpRingTravel Execute Arguments
 Filename: contract.rs
-
-Storyline placeholder:
->
 -->
+
+> Ever since you became a Cyborg you've been feeling super weird. You've been having the strangest dreams–which is perplexing, since you have almost no desire anymore to fulfill your biological needs like nourishment and sleep. Have you really just implemented your own decentralized identity system using `cw721` NFTs? The Jump Ring looks so snazzy now, and booting it up in test mode you see your NFT avatar and `passport-token` appearing on the loading screen. You realize next time you work on the Jump Ring you'll get to test traveling through the Ring! Oh, but before all that, the Portal's compiler is still throwing an error. Fulfill this final task and the NFT identity integration will be completed.
 
 The `initiate_jump_ring_travel` entry point function is already imported in `contract.rs`, but since its message type has been modified in `msg.rs` the Portal project doesn't [compile](https://doc.rust-lang.org/cargo/commands/cargo-build.html) yet.
 

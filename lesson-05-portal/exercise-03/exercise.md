@@ -5,10 +5,9 @@ Exercise: 3
 
 Title: Verifying Identity With NFTs Part 3
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
+
+> Speaking of Librarians...Who wants to unit test all this new code? Sounds like the tedious sort of task suitable a Librarian would enjoy, you'll have to hire one, or _maybe_ (and this is shocking, so brace yourself) you could write the contract tests yourself.
 
 Our `passport-token` identity system is nearly feature complete, but at the moment ` initiate_jump_ring_travel` doesn't return useful data. 
 
