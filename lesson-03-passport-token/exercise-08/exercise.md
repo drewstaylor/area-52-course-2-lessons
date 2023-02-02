@@ -5,10 +5,9 @@ Exercise: 8
 
 Title: Writing Unit Tests Part 2
 Filename: integration_tests.rs
-
-Storyline placeholder:
->
 -->
+
+> Glancing at SECTION 31's finished Ring, what a sight to behold. The **STATUS** screen now reads "Preparing to perform diagnostic..." (in nano-digital yellow). Well, that's a huge improvement from what it said before: "Offline" (in bio-neon crimson).
 
 Now that we have our mock blockchain environment setup inside a unit test, we can move on to the testing. The goal of our test is to verify setting the on-chain metadata works as expected for our NFT collection.
 

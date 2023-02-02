@@ -5,10 +5,9 @@ Exercise: 1
 
 Title: Preparing Portal to Become the Minter Part 1
 Filename: execute_fns.rs
-
-Storyline placeholder:
->
 -->
+
+> With slight trepidation you run the test diagnostic. `test integration_tests::use_metadata_extension ... ok`, it worked! You watch as the **STATUS** screen on SECTION 31's Ring updates itself. Now, it reads "Online" (in cybernetic-green).
 
 Remember the `JumpRing` portal? 
 

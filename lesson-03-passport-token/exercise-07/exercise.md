@@ -7,8 +7,9 @@ Title: Writing Unit Tests Part 1
 Filename: integration_tests.rs
 
 Storyline placeholder:
->
 -->
+
+> It feels great to have finished building `passport-token` and completing SECTION 31's blueprint. Wait, what? Flipping over the last page, you feel a sensation in your stomach like dropping plates. You're confused if the sensation is a reaction to what you've just read, or the fury of a hungry semi-biological cyborg stomach. There's an appendix here about unit testing, that _seems_ to be mandatory. I mean, really now, who makes a _test_ mandatory?
 
 [Tests](https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html) are Rust functions that verify your non-test code is functioning as expected. Test functions typically perform some setup, run the code we want to test, then use [assert](https://doc.rust-lang.org/std/macro.assert.html), or [assert_eq](https://doc.rust-lang.org/std/macro.assert_eq.html) to confirm the test results are what we expect.
 

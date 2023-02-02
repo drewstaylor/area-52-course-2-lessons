@@ -5,10 +5,9 @@ Exercise: 5
 
 Title: Moving on to Query and Execute
 Filename: lib.rs
-
-Storyline placeholder:
->
 -->
+
+> You're getting close to launching the collection! Excellent work so far. Just a few more tweaks and (hopefully) you can teleport home, but I guess you missed lunch after all. Will you make it home in time for dinner?
 
 It's time to set up `query` and `execute` for our token collection contract. After that, the `passport-token` package will be mostly complete. `query` and `execute` will use the defaults from `cw721-soulbound` that we created in [Lesson 2](). 
 

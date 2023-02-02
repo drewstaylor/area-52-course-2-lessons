@@ -5,10 +5,9 @@ Exercise: 2
 
 Title: Cw721 with On-chain Metadata
 Filename: lib.rs
-
-Storyline placeholder:
->
 -->
+
+> After skipping many pages about tedious subjects, like the history of NFTs and the socialist movement for fractionalized ownership, finally you discover what you're looking for. To escape passport-control's clutches, you'll need a `cw721` token with on-chain metadata.
 
 ### On-Chain vs Off-Chain NFT Metadata
 

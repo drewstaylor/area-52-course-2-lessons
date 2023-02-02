@@ -5,10 +5,9 @@ Exercise: 3
 
 Title: Writing the Instantiate Entry Point Part 1
 Filename: lib.rs
-
-Storyline placeholder:
->
 -->
+
+> That's more like it, but just when you're getting the hang of `cw721` the `passport-token` blueprint throws you a `cw2` shaped curveball.
 
 What if you wanted to change a contract that's already been deployed? Cosmos blockchains have a convenient way for smart contracts to migrate their code. Code migrations allow you to update the code, while keeping the same contract address. For obvious reasons, only the contract's admin (usually the Cosmos address who deployed the contract initially) can do this. 
 

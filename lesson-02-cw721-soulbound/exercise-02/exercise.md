@@ -7,7 +7,7 @@ Title: A Tale of Two Programmers
 Filename: execute.rs
 -->
 
-> Flipping over the _quasi-digital_ portrait from _SECTION 31_. Hey, wait a minute. There's a small red switch in the top left corner. Is that a power button?
+> Flipping over the _quasi-digital_ portrait from SECTION 31 you just noticed something. Hey, there's a small red switch fastened at the top left corner. Is that a power button? Oh yeah! Sometimes NFTs aren't just pretty portraits, but they can actually _do_ something.
 
 ### "Contractors" vs "Librarians"
 
