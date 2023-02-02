@@ -1,4 +1,5 @@
-### cw721 Messages (transaction types)
+
+### Cw721 Messages (execute types)
 
 `TransferNft{recipient, token_id}` - 
 This transfers ownership of the token to `recipient` account. This is 
@@ -34,7 +35,7 @@ tokens and applies to any future token that the owner receives as well.
 `RevokeAll{operator}` - Revoke a previous `ApproveAll` permission granted
 to the given `operator`.
 
-### cw721 Queries
+### Cw721 Queries
 
 `OwnerOf{token_id, include_expired}` - Returns the owner of the given token,
 as well as anyone with approval on this particular token. If the token is
@@ -59,7 +60,7 @@ first `limit` operators *after* the given one.
 
 `NumTokens{}` - Total number of tokens issued
 
-### cw721 Receiver
+### Cw721 Receiver
 
 The counter-part to `SendNft` is `ReceiveNft`, which must be implemented by
 any contract that wishes to manage cw721 tokens. This is generally *not*
@@ -80,8 +81,6 @@ for.
  
 ## Metadata
 
-### Queries
-
 `ContractInfo{}` - This returns top-level metadata about the contract.
 Namely, `name` and `symbol`.
 
@@ -94,8 +93,6 @@ and `OwnerOf` as one query as an optimization for clients, which may
 want both info to display one NFT.
 
 ## Enumerable
-
-### Queries
 
 Pagination is achieved via `start_after` and `limit`. Limit is a request
 set by the client, if unset, the contract will automatically set it to

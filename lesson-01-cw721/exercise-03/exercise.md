@@ -5,10 +5,11 @@ Exercise: 3
 
 Title: Not all NFT metadata is created equal
 Filename: execute_fns/mint.rs
-
-Storyline placeholder:
->
 -->
+
+> You run to the door. You’re prying on it with all your might, you’re pressing every button in the vicinity. Of course it’s a fool’s errand. Interfacing with the computer panel, it always returns the same error: `Error: rpc error: code = "passport-token not found"`. You seemed to be trapped by passport control!
+
+_🎵 There must be some kind of way out of here, said the token to the thief 🎵_
 
 A main feature of [non-fungible](https://en.wikipedia.org/wiki/Non-fungible_token) tokens, is their unique properties, or _metadata_, where no two tokens of the collection are exactly alike. Historically, this metadata has been stored in a [JSON](https://www.w3schools.com/js/js_json_syntax.asp) file uploaded to a storage protocol somewhere, such as [IPFS (the Interplanetary File System)](https://ipfs.tech/). 
 

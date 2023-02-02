@@ -5,14 +5,15 @@ Exercise: 1
 
 Title: Cw-What?
 Filename: quiz.txt
-
-Storyline placeholder:
->
 -->
 
-[cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) is a specification for [non-fungible tokens](https://en.wikipedia.org/wiki/Non-fungible_token) based on [CosmWasm](https://cosmwasm.com/). The name and design are based on Ethereum's [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721), with some enhancements. 
+> Do Cyborgs dream of electric sheep? You have to admit, ever since you became a Cyborg you’ve been feeling super weird. You’ve been having the strangest dreams–which is also perplexing, since you have almost no desire anymore to fulfill your biological needs like nourishment and sleep. Then one morning, the strangest thing of all happened. Waking up, you look around, and you have no idea where you are!
 
-`cw721` types can be imported by contracts that wish to implement non-fungible tokens according to the `cw721` specification, or by contracts that call some contract that implements the `cw721` specification.
+# Cw-What?
+
+[Cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) is a specification for [non-fungible tokens](https://en.wikipedia.org/wiki/Non-fungible_token) created with [CosmWasm](https://cosmwasm.com/). The name and design are based on Ethereum's [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721), with some enhancements. 
+
+`cw721` types can be imported by contracts that wish to implement non-fungible tokens according to the `cw721` specification, or by contracts that call some contract that implements something from the `cw721` specification (e.g. `Response` types).
 
 ### Overview of the cw721 specification
 

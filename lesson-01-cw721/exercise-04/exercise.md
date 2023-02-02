@@ -5,10 +5,9 @@ Exercise: 4
 
 Title: When to use `cw721`
 Filename: execute_fns/mint.rs
-
-Storyline placeholder:
->
 -->
+
+> There are many degens here among us, who feel that NFTs are butts of jokes. I assure you most of them have never been trapped inside _SECTION 31_'s passport control!
 
 Technically speaking, `cw721` refers to the NFT standard (not the NFTs themselves). This standard is also a public Rust library that can be imported into a CosmWasm project.
 

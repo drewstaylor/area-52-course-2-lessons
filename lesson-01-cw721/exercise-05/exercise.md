@@ -5,9 +5,6 @@ Exercise: 5
 
 Title: When to use `cw721-base`
 Filename: lib.rs
-
-Storyline placeholder:
->
 -->
 
 In the last two exercises we've been talking about a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
