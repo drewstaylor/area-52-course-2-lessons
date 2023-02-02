@@ -25,9 +25,9 @@ if !query_resp.tokens.is_empty() {
 }
 ```
 
-Travelers are barred from holding multiple passports simultaneously, so we could reuse the same query in `initiate_jumpring_travel`, but there's a more efficient query for verifying `Traveler`s. 
+We could reuse the same query in `initiate_jumpring_travel`, but there's a more efficient query for verifying `Traveler`s. Each `token_id` is keyed by `Traveler` Cosmos address, that means we can query for a single token matching that `Addr` (rather than asking the blockchain for a [vector](https://doc.rust-lang.org/rust-by-example/std/vec.html) of `token_id`s). 
 
-Each `token_id` is keyed by `Traveler` address, that means we can query for a single token matching that `Addr` (rather than asking the blockchain for a [vector](https://doc.rust-lang.org/rust-by-example/std/vec.html) of `token_id`s). We can do that using the `NftInfo` query entry point, which might look like this:
+We do that using the `NftInfo` query entry point, which looks like this:
 
 ```rs
 use some_token::{ QueryMsg as Cw721QueryMsg, };
