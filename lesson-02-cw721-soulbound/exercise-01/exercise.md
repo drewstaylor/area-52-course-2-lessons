@@ -7,7 +7,7 @@ Title: Contracts and Libraries
 Filename: lib.rs
 -->
 
-> If Section 31 didn’t like what you were doing, they could have just vapourized the teleporter (not to mention your entire DNA). So why’d you end up in their cyber jail? It’s got to have something to do with this missing `passport-token`.
+> If Section 31 didn't like what you were doing, they could have just vapourized the teleporter (not to mention your entire DNA). So why'd you end up in their cyber jail? It's got to have something to do with this missing `passport-token`.
 
 It occurs to you that you may need to build an NFT just get out of here!
 
