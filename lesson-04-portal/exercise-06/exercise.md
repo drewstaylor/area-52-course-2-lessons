@@ -21,7 +21,9 @@ let mint_resp: CosmosMsg = WasmMsg::Execute {
 .into();
 ```
 
-It won't take effect until we add to the messages being executed by the entry point function (`mint_passport`). When we wrote a cross contract execution in [course 1](https://area-52.io/starting-with-cosm-wasm/3/imbibe_potion-function-part-3) we used CosmWasm's [SubMsg](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.SubMsg.html), this time we're going to use [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) of messages.
+But the mint won't take effect until we add to the messages being executed by `mint_passport`. 
+
+When we wrote a cross contract execution in [course 1](https://area-52.io/starting-with-cosm-wasm/3/imbibe_potion-function-part-3) we used CosmWasm's [SubMsg](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.SubMsg.html). Howevever, this time we're going to use [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) of messages.
 
 [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) is a handy type for returning responses of multiple executions. Imagine a smart contract function that calls and also wants to return its own response. Its `Response`, using a [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html), might look like this:
 
