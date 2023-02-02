@@ -16,7 +16,7 @@ Now that we have our token collection contract and non-transferable NFTs (with o
 
 We're creating a secure (and decentralized) identity system for `Traveler` flight control. The system works like this:
 
-1. Travel passports (`passport-token`s) are non-transferable (`cw721-soulbound1`)
+1. Travel passports (`passport-token`s) are non-transferable (`cw721-soulbound`)
 2. Only a Portal contract (`JumpRing`) can mint passports (`Cw721MetadataContract::default().minter`)
 3. A Traveler can hold only one passport at a time
 4. `token_id`'s are wallet addresses of their owner (helpful for lookups and proofs)
