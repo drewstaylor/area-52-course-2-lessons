@@ -10,9 +10,9 @@ Storyline placeholder:
 >
 -->
 
-With our mock blockchain environment setup inside a unit test, we can move on to the testing. The goal of our test is to verify that on-chain metadata works as expected.
+Now that we have our mock blockchain environment setup inside a unit test, we can move on to the testing. The goal of our test is to verify setting the on-chain metadata works as expected for our NFT collection.
 
-You'll recall that in `lib.rs` our metadata schema looks like this
+In `lib.rs` our metadata schema looks like this:
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
@@ -29,7 +29,7 @@ pub struct Metadata {
 }
 ```
 
-The `MintMsg` struct comes from `cw721-soulbound`, and you'll recall it looks like this (where the `T` generic is what `passport-token` publicly exports as a type alias called `Extension`)
+The `MintMsg<T>` struct comes from `cw721-soulbound`, where `T` is a generic to allow for different types and formats of metadata. 
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -41,9 +41,14 @@ pub struct MintMsg<T> {
 }
 ```
 
-# Exercise
+In `passport-token`, `lib.rs` publicly exports as a type alias called `Extension` which is what `passport-token` uses for the `T` of `MintMsg<T>`:
 
-In this exercise we'll be filling that out with mock data and minting a mock token. Once minted, we can use Rust's [assert_eq](https://doc.rust-lang.org/std/macro.assert_eq.html) macro to verify a query for the NFT's metadata returns the expected values.
+```rs
+// From `src/lib.rs`
+pub type Extension = Option<Metadata>;
+```
+
+# Exercise
 
 1. Create a variable called `mint_msg`. Assign it a `MintMsg` struct and write each of the four members on their own line. Assign the `token_id` struct field the value of the `token_id` string variable. `owner` will be the string version of the `MINTER` constant (created with `to_string`). Set `token_uri` to `None` (since we're using on-chain metadata), and set the `extension` field to `metadata_extension`.
 2. Create a variable called `execute_msg` and assign it the `Mint` function from `ExecuteMsg`. Don't forget to pass it `mint_msg` but since we need to use `mint_msg` again you'll have to [clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) it.
