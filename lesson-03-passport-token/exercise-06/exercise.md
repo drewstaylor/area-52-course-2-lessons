@@ -7,7 +7,7 @@ Title: Don't Forget to Reply
 Filename: lib.rs
 -->
 
-> You're at the final step! "What a trip this has been," you mumble to yourself while pacing SECTION 31's passport-control cell (taking care to avoid the irony of _literally_ tripping).
+> You're at the final step! "What a trip this has been," you mumble to yourself while pacing SECTION 31's passport-control cell (taking care to avoid literally tripping).
 
 Now `passport-token`, our token collection contract, just needs one more thing. It already works, but it's methods can only be called by users. If we want to make it so other contracts can interact with it, we need to add the `reply` entry point.
 
