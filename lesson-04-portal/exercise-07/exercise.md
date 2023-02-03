@@ -7,7 +7,7 @@ Title: Finalizing the Mint Passport Entry Point
 Filename: contract.rs
 -->
 
-> Just as you're ready to put the final touches on `mint_passport` your memory of the fever dream is fading. What did it say in **Appendix cbc471**? Something about on-flight boarding protocols and security in ` initiate_jump_ring_travel`, or was it in `jump_ring_check`. You can scarce remember...
+> Just as you're ready to put the final touches on `mint_passport` your memory of the fever dream is fading. What did it say in **Appendix cbc471**? Something about on-flight boarding protocols and security in ` initiate_jump_ring_travel`, or was it in `jump_ring_check`. You're having trouble remembering...
 
 Now that our [entry point](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/attr.entry_point.html) function is completed, we can import and use it in `execute`.
 
