@@ -7,7 +7,7 @@ Title: Minting NFTs From a Contract Part 2
 Filename: execute_fns.rs
 -->
 
-> Try as you might, you can't shake the memory of having been trapped inside passport-control with SECTION 31's Jump Ring. Your thoughts are flipping back and forth, hither and thither. Was it really all a dream? It seemed so _real_. Besides, these improvements you're making to `JumpRing` seem _out of this world_.
+> Try as you might, you can't shake the memory of having been trapped inside passport-control with SECTION 31's Jump Ring. Your thoughts are flipping back and forth, hither and thither. Was it really all a dream? It seemed so _real_. Besides, these improvements you're making to `JumpRing` do seem _out of this world_.
 
 In the previous [Lesson](), we worked out a metadata schema for our `passport-token` collection contract. 
 
