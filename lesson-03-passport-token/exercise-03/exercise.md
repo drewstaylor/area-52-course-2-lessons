@@ -11,8 +11,6 @@ Filename: lib.rs
 
 What if you wanted to change a contract that's already been deployed? 
 
-### Cw2
-
 Cosmos blockchains have a convenient way for smart contracts to migrate their code. Code migrations allow you to update the code, while keeping the same contract address. Only the contract's admin (usually the Cosmos address who deployed the contract initially) can do this. 
 
 Contracts undergoing migration can choose to retain all, or some, of their state. This provides developers with a safe way of resolving bugs, and adding new features, without impacting their users.
