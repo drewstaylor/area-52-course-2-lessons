@@ -7,7 +7,7 @@ Title: Minting NFTs From a Contract Part 3
 Filename: execute_fns.rs
 -->
 
-> Hey, maybe it was all just a dream. Just another cyborg fever dream, a biological quirk of your electro-chemical psyche. These Portal modifications, wouldn't it be great to take the credit for this work?
+> Hey, maybe it was all just a dream. Just another cyborg fever dream, a biological quirk of your electro-chemical psyche. These Portal modifications, wouldn't it be so great to take the credit for that idea? Of course it was all you. You're so clever, cyborg.
 
 In a moment we'll finish the minting logic, but first let's think about `passport-token`'s `ExecuteMsg::Mint`. Its message type looks like this:
 
