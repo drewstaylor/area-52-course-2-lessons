@@ -28,7 +28,7 @@ ExecuteMsg::JumpRingTravel { to } => initiate_jump_ring_travel(to, deps, env, in
                                                                 ^^^^^^^^^^^^^^^^^ ---- an argument of type `Addr` is missing
 ```
 
-Rust's compiler sure is helpful, if a bit opinionated. Like a code whisperer that doesn't have [GPT-3](https://en.wikipedia.org/wiki/GPT-3)'s pitfalls 😏
+Rust's compiler sure is helpful, if a bit opinionated. Like a code whisperer that doesn't have [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)'s pitfalls 😏
 
 ### Rustc
 
