@@ -7,23 +7,23 @@ Title: A Tale of Two Programmers
 Filename: execute.rs
 -->
 
-> Flipping over the _quasi-digital_ portrait from SECTION 31 you just noticed something. Hey, there's a small red switch fastened at the top left corner. Is that a power button? Oh yeah! Sometimes NFTs aren't just pretty portraits, but they can actually _do_ something.
+> Flipping over the _quasi-digital_ portrait from SECTION 31, you just noticed something. Hey, there's a small red switch fastened at the top left corner. Is that a power button? Oh yeah! Sometimes NFTs aren't just pretty portraits, but they can actually _do_ something.
 
 ### "Contractors" vs "Librarians"
 
 Contractors believe most metaverse programs won't need to expose their methods. Rogue, mercantile, opportunistic, they're quite an individualistic and self-reliant group. They work quickly, but things might get a bit messy. Do you like spaghetti?
 
-Librarians are developers who believe metaverse programs should always be compiled with library features enabled, and their methods publicly exposed, to better promote interoperability. Erudite, rigid, jingoistic they're a stuffy breed, but they do build modular programs.
+Librarians are developers who believe that metaverse programs should always be compiled with library features enabled, and their methods publicly exposed, to better promote interoperability. Erudite, rigid, jingoistic they're a stuffy breed, but they do build modular programs.
 
 ### Non-transferable NFTs
 
-We previously learned about an alternative template to `cw721-base`, called [cw721-non-transferable](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-non-transferable). To help learn about customizing NFTs, over the next exercises, we'll be making our own version of `cw721-non-transferable`, which we'll call `cw721-soulbound`.
+We previously learned about an alternative template to `cw721-base`, called [cw721-non-transferable](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-non-transferable). To help us learn about customizing NFTs, over the next set of exercises, we'll be making our own version of `cw721-non-transferable`, which we'll call `cw721-soulbound`.
 
-Last exercise we spoke about several approaches for customizing NFTs. Following the contractors' guidance, let's start by just bootstrapping `cw721-base` locally into our project and changing some things around. Remember, our goal is to disable [TransferNft](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/execute.rs#L132-L147) and [SendNft](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/execute.rs#L149-L174).
+In the last exercise we discussed several approaches for customizing NFTs. Following the contractors' guidance, let's start by  bootstrapping `cw721-base` locally into our project and changing some things around. Remember, our goal is to disable [TransferNft](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/execute.rs#L132-L147) and [SendNft](https://github.com/CosmWasm/cw-nfts/blob/main/contracts/cw721-base/src/execute.rs#L149-L174).
 
 # Exercise
 
-All those files, whoa! It would probably get a bit too insane if we also bootstrap the `cw721` spec here in our project. For that reason, we'll not be able to completely remove `TransferNft` and `SendNft`, and since those [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) are still active, in this implementation of `cw721-soulbound`. The best we can do is block their behavior from executing the transfer.
+All those files, whoa! It would probably get a bit too insane if we also bootstrap the `cw721` spec in our project. For that reason, we'll not be able to completely remove `TransferNft` and `SendNft`, and since those [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) are still active, in this implementation of `cw721-soulbound`. The best we can do is block their behavior from executing the transfer.
 
 1. Start by locating the functions `transfer_nft` and `send_nft` (haha!), then remove the code within their function closures
 2. Replace it with code to `return` a Rust `Err`
