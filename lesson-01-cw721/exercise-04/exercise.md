@@ -15,7 +15,7 @@ Let's think about what the use cases are for importing the `cw721` package into 
 
 ### When to import cw721
 
-- Querying an NFT collection from inside a contract and enforcing the correct response types
+- Querying an NFT collection from inside a contract and enforcing the correct response type
 - Making a new type of NFT with custom logic (e.g. "soulbound" NFTs)
 
 **Example import:**
