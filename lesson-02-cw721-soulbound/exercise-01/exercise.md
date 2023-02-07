@@ -7,17 +7,15 @@ Title: Contracts and Libraries
 Filename: lib.rs
 -->
 
-> If Section 31 didn't like what you were doing, they could have just vapourized the teleporter (not to mention your entire DNA). So why'd you end up in their cyber jail? It's got to have something to do with this missing `passport-token`.
+> If Section 31 didn't like what you were doing, they could have just vapourized the teleporter (not to mention your entire DNA). So why'd you end up in their cyber jail? It must have something to do with the missing `passport-token`.
 
-It occurs to you that you may need to build an NFT just get out of here!
+It occurs to you that you may need to build an NFT just to get out of here!
 
-When it comes to making NFT collections with custom logic, there are a few strategies that could be followed.
+When it comes to making NFT collections with custom logic, there are a few strategies that could be followed, such as:
 
-For example:
-
-1. Add customizations in the token collection contract
-2. Bootstrap a version of `cw721-base` locally within our project and modify it
-3. Import modified versions of `cw721-base` as package dependencies
+1. Adding customizations in the token collection contract
+2. Bootstrapping a version of `cw721-base` locally within the project and modifying it
+3. Importing modified versions of `cw721-base` as package dependencies
 
 We'll be reviewing and comparing these approaches, but before we do that lets talk a bit about [Rust's dependency model](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
 
@@ -25,7 +23,7 @@ We'll be reviewing and comparing these approaches, but before we do that lets ta
 
 Before we go about changing core NFT dependencies, it will be helpful to review how dependencies work. 
 
-Dependencies, or [packages](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html), are bundles of code that can be imported into your project inside the `Cargo.toml` file in the root folder of a Rust project. 
+Dependencies, or [packages](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html), are bundles of code that can be imported into your project via the `Cargo.toml` file located in the root folder of a Rust project. 
 
 If the package is not published to [crates.io](https://crates.io/), we declare it as a dependency like:
 
@@ -34,7 +32,7 @@ If the package is not published to [crates.io](https://crates.io/), we declare i
 cosmwasm-std = "~1.0.0-beta" # E.g. {package-name} = "{package_version}"
 ```
 
-If the package hasn't been published to [crates.io](https://crates.io/), it can be declared as a dependency if you instruct the compiler where to look for it. We can do that by adding a `path` parameter to a folder where that package's code exists. If no package, of the specified name and version, exists at that path, your Rust project won't compile.
+If the package hasn't been published to [crates.io](https://crates.io/), it can be declared as a dependency if you instruct the compiler where to find it. You can do this by adding a `path` parameter to the folder where that package's code is stored. If no package, of the specified name and version, exists at that path, your Rust project won't compile.
 
 ```yaml
 [dependencies]
@@ -43,9 +41,9 @@ example-local-package = { path = "../example-local-package", version = "0.1.0" }
 
 ### Compilation in Rust
 
-The project you're working on can also be a package. If your code is public, other people could include it in the dependency tree of their projects.
+The project you're working on can also be a package. If your code is public, others could include it in the dependency tree of their projects.
 
-Rust projects can either be compiled as binaries or libraries. Binaries refer to executable projects with a `main()` method. Libraries are components that can be reused in other projects. Unlike a binary program, a library does not have `main()` method as its entry point.
+Rust projects can either be compiled as binaries or libraries. Binaries refer to executable projects with a `main()` method. Libraries are components that can be reused in other projects. Unlike a binary program, a library does not have a `main()` method as its entry point.
 
 Below are two different project structures, where project `a` represents the convention for programs (`main.rs`), and project `b` the convention for libraries (`lib.rs`). There's more to it than that, but we'll learn as we go.
 
@@ -62,9 +60,9 @@ Below are two different project structures, where project `a` represents the con
 
 ### Compilation in CosmWasm
 
-CosmWasm projects are always compiled as libraries. This allows for multiple entry points into the program (`instantiate`, `query`, `execute`, `reply`, etc.), none of which are `main()`. That doesn't mean all CosmWasm contracts are intended to be inherited as packages by other developers. 
+CosmWasm projects are always compiled as libraries. This allows for multiple entry points into the program (`instantiate`, `query`, `execute`, `reply`, etc.), none of which are `main()`. However, not all CosmWasm contracts are intended to be inherited as packages by other developers. 
 
-If you do want to support other developers using your contracts, it's important to publicly export all types that could be useful for projects inheriting your package. 
+If you do want to support other developers in using your contracts, it's important to publicly export all types that could be useful for projects inheriting your package. 
 
 ```rs
 // Publicly exported
@@ -77,10 +75,10 @@ pub use cw721_base::{
 use cw721::ContractInfoResponse;
 ```
 
-In the above example [cw721](https://crates.io/crates/cw721) isn't publicly exported. Other developers can still import it into their projects since it's a publicly available [crate](https://doc.rust-lang.org/rust-by-example/crates.html) hosted on [crates.io](https://crates.io/).
+In the example above [cw721](https://crates.io/crates/cw721) isn't publicly exported. Other developers can still import it into their projects since it's a publicly available [crate](https://doc.rust-lang.org/rust-by-example/crates.html) hosted on [crates.io](https://crates.io/).
 
 # Exercise
-There's been a complaint lodged against the creators of `some_token`. Other developers trying to use it in marketplace contracts are struggling to execute transactions. Do you know why?
+A complaint has been lodged against the creators of `some_token`. Other developers who are trying to use it in marketplace contracts are struggling to execute transactions. Do you know why?
 
 Review and adjust the imports and type aliases. Ensure anything custom has public visibility, and think carefully about which items _should_ be public and which _don't_ need to be.
 
