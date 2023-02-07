@@ -7,7 +7,7 @@ Title: Cw721 Entry Points
 Filename: quiz.txt
 -->
 
-> You seem to find yourself in a cell-like room. There’s a bed, a chair and some foreign _quasi-digital_ artifacts.  What are these things? Is this thing a _Physcial NFT?_ You pick one up, somehow the technology is both ancient and futuristic at the same time. Turning over the small portrait shaped object, a pang a knot develops in your throat. There’s a manufacturer's address engraved on the backside. You immediately recognize this as the contract address of _SECTION 31_.
+> You seem to find yourself in a cell-like room. There’s a bed, a chair and some foreign _quasi-digital_ artifacts.  What are these things? Is this thing a _Physcial NFT?_ You pick one up, somehow the technology is both ancient and futuristic at the same time. Turning over the small portrait shaped object, a knot develops in your throat. There’s a manufacturer's address engraved on the backside. You immediately recognize this as the contract address of _SECTION 31_.
 
 There seems to be something interesting about this `cw721`-thing. After all, there must be a reason you want to keep reading.
 
