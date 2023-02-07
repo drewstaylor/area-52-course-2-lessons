@@ -31,7 +31,7 @@ Most NFT projects _will_ import and use `cw721` for enforcing the correct types 
 
 Common use cases where you likely _won't_ need to import `cw721` include:
 
-- Minting tokens (as minting is not implemented in `cw721`, import the minting message from the token collection contract)
+- Minting tokens (minting is not implemented in `cw721`, import the minting message from the token collection contract)
 - Creating the message to query an NFT collection (use the `QueryMsg` exported by the token collection contract)
 - Creating the execute message for a transaction to an NFT contract (use the `ExecuteMsg` exported by the token collection contract)
 
