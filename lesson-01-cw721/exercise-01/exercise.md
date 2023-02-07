@@ -38,7 +38,7 @@ To conform to the `cw721` spec, the following _must_ be implemented in the token
 
 **Tip:** _Use the 'Help' button to view detailed information about the above, such as what they can do, their calling arguments and their responses._
 
-Additionally, `cw721` tokens which do not implement the following transfer types, are "[soulbound](https://vitalik.ca/general/2022/01/26/soulbound.html)" or "non-transferable" tokens; additionally, tokens implementing _one_ but not _both_ of the following will not properly conform to the `cw721` standard.
+Additionally, `cw721` tokens that do not implement the following transfer types, are "[soulbound](https://vitalik.ca/general/2022/01/26/soulbound.html)" or "non-transferable" tokens. Tokens that implement _one_ but not _both_ of the following will not properly conform to the `cw721` standard.
 
 **Transfer Transactions:**
 
@@ -47,11 +47,11 @@ Additionally, `cw721` tokens which do not implement the following transfer types
 
 ### Relationship of cw721 to cw721-base
 
-There are several supported token templates can developers can use to build their NFT projects. The most common one is called [cw721-base](https://crates.io/crates/cw721-base).
+There are several supported token templates that developers can use to build their NFT projects. The most common one is called [cw721-base](https://crates.io/crates/cw721-base).
 
 You may have noticed that `Mint` was not included in our list of `cw721` requirements. This is by design, since it gives developers full control over how their tokens will be created and distributed to collectors. 
 
-`cw721-base` is an implementation of the `cw721` specification that _does_ include source code and message types for minting tokens. It  does so in a very specific way, since in `cw721-base` only one Cosmos address is given permission to mint tokens. This address, called the `minter`, and has an admin like privilege to create and distribute NFTs of the contract. Regular users *cannot* call `Mint` directly, but `minter` *can* mint NFTs directly to any user (e.g. without requiring a second transaction to send the minted NFT from the contract to the user).
+`cw721-base` is an implementation of the `cw721` specification that _does_ include source code and message types for minting tokens. It does so in a specific way, granting only one Cosmos address, the `minter`, the privilege to create and distribute NFTs of the contract. Regular users *cannot* call `Mint` directly, but `minter` *can* mint NFTs directly to any user (e.g. without requiring a second transaction to send the minted NFT from the contract to the user).
 
 ### Other supported (and related) cw721 standards
 
@@ -62,10 +62,10 @@ While most NFT projects will extend from [cw721-base](https://github.com/CosmWas
 - [cw721-metadata-onchain](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-metadata-onchain)
 - [cw721-non-transferable](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-non-transferable)
 
-We'll be learning more about `cw721-metadata-onchain` and `cw721-non-transferable` later on in this course. For the other two, suffice  to say that `cw2981-royalties` is based on [Ethereum's standard for NFT royalties](https://eips.ethereum.org/EIPS/eip-2981) and `cw721-fixed-price` is for NFTs which enforce a specific and constant sale price.
+We'll be learning more about `cw721-metadata-onchain` and `cw721-non-transferable` later on in this course. For the other two, suffice  to say that `cw2981-royalties` is based on [Ethereum's standard for NFT royalties](https://eips.ethereum.org/EIPS/eip-2981) and `cw721-fixed-price` is for NFTs that enforce a specific and constant sale price.
 
 # Exercise
-Quiz time! Simply place an `x` in the checkbox that is your answer.
+Quiz time! Simply place an `x` in the checkbox that corresponds to your answer.
 
 # Starter
 ```markdown
