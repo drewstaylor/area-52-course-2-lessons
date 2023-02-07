@@ -7,11 +7,11 @@ Title: When to use `cw721-base`
 Filename: lib.rs
 -->
 
-> Your head is spinning with new NFT knowledge. Unfortunately, so far, none of it seems helpful for escaping from SECTION 31's passport-control holding cell.
+> Your head is spinning with new NFT knowledge. Unfortunately, so far, none of it seems helpful in escaping from SECTION 31's passport-control holding cell.
 
-In the last two exercises we've been talking about a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
+In the last two exercises, we have discussed a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
 
-- `cw721` is a package for enforcing your token adheres to the [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) standard
+- `cw721` is a package for ensuring your token adheres to the [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) standard
 - `cw721-base` is a package that implements the `cw721` standard and provides minting functionality, but where minting is limited to a single admin (or "creator") called the `minter` (an address that must be declared during contract instantiation and can never be updated)
 - `some_token` is our example token collection contract. It extends from `cw721-base` and is the NFT smart contract that will be deployed to the blockchain
 
@@ -35,11 +35,11 @@ pub type Extension = Option<Empty>;
 
 # Exercise
 
-Now we'll create the collection contract for `some_token` using `cw721-base`. This is the only code needed for creating the collection contract (along with the `Cargo.toml` which imports the dependencies). Your task is to finish writing the entry points.
+Now we'll create the collection contract for `some_token` using `cw721-base`. This is the only code required for creating the collection contract (along with the `Cargo.toml` which imports the dependencies). Your task is to finish writing the entry points.
 
-1. Save the `minter` address in `instantiate` so that once the contract is deployed, tokens can be minted by the admin address. To save `minter` you'll need the `save` function of `Cw721Contract::default().minter` and pass two arguments to it, which are `deps.storage` and a reference to `minter` (a variable defined and validated just above)
-2. Finish the `execute` entry point by calling the `execute` function of `Cw721Contract::default()`. The arguments to pass to it are the same as those being sent to `pub fn execute`
-3. Finish the `query` entry point with a call to `query` from `Cw721Contract::default()`. The arguments to pass it are the same as those being sent to `pub fn query`.
+1. Save the `minter` address in the `instantiate` function so that once the contract is deployed, tokens can be minted by the admin address. To save `minter` you'll need the `save` function of `Cw721Contract::default().minter` and pass two arguments to it, which are `deps.storage` and a reference to `minter` (a variable defined and validated just above)
+2. Finish the `execute` entry point by calling the `execute` function of `Cw721Contract::default()`. The arguments to pass are the same as those being sent to `pub fn execute`
+3. Finish the `query` entry point with a call to `query` from `Cw721Contract::default()`. The arguments to pass are the same as those being sent to `pub fn query`.
 
 # Starter
 
