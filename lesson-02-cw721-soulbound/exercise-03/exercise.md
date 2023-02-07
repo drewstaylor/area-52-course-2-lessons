@@ -7,13 +7,13 @@ Title: Non-transferable NFTs Part 1
 Filename: packages/cw721/traits.rs
 -->
 
-> Holding your breath, you flick the red switch of the _quasi-digital_ object. You're half-expecting the NFT to disappear into thin air, leaving behind the acrid smell of a `ExecuteMsg::Burn`. To your surprise, a Jump Ring teleporter suddenly appears in the corner of the room. The finished Ring, such a sight to behold! Seconds later a mysterious schematic appears beside it. Its title, emblazoned on the blueprint, reads "SOUL BOUND PASSPORT-TOKEN SCHEMATIC".
+> Holding your breath, you flip the red switch of the _quasi-digital_ object. You're half-expecting the NFT to disappear into thin air, leaving behind the acrid smell of a `ExecuteMsg::Burn`. To your surprise, a Jump Ring teleporter suddenly appears in the corner of the room. The finished Ring, such a sight to behold! Seconds later a mysterious schematic appears beside it. Its title, emblazoned on the blueprint, reads "SOUL BOUND PASSPORT-TOKEN SCHEMATIC".
 
-This must be what your way off the planet! If only you could get these `passport-token` NFTs to work, you'd be on your way in no time.
+This must be your way off the planet! If only you could get these `passport-token` NFTs to work, you'd be on your way in no time.
 
 Whoa, speaking of the previous exercise, was it easy to get lost in that code? There must be a better way to implement the custom behavior for [soulbound](https://vitalik.ca/general/2022/01/26/soulbound.html) NFTs in CosmWasm. 
 
-Taking a stern gaze from the libarians, let's try again with a modular package design.
+With a stern gaze from the libarians, let's try again with a modular package design.
 
 Remember this `Cargo.toml` code?
 
@@ -22,11 +22,11 @@ Remember this `Cargo.toml` code?
 example-local-package = { path = "../example-local-package", version = "0.1.0" }
 ```
 
-It's time we used that approach. Instead of bootstrapping `cw721-base` on top of our project (in the same `src` folder), we can start by [cloning](https://git-scm.com/docs/git-clone) the [cw721-base](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-base) repository into a separate folder. After we've made it "soulbound", we'll make the token collection contract and declare `cw721-soulbound` as a dependency.
+It's time we used that approach. Instead of bootstrapping `cw721-base` directly in our project (in the same `src` folder), we can start by [cloning](https://git-scm.com/docs/git-clone) the [cw721-base](https://github.com/CosmWasm/cw-nfts/tree/main/contracts/cw721-base) repository into a separate folder. After we've made it "soulbound", we'll make the token collection contract and declare `cw721-soulbound` as a dependency.
 
 # Exercise
 
-We can simply remove references to `TransferNft` and `SendNft` wholesale from our new package (`cw721-soulbound`). There's a few files to be changed, but we'll tackle them one at a time. `cw721-base` has a `packages` folder, this is where the default (e.g. transferrable) `cw721` spec lives. We'll remove the transfer traits from `cw721` first, to arrive at a soulbound `cw721` spec.
+We can simply remove all references to `TransferNft` and `SendNft` in our new package (`cw721-soulbound`). There are a few files to be changed, but we'll tackle them one at a time. `cw721-base` has a `packages` folder, where the default (e.g. transferrable) `cw721` spec lives. We'll remove the transfer traits from `cw721` first, to arrive at a soulbound `cw721` spec.
 
 1. Locate and remove `transfer_nft`, and `send_nft`
 
