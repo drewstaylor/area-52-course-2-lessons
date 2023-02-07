@@ -9,7 +9,7 @@ Filename: lib.rs
 
 > Your head is spinning with new NFT knowledge. Unfortunately, so far, none of it seems helpful in escaping from SECTION 31's passport-control holding cell.
 
-In the last two exercises, we have discussed a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
+In the last two exercises, we've discussed a "token collection contract", which we've been referring to as `some_token`. What is this contract and how does it relate to `cw721` and `cw721-base`?
 
 - `cw721` is a package for ensuring your token adheres to the [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) standard
 - `cw721-base` is a package that implements the `cw721` standard and provides minting functionality, but where minting is limited to a single admin (or "creator") called the `minter` (an address that must be declared during contract instantiation and can never be updated)
