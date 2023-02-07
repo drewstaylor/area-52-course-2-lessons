@@ -7,7 +7,7 @@ Title: Verifying Identity With NFTs Part 2
 Filename: execute_fns.rs
 -->
 
-> Err (the onomatopoeia not the Rust kind), well actually, maybe you should write all this down so you don't forget again how everything is supposed to work. You chuckle to yourself, and cringe, knowing if those Librarian scribes at SECTION 31 saw you scribbling out your system design so furiously they'd be grinning.
+> Err...(the onomatopoeia not the Rust kind), well actually, maybe you should write all this down so you don't forget again how everything is supposed to work. You chuckle to yourself, and cringe, knowing if those Librarian scribes at SECTION 31 saw you scribbling out your system design so furiously they'd be grinning.
 
 Before teleporting through the `JumpRing` portal, we need to verify the `Traveler` is holding a valid passport. 
 

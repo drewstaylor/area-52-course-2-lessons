@@ -7,7 +7,7 @@ Title: Cw-What?
 Filename: quiz.txt
 -->
 
-> Do Cyborgs dream of electric sheep? You hate to admit, but ever since you became a Cyborg you’ve been feeling super weird. You've been having the strangest dreams–which is also perplexing, since you have almost no desire anymore to fulfill your biological needs like nourishment and sleep. Then one morning, the strangest thing of all happened. Waking up, you look around and you have no idea where you are!
+> Do cyborgs dream of electric sheep? You hate to admit it, but ever since you became a cyborg you've been feeling super weird. You've been having the strangest dreams–which is also perplexing, since you have almost no desire anymore to fulfill your biological needs like nourishment and sleep. Then one morning, the strangest thing of all happened. Waking up, you look around and you have no idea where you are!
 
 # Cw-What?
 

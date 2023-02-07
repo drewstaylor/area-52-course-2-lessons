@@ -7,9 +7,9 @@ Title: Preparing Portal to Become the Minter Part 2
 Filename: contract.rs
 -->
 
-> Suddenly, SECTION 31's Jump Ring whirs to life! Oh no, this gravitational sensation. You feel like you're going to lose your lunch, which is super strange because you didn't even eat a lunch! Magically, you find yourself returned to your home planet...Well, sort of. What actually happens is you wake up in your regular bed. Was the `passport-token` blueprint just another strange cyborg fever dream?
+> SECTION 31's Jump Ring whirs to life. Oh no, this gravitational sensation. It's like you're going to lose your lunch (which is strange since you didn't eat a lunch). Suddenly, you find yourself returned to your home planet...Well, sort of. What actually happens is you wake up in your regular bed feeling sleepy. Was the `passport-token` blueprint just another strange cyborg fever dream?
 
-No time to worry about that now, wake yourself up. We're going to enable the two new state saving entry points in `contract.rs`, and since the NFT identity system in Portal won't work without contract addressses (for Potion and `passport-token`) we add these addresses to `instantiate`.
+Wake yourself up. We're going to enable the two new state saving entry points in `contract.rs`, and since the NFT identity system in Portal won't work without contract addressses (for Potion and `passport-token`) we add these addresses to `instantiate`.
 
 After adding our new parameters, the messages for `instantiate` and `execute`, in Portal, look like this:
 

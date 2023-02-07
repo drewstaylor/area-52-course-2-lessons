@@ -7,7 +7,7 @@ Title:
 Filename: ../Cargo.toml
 -->
 
-> Yikes, the SECTION 31 blueprint instructions are intense. `cw721-soulbound` was easy, but why is the `passport-token` section so long? The librarian scribes, hired by SECTION 31 to write all this down, must have been paid by the word count.
+> Yikes, the SECTION 31 blueprint instructions are intense. `cw721-soulbound` was easy, but why is the `passport-token` section so long? The librarian scribes hired by SECTION 31 to write all this down must have been paid by the word count.
 
 In this lesson we'll be making the token collection contract, but let's take a moment to review what we've done and why.
 

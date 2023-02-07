@@ -9,9 +9,9 @@ Filename: lib.rs
 
 > That's more like it, but just when you're getting the hang of `cw721` the `passport-token` blueprint throws you a `cw2` shaped curveball.
 
-What if you wanted to change a contract that's already been deployed? Cosmos blockchains have a convenient way for smart contracts to migrate their code. Code migrations allow you to update the code, while keeping the same contract address. For obvious reasons, only the contract's admin (usually the Cosmos address who deployed the contract initially) can do this. 
+What if you wanted to change a contract that's already been deployed? 
 
-Contracts undergoing migration can choose to retain all, or some, of their state. This provides developers with a safe way of resolving bugs, and adding new features, without impacting their users.
+Cosmos blockchains have a convenient way for smart contracts to migrate their code. Code migrations allow you to update the code, while keeping the same contract address. Only the contract's admin Cosmos address can do this. Contracts undergoing migration can choose to retain all, or some, of their state. This provides developers with a safe way of resolving bugs, and adding new features, without impacting their users.
 
 Conveniently, CosmWasm provides the [cw2](https://docs.rs/cw2/0.13.4/cw2/) library for helping manage code versions for contracts that have been, or may become, migrated.
 

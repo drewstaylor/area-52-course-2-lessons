@@ -7,7 +7,7 @@ Title: Writing the Instantiate Entry Point Part 2
 Filename: lib.rs
 -->
 
-> Careful now, the librarians are watching. In the `passport-token` blueprint, they've written something rather long about the `minter` and something called "address validation".
+> The librarians are watching, and in the `passport-token` blueprint, they've written something rather long about the `minter` and something called "address validation".
 
 CosmWasm dependencies (`Deps`, `DepsMut`) have a handy helper function which allows us to validate if an `Addr` string is a valid Cosmos address. It can be accessed via the [api](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/trait.Api.html) trait of `Deps` and `DepsMut`.
 

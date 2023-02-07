@@ -7,7 +7,7 @@ Title: Verifying Identity With NFTs Part 1
 Filename: execute_fns.rs
 -->
 
-> A-ha, that's right! It was in ` initiate_jump_ring_travel`. Hang on to the vision WAGMI!
+> A-ha, that's right! It was in ` initiate_jump_ring_travel`. Hang on to the dream vision, WAGMI!
 
 In the previous [Lesson]() we enabled minting `passport-token` NFTs from the Portal contract (which can only be called by the Potion contract). In this lesson we'll boarding our `JumpRing` passengers and checking their passports. 
 
