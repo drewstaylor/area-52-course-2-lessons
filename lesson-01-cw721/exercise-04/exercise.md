@@ -29,7 +29,7 @@ use cw721::{NftInfoResponse, TokensResponse};   // Imports response types for qu
 
 Most NFT projects _will_ import and use `cw721` for enforcing the correct types of query responses, but more often what you need should be imported from the token collection contract.
 
-Below are common use cases where you likely _won't_ need to import `cw721`.
+Common use cases where you likely _won't_ need to import `cw721` include:
 
 - Minting tokens (minting is not implemented in `cw721`, import the minting message from the token collection contract)
 - Creating the message to query an NFT collection (use the `QueryMsg` exported by the token collection contract)
@@ -37,11 +37,11 @@ Below are common use cases where you likely _won't_ need to import `cw721`.
 
 # Exercise
 
-Let's extend the code we began in the previous exercise. You're provided with the `WasmQuery` and `QueryMsg`, but you'll need to write the response for it.
+Let's extend the code from the previous exercise. You're provided with the `WasmQuery` and `QueryMsg`, but you'll need to write the response for it.
 
 1. Create a variable called `query_response` that enforces the `TokensResponse` type imported from `cw721`
-2. For its value use the `query` function from `DepsMut`, it's exposed via the [querier](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.DepsMut.html#structfield.querier) field of the `DepsMut` struct
-3. Pass `querier.query` a reference (`&`) to `query_req` as its function argument, and don't forget to capture any errors that could occur by using the `?` operator
+2. Set its value to the result of calling the `query` function from `DepsMut`, which is exposed via the [querier](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.DepsMut.html#structfield.querier) field of the `DepsMut` struct
+3. Pass `querier.query` a reference (`&`) to `query_req` as its function argument, and handle any errors that may occur by using the `?` operator
 
 # Starter
 

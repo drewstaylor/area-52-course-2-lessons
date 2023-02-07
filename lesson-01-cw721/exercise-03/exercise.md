@@ -7,7 +7,7 @@ Title: Not all NFT metadata is created equal
 Filename: execute_fns/mint.rs
 -->
 
-> You run to the door. You’re prying on it with all your might, you’re pressing every button in the vicinity. Of course it’s a fool’s errand. Interfacing with the computer panel, it always returns the same error: `Error: rpc error: code = "passport-token not found"`. You seemed to be trapped by passport control!
+> You run to the door. You’re prying on it with all your might, you’re pressing every button in the vicinity. Of course it’s a fool’s errand. Interfacing with the computer panel, it always returns the same error: `Error: rpc error: code = "passport-token not found"`. You seem to be trapped by passport control!
 
 <!--
 
@@ -15,21 +15,21 @@ Filename: execute_fns/mint.rs
 
 -->
 
-A main feature of [non-fungible](https://en.wikipedia.org/wiki/Non-fungible_token) tokens, is their unique properties, or _metadata_, where no two tokens of the collection are exactly alike. Historically, this metadata has been stored in a [JSON](https://www.w3schools.com/js/js_json_syntax.asp) file uploaded to a storage protocol somewhere, such as [IPFS (the Interplanetary File System)](https://ipfs.tech/). 
+A main feature of [non-fungible](https://en.wikipedia.org/wiki/Non-fungible_token) tokens, is their unique properties, or _metadata_, where no two tokens of the collection are exactly alike. Historically, this metadata has been stored in a [JSON](https://www.w3schools.com/js/js_json_syntax.asp) file uploaded to a storage protocol such as [IPFS (the Interplanetary File System)](https://ipfs.tech/). 
 
 A common standard for NFT metadata is the [OpenSea metadata standard](https://docs.opensea.io/docs/metadata-standards), but other format standards do exist.
 
 ### On-Chain vs. Off-Chain Metadata in CosmWasm
 
-NFTs were originally created on the Ethereum blockchain where there's some resource limitations regarding memory and data storage. This is why most NFT metadata is stored on IPFS instead of in the memory of the token smart contract.
+NFTs were originally created on the Ethereum blockchain where there are some resource limitations regarding memory and data storage. This is why most NFT metadata is stored on IPFS instead of within the memory of the token smart contract.
 
-In CosmWasm, there are fewer resource limitations and it's totally feasible to store metadata in the NFT smart contract itself, but off-chain metadata is still supported in CosmWasm. It's up to the token developer to decide which metadata storage strategy they will use.
+In CosmWasm, there are fewer resource limitations and it's totally feasible to store metadata within the NFT smart contract itself, but off-chain metadata is still supported in CosmWasm. It's up to the token developer to decide which metadata storage strategy they will use.
 
 ### Off-Chain Metadata
 
 Later in the course we'll work directly with on-chain metadata NFTs, but for now it's helpful to understand the older way (off-chain metadata) of doing things.
 
-The below `MintMsg` example comes from a project extending `cw721-base`, but note that `Extension` and `token_uri` are part of `cw721`. The string prefix `ipfs://` is common for signifying [IPFS](https://ipfs.tech/) uploads.
+The `MintMsg` example below comes from a project extending `cw721-base`, but note that `Extension` and `token_uri` are part of `cw721`. The string prefix `ipfs://` is common for signifying [IPFS](https://ipfs.tech/) uploads.
 
 ```rs
 let token_uri = "ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json";
@@ -44,12 +44,12 @@ let mint_msg = MintMsg {
 
 # Exercise
 
-Using the provided code, finish the `mint_handler` function for executing a minting transaction. Imagine the minter will be a contract and will send a transaction of type `WasmMsg::Execute` to an NFT contract (which we'll refer to as `some_token`). 
+Using the provided code, complete the `mint_handler` function for executing a minting transaction. Imagine the minter is a contract and will send a transaction of type `WasmMsg::Execute` to an NFT contract (which we'll refer to as `some_token`). 
 
-1. Finish `mint_msg` by adding the values for `token_uri` and `extension` for an NFT with off-chain metadata
+1. Complete `mint_msg` by adding the values for `token_uri` and `extension` for an NFT with off-chain metadata
 2. Create a variable called `mint_resp` and explictly enforce the`CosmosMsg` type
-3. For the value of `mint_resp` use the `ExecuteMsg` variant of the `WasmMsg` enum from `CosmosMsg`
-4. `WasmMsg::Execute` has three member attributes, `contract_addr`, `msg` and `funds`, each can be entered on separate lines
+3. For the value of `mint_resp`, use the `ExecuteMsg` variant of the `WasmMsg` enum from `CosmosMsg`
+4. `WasmMsg::Execute` has three member attributes, `contract_addr`, `msg` and `funds`. Each can be entered on separate lines
 5. The value of `contract_addr` will be the string version of `some_token_address`
 6. For `msg` use a reference (`&`) to `mint_msg`, and don't forget to convert it to binary
 7. We won't send extra funds with this transaction so set `funds` to an empty vector created using the `vec` macro
