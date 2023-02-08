@@ -9,7 +9,7 @@ Filename: execute_fns.rs
 
 > Err...(the onomatopoeia not the Rust kind), well actually, maybe you should write all this down so you don't forget again how everything is supposed to work. You chuckle to yourself, and cringe, knowing if those Librarian scribes at SECTION 31 saw you scribbling out your system design so furiously they'd be grinning.
 
-Before teleporting through the `JumpRing` portal, we need to verify the `Traveler` is holding a valid passport. 
+Before teleporting through the `JumpRing` portal, we need to verify that the `Traveler` is holding a valid passport. 
 
 To send our query, we'll again be using the `query` function from `deps.querier`. The syntax of our query will resemble what we did earlier, when we used `deps.querier.query` in `mint_passport`:
 
@@ -23,12 +23,12 @@ let query_resp: TokensResponse = deps.querier.query(&query_req)?;
 Some things to keep in mind:
 
 - We're using soulbound NFTs
-- Only the Portal contract (`JumpRing`) can mint
+- Only the Portal contract (`JumpRing`) can mint NFTs
 - Each NFT owner can only hold one `passport-token` at a time
-- Token IDs are keyed by holder address
-- Only the Potion contract (`Imbiber`) can call `mint_passport`
+- Token IDs are keyed by holder's address
+- Only the Potion contract (`Imbiber`) can call the `mint_passport` function
 
-Identity theft already isn't possible because of `cw721-soulbound. Each [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) `token_id` must be unique, and the `token_id` of each `passport-token` is the wallet address of its holder. That means the query to `NftInfo` will fail if we try to teleport someone not holding a `passport-token` that matches their Cosmos address.
+Identity theft isn't possible because of `cw721-soulbound`. Each [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) `token_id` must be unique, and the `token_id` of each `passport-token` is the wallet address of its holder. That means the query to `NftInfo` will fail if we try to teleport someone not holding a `passport-token` that matches their Cosmos address.
 
 ### Using NFT Metadata Returned by `NftInfo`
 
@@ -56,7 +56,7 @@ let query_req = QueryRequest::Wasm(WasmQuery::Smart {
 let some_token_uri = query_req.token_uri;
 ```
 
-Since the blockchain can't access data from [IPFS](https://ipfs.tech/), or hosted on some website. A smart contract querying the NFT's metadata, won't be able to parse or interpret the json stored at an external link (e.g. `"ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json"`) because the blockchain is an isolated universe, and doesn't know about the Internet or [IPFS](https://ipfs.tech/).
+Since the blockchain can't access data from [IPFS](https://ipfs.tech/), or hosted on some website, a smart contract querying the NFT's metadata, won't be able to parse or interpret the json stored at an external link (e.g. `"ipfs://bafybeigxa4ifta32fjl7yejgr6sddanwcgex5m2xxhatjzpms4iwh5bcvm/ascended.json"`). This is due to the blockchain being an isolated universe that doesn't know about the Internet or [IPFS](https://ipfs.tech/).
 
 A powerful feature of [cw721](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) tokens with on-chain metadata, is that other smart contracts have access to, and can utilize, the rare and unique properties of NFTs. 
 
@@ -79,10 +79,10 @@ if some_extension.name.unwrap() == "Richard Bissell Jr".to_string() {
 
 Here's how we can make sure `Traveler`s teleporting through the `JumpRing` possess a valid `passport-token`.
 
-1. From `cw721` import the `NftInfoResponse`.
-2. In ` initiate_jump_ring_travel`, create a variable called `query_resp` that explicitly enforces `NftInfoResponse<Metadata>` as its type.
+1. From `cw721` import `NftInfoResponse`.
+2. In `initiate_jump_ring_travel`, create a variable called `query_resp` that explicitly enforces `NftInfoResponse<Metadata>` as its type.
 3. Assign `query_resp` a call to the `query` function, which is an attribute of the `querier` dependency (`DepsMut`). For its function argument, pass `query` a reference to `query_req`, and don't forget to capture any errors that could occur.
-4. Write an `if` condition to verify the NFT's `identity` field matches the `traveler`'s Cosmos address that was forwarded to ` initiate_jump_ring_travel` by the Potion contract. You can the `identity` metadata field from `query_resp.extension`, but you'll have to [unwrap]() it. If `identity` and `traveler` are _not_ equal, return an [Err](https://doc.rust-lang.org/std/result/enum.Result.html) of type `ContractError::Unauthorized {}`.
+4. Write an `if` condition to verify that the NFT's `identity` field matches the `traveler`'s Cosmos address that was forwarded to ` initiate_jump_ring_travel` by the Potion contract. You can access the `identity` metadata field from `query_resp.extension`, but you'll have to [unwrap]() it. If `identity` and `traveler` are _not_ equal, return an [Err](https://doc.rust-lang.org/std/result/enum.Result.html) of type `ContractError::Unauthorized {}`.
 
 # Starter
 
