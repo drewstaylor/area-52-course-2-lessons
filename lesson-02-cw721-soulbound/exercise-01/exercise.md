@@ -15,7 +15,7 @@ When it comes to making NFT collections with custom logic, there are a few strat
 
 1. Adding customizations in the token collection contract
 2. Bootstrapping a version of `cw721-base` locally within the project and modifying it
-3. Importing modified versions of `cw721-base` as package dependencies
+3. Importing a modified version of cw721-base as a package dependency
 
 We'll be reviewing and comparing these approaches, but before we do that lets talk a bit about [Rust's dependency model](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
 

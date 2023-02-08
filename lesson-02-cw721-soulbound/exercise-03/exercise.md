@@ -7,7 +7,7 @@ Title: Non-transferable NFTs Part 1
 Filename: packages/cw721/traits.rs
 -->
 
-> Holding your breath, you flip the red switch of the _quasi-digital_ object. You're half-expecting the NFT to disappear into thin air, leaving behind the acrid smell of a `ExecuteMsg::Burn`. To your surprise, a Jump Ring teleporter suddenly appears in the corner of the room. The finished Ring, such a sight to behold! Seconds later a mysterious schematic appears beside it. Its title, emblazoned on the blueprint, reads "SOUL BOUND PASSPORT-TOKEN SCHEMATIC".
+> Holding your breath, you flip the red switch of the _quasi-digital_ object. You're half-expecting the NFT to disappear into thin air, leaving behind the acrid smell of an `ExecuteMsg::Burn`. To your surprise, a Jump Ring teleporter suddenly appears in the corner of the room. The finished Ring, such a sight to behold! Seconds later a mysterious schematic appears beside it. Its title, emblazoned on the blueprint, reads "SOUL BOUND PASSPORT-TOKEN SCHEMATIC".
 
 This must be your way off the planet! If only you could get these `passport-token` NFTs to work, you'd be on your way in no time.
 
