@@ -7,7 +7,7 @@ Title: Minting NFTs From a Contract Part 3
 Filename: execute_fns.rs
 -->
 
-> Hey, maybe it was all just another cyborg fever dream, a biological quirk of your electro-chemical psyche. These Portal modifications, wouldn't it be so great to take the credit for that idea? Of course it was all you. You're so clever, cyborg.
+> Hey, maybe it was all just another cyborg fever dream, a biological quirk of your electro-chemical psyche. Wouldn't it be so great to take the credit for all these Portal modification ideas? Of course it was all you. You're so clever, cyborg.
 
 In a moment we'll finish the minting logic, but first let's think about `passport-token`'s `ExecuteMsg::Mint`. Its message type looks like this:
 
@@ -28,7 +28,7 @@ pub struct MintMsg<T> {
 
 The [generic](https://doc.rust-lang.org/rust-by-example/generics.html) `T`, of `MintMsg<T>` represents an abstract type which could be any valid on-chain NFT metadata enforced by a token collection contract.
 
-In the `passport-token` collection contract we enforced, and exported, a type called `Metadata`, and we also exported a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) called `Extension`:
+In the `passport-token` collection contract, we enforced, and exported, a type called `Metadata`, and we also exported a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) called `Extension`:
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
@@ -63,11 +63,11 @@ let metadata_extension = Some(Metadata {
 });
 ```
 
-We mentioned the `T` of `MintMsg<T>` is a Rust [generic](https://doc.rust-lang.org/rust-by-example/generics.html), lets think about why it allows token collection contracts extending from `cw721-soulbound` to enforce any valid on-chain metadata.
+We mentioned that the `T` of `MintMsg<T>` is a Rust [generic](https://doc.rust-lang.org/rust-by-example/generics.html). Lets think about why it allows token collection contracts extending from `cw721-soulbound` to enforce any valid on-chain metadata.
 
 ### Rust Generics
 
-[Generics](https://doc.rust-lang.org/rust-by-example/generics.html) in Rust is a way of generalizing types and functionalities to broader cases. This is useful for making things like NFTs which require a lot diversity, but using [generics](https://doc.rust-lang.org/rust-by-example/generics.html) calls for rather involved syntax. The simplest and most common use of generics is for type parameters. 
+[Generics](https://doc.rust-lang.org/rust-by-example/generics.html) in Rust is a way of generalizing types and functionalities to broader cases. This is useful for making things like NFTs which require a lot of diversity, but using [generics](https://doc.rust-lang.org/rust-by-example/generics.html) calls for rather involved syntax. The simplest and most common use of generics is for type parameters. 
 
 For example, defining a generic function named foo that takes an argument `T` of any type:
 ```rs
@@ -83,7 +83,7 @@ The `Option` type represents an optional value. Every `Option` is either `Some` 
 # Exercise
 
 1. Create a variable called `mint_msg` that explictly enforces the `ExecuteMsg` type from `passport_token`. Its value will be a call to `Cw721ExecuteMsg::Mint` which takes a `Cw721MintMsg` struct as its argument.
-2. `Cw721MintMsg` will have four struct fields: `token_id`, `owner`, `token_uri` and `extension`.
+2. The `Cw721MintMsg` struct will have four fields: `token_id`, `owner`, `token_uri` and `extension`.
 3. `token_id`'s value can be cloned from `msg.identity`, this way we can use a holder's address to query if they have an NFT. It also helps ensure travelers can't hold multiple passports. Use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to make sure it gets the correct type.
 4. `owner`'s value can also be set from `msg.identity`, but since it's the last time we need to use it you won't need to clone it. Use [into](https://doc.rust-lang.org/std/convert/trait.Into.html) to make sure it gets the correct type.
 5. Since we're using `cw721` with on-chain metadata, `token_uri` can be set to `None`.
