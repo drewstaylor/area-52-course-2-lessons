@@ -28,7 +28,7 @@ pub struct Metadata {
 }
 ```
 
-We also exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension that like this:
+We also exposed a [type alias](https://doc.rust-lang.org/reference/items/type-aliases.html) for the metadata extension that looks like this:
 
 ```rs
 pub type Extension = Option<Metadata>;
@@ -40,9 +40,9 @@ Since `Metadata` and `Extension` are publicly exported by the `passport-token` l
 
 Since this is the on-chain metadata version of `cw721`, we'll prepare the `extension` metadata needed for the `cw721` execute message (`MintMsg<Extension>`).
 
-1. Create a variable called `metadata_extension` that explicitly enforces the `Extension` type (imported from `passport_token`), and assign it a `Metadata` (also imported from `passport_token`) struct.
-2. For [Serde](https://serde.rs/) to be able to correctly serialize and deserialize, the NFT's `Metadata` struct every value assignment should be wrapped by a `Some` (these [Option] schemas are enforced by the `Metadata` type from `passport_token`).
-3. The values for `Metadata`'s struct fields for `name`, `description`, `image`, `dna`, `species`, `sapience_level` and `identity` all can be accessed from `MintMsg`, which is `mint_passport`'s message type (open `msg.rs` to see their types). For the other two fields, `issuer` is the address of Portal itself which can be accessed from the `Env` (`env.contract.address`) but you'll need to [clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) it, and `origin` is the current planet which you can get from `config.planet_name`.
+1. Create a variable called `metadata_extension` that explicitly enforces the `Extension` type (imported from `passport_token`), and assign it a `Metadata` struct (also imported from `passport_token`).
+2. For [Serde](https://serde.rs/) to be able to correctly serialize and deserialize the NFT's `Metadata` struct, every value assignment should be wrapped by a `Some` (these [Option] schemas are enforced by the `Metadata` type from `passport_token`).
+3. The values for the `Metadata` struct fields for `name`, `description`, `image`, `dna`, `species`, `sapience_level` and `identity` can all be accessed from `MintMsg`, which is `mint_passport`'s message type (open `msg.rs` to see their types). For the other two fields, `issuer` is the address of Portal itself which can be accessed from the `Env` (`env.contract.address`) but you'll need to [clone](https://doc.rust-lang.org/std/clone/trait.Clone.html) it and `origin` is the current planet which you can get from `config.planet_name`.
 4. Write each `Metadata` member on its own line. The final line of the `metadate_extension` declaration closes both the `Metadata` struct and the first `Some`.
 
 # Starter
