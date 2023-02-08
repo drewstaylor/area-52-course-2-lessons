@@ -7,13 +7,13 @@ Title: Cw721 with On-chain Metadata
 Filename: lib.rs
 -->
 
-> After skipping many pages about tedious subjects, like the history of NFTs and the socialist movement for fractionalized ownership, finally you discover what you're looking for. To escape passport-control's clutches, you'll need a `cw721` token with on-chain metadata.
+> After skipping many pages about tedious subjects, like the history of NFTs and the socialist movement for fractionalized ownership, finally you discover what you're looking for. To escape the clutches of passport-control, you'll need a `cw721` token with on-chain metadata.
 
 ### On-Chain vs Off-Chain NFT Metadata
 
 So far we've only seen off-chain metadata in action. For `passport-token` we'll use the very awesome on-chain metadata instead. 
 
-Rather than uploading [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) files to [IPFS](https://ipfs.tech/), unique NFT attributes will be stored in the contract itself. Translating between contract storage and [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) will be handled by [Serde](https://serde.rs/), so anyone querying token metadata still gets a response in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) format.
+Rather than uploading [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) files to [IPFS](https://ipfs.tech/), unique NFT attributes will be stored in the contract itself. Translating between contract storage and [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) will be handled by [Serde](https://serde.rs/), so anyone querying token metadata will still receive a response in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) format.
 
 ### Serde Package in Rust
 
@@ -32,7 +32,7 @@ let mint_msg = MintMsg {
 };
 ```
 
-In the on-chain version, it's `token_uri` that will be `None` and `extension` that will have data. 
+In the on-chain version, it is the `token_uri` that will be `None` and `extension` that will have data. 
 
 In Rust, `std::option` is a built in type that represents optional data. Every `Option` is either `Some` (and contains a value), or `None` (does not contain a value). `Option` types are common in Rust code and have a number of uses, read more about them [here](https://doc.rust-lang.org/std/option/).
 
@@ -59,7 +59,7 @@ Using `Option` for NFT metadata fields is considered a best practice. That's so 
 
 1. Create a public structure called `Metadata` to create a metadata schema for the NFTs. We can use it to ensure each NFT conforms to the schema.
 2. `Metadata` will have 9 public members, `name`, `description`, `image`, `dna`, `species`, `sapience_level`, `issuer`, `origin` and `identity`.
-3. Most of the members will have the `String` type; but, `sapience_level`'s type will be `SapienceScale`, and both `issuer` and `identity` are Cosmos addresses (`Addr` type).
+3. Most of the members will have the `String` type; but, `sapience_level` will have the type `SapienceScale`, and both `issuer` and `identity` are Cosmos addresses (`Addr` type).
 4. Each of the members can be indented and written on a separate line.
 
 # Starter
