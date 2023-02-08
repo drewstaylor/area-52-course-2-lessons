@@ -9,13 +9,13 @@ Filename: ../Cargo.toml
 
 > Yikes, the SECTION 31 blueprint instructions are intense. `cw721-soulbound` was easy, but why is the `passport-token` section so long? The librarian scribes hired by SECTION 31 to write all this down must have been paid by the word count.
 
-In this lesson we'll be making the token collection contract, but let's take a moment to review what we've done and why.
+In this lesson, we'll create the token collection contract, but let's take a moment to review what we've done and why.
 
 ### Custom NFT Logic
 
 Changing the behavior of `cw721` is undesirable (not to mention dangerous), since it's the standard for CosmWasm NFTs. It was a neccessary evil in our case, because `cw721` was developed with asset transfers in mind. 
 
-Most times when you need to implement custom behavior, it can be achieved by adding the logic in the token collection, or by modifying `cw721-base` with a new implementation and then changing the package name (e.g. `cw721-my-custom-nft`). Our problem was when we tried to do it that way, the NFT contract was left with dangling entry points that were always failing.
+Most times when you need to implement custom behavior, it can be achieved by adding the logic to the token collection, or by modifying the actual package (e.g. `cw721-base`) with a new implementation and then changing the package name (e.g. `cw721-my-custom-nft`). However, when we tried to do it this way, the NFT contract was left with dangling entry points that were always failing.
 
 ```rs
 // An entry point function that can never succeed is never a good idea
@@ -33,9 +33,9 @@ fn transfer_nft(
 
 ### Modular Package Design
 
-Additionally, we learned about creating and inheriting packages, and how it keeps code clean and modular. Separating code this way also lets us compile and work on portions of our project independently.
+Additionally, we learned about creating and inheriting packages, and how it keeps the code clean and modular. Separating code in this manner lets us compile and work on portions of our project independently.
 
-For packages that can be deployed as a smart contract, or inherited as a dependency, when we define them as a in `Cargo.toml` we must explicitly enable their library [features](https://doc.rust-lang.org/cargo/reference/features.html), using the syntax `features = ["library"]`.
+For packages that can be deployed as a smart contract, or inherited as a dependency, we must explicitly enable their library [features] (https://doc.rust-lang.org/cargo/reference/features.html) in `Cargo.toml` using the syntax `features = ["library"]`.
 
 ```yaml
 [dependencies]
@@ -44,7 +44,7 @@ some-dependency = { path = "some-path/some-dependency", version = "0.1.0", featu
 
 # Exercise
 
-We created a package called `cw721-soulbound`, but before it can be used in the token collection (a new package we'll call `passport-token`), Rust library [features](https://doc.rust-lang.org/cargo/reference/features.html) need to be enabled.
+We created a package called `cw721-soulbound`, but before it can be used in the token collection (a new package we'll call `passport-token`), the Rust library [features](https://doc.rust-lang.org/cargo/reference/features.html) need to be enabled.
 
 1. Locate `cw721-soulbound` in the dependency list and enable the `library` feature.
 
