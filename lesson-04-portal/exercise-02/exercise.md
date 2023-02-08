@@ -7,9 +7,9 @@ Title: Preparing Portal to Become the Minter Part 2
 Filename: contract.rs
 -->
 
-> SECTION 31's Jump Ring whirs to life. Oh no, this gravitational sensation. It's like you're going to lose your lunch (which is strange since you didn't eat a lunch). Suddenly, you find yourself returned to your home planet...Well, sort of. What actually happens is you wake up in your regular bed feeling sleepy. Was the `passport-token` blueprint just another strange cyborg fever dream?
+> SECTION 31's Jump Ring whirs to life. Oh no, this gravitational sensation. It's like you're going to lose your lunch (which is strange since you didn't eat lunch). Suddenly, you find yourself returned to your home planet...Well, sort of. What actually happened was that you woke up in your bed feeling sleepy. Was the `passport-token` blueprint just another strange cyborg fever dream?
 
-Wake yourself up. We're going to enable the two new state saving entry points in `contract.rs`, and since the NFT identity system in Portal won't work without contract addressses (for Potion and `passport-token`) we add these addresses to `instantiate`.
+Wake yourself up. We're going to enable the two new state saving entry points in `contract.rs`, and since the NFT identity system in Portal won't work without contract addresses (for Potion and `passport-token`), we will add these addresses to `instantiate`.
 
 After adding our new parameters, the messages for `instantiate` and `execute`, in Portal, look like this:
 
@@ -38,7 +38,7 @@ Let's go ahead and enable these messages as contract entry points in `contract.r
 
 # Exercise
 
-1. Add the two new required imports (`set_passport_contract` and `set_potion_contract`) to the `use` statement for `crate::execute_fns`. To keep our imports tidy, add them in alphabetical order
+1. Add the two new required imports (`set_passport_contract` and `set_potion_contract`) to the `use` statement for `crate::execute_fns`. To keep our imports organized, add them in alphabetical order
 2. In the `match` statement for the `execute` entry point, add the `ExecuteMsg`s for the functions you imported in step 1
 3. In the `instantiate` entry point, modify the `config` variable so it has all the required fields of `Config` (have a look at `state.rs` if you're confused)
 
