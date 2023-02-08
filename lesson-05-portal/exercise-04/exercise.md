@@ -34,7 +34,7 @@ Rust's compiler sure is helpful, even if it's a bit opinionated. Like a code whi
 
 [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) is the compiler for Rust provided by [Cargo](https://doc.rust-lang.org/cargo/getting-started/index.html) (and the Rust project itself).
 
-Normally, Rust programmers don't invoke the [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) directly, but do it through [Cargo](https://doc.rust-lang.org/cargo/getting-started/index.html) with dependencies implemented and managed by the `Cargo.toml` file located at the root of the project.
+Normally, Rust programmers don't invoke the [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) compiler directly, but do it through [Cargo](https://doc.rust-lang.org/cargo/getting-started/index.html) with dependencies implemented and managed by the `Cargo.toml` file located at the root of the project.
 
 Rust programs can be built using the command `cargo build`. The following are bash commands that can be executed from any folder inside your Rust project.
 

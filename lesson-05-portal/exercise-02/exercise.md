@@ -82,7 +82,7 @@ Here's how we can make sure `Traveler`s teleporting through the `JumpRing` posse
 1. From `cw721` import `NftInfoResponse`.
 2. In `initiate_jump_ring_travel`, create a variable called `query_resp` that explicitly enforces `NftInfoResponse<Metadata>` as its type.
 3. Assign `query_resp` a call to the `query` function, which is an attribute of the `querier` dependency (`DepsMut`). For its function argument, pass `query` a reference to `query_req`, and don't forget to capture any errors that could occur.
-4. Write an `if` condition to verify that the NFT's `identity` field matches the `traveler`'s Cosmos address that was forwarded to ` initiate_jump_ring_travel` by the Potion contract. You can access the `identity` metadata field from `query_resp.extension`, but you'll have to [unwrap]() it. If `identity` and `traveler` are _not_ equal, return an [Err](https://doc.rust-lang.org/std/result/enum.Result.html) of type `ContractError::Unauthorized {}`.
+4. Write an `if` condition to verify that the NFT's `identity` field matches the `traveler`'s Cosmos address that was forwarded to ` initiate_jump_ring_travel` by the Potion contract. You can access the `identity` metadata field from `query_resp.extension`, but you'll have to [unwrap](https://doc.rust-lang.org/rust-by-example/error/option_unwrap.html) it. If `identity` and `traveler` are _not_ equal, return an [Err](https://doc.rust-lang.org/std/result/enum.Result.html) of type `ContractError::Unauthorized {}`.
 
 # Starter
 

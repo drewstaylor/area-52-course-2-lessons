@@ -35,7 +35,7 @@ These are the final changes we'll be making to ` initiate_jump_ring_travel` in t
 1. Modify the `Response::default()` of ` initiate_jump_ring_travel` to use `new` instead of `default`, but don't get rid of the [Ok](https://doc.rust-lang.org/std/result/) Rust `Result`.
 2. On separate (indented) lines add the two new attributes using `add_attribute` calls. The attributes to be added are `action` and `traveler`.
 3. The value of the `action` attribute will be the same as the entry point function in which it appears.
-4. Get the value for the `traveler` attribute from the function arguments passed to ` initiate_jump_ring_travel`. In Rust, unused variables are usually prefixed with an underscore (`_`). The attribute value will be the only non-prefixed variable you haven't yet used. Don't forget to close the [Ok](https://doc.rust-lang.org/std/result/) Rust `Result`.
+4. Get the value for the `traveler` attribute from the function arguments passed to `initiate_jump_ring_travel`. In Rust, unused variables are usually prefixed with an underscore (`_`). The attribute value will be the only non-prefixed variable you haven't yet used. Don't forget to close the [Ok](https://doc.rust-lang.org/std/result/) Rust `Result`.
 
 # Starter
 
