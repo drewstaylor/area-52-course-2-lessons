@@ -13,7 +13,7 @@ What if you wanted to change a contract that's already been deployed?
 
 Cosmos blockchains have a convenient way for smart contracts to migrate their code. Code migrations allow you to update the code, while keeping the same contract address. Only the contract's admin Cosmos address can do this. Contracts undergoing migration can choose to retain all, or some, of their state. This provides developers with a safe way of resolving bugs, and adding new features, without impacting their users.
 
-Conveniently, CosmWasm provides the [cw2](https://docs.rs/cw2/0.13.4/cw2/) library for helping manage code versions for contracts that have been, or may become, migrated.
+Conveniently, CosmWasm provides the [cw2](https://docs.rs/cw2/0.13.4/cw2/) library to help manage code versions for contracts that have been, or may become, migrated.
 
 `cw2` compliant contracts store the following [key-value store](https://en.wikipedia.org/wiki/Key%E2%80%93value_database):
 
@@ -61,7 +61,7 @@ pub fn instantiate(
 1. Create two Rust [constants](https://doc.rust-lang.org/std/keyword.const.html) called `CONTRACT_NAME` and `CONTRACT_VERSION`, and explictly enforce their types as `&str`
 2. Set the value of `CONTRACT_NAME` to `"crates.io:passport-token"`
 3. For the value of `CONTRACT_VERSION`, use CosmWasm's `env` macro and pass it the `"CARGO_PKG_VERSION"` flag
-4. In `instantiate`, make a call to `cw2`'s [set_contract_version](https://docs.rs/cw2/0.13.4/cw2/fn.set_contract_version.html). The parameters to send to the function are the `storage` attribute from `deps`, followed by `CONTRACT_NAME` and then `CONTRACT_VERSION`
+4. In the `instantiate` function, make a call to `cw2`'s [set_contract_version](https://docs.rs/cw2/0.13.4/cw2/fn.set_contract_version.html) function. The parameters to send to the function are the `storage` attribute from `deps`, followed by `CONTRACT_NAME` and then `CONTRACT_VERSION`
 
 # Starter
 ```rs
