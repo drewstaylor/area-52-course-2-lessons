@@ -7,9 +7,9 @@ Title: Modifying the JumpRingTravel Execute Arguments
 Filename: contract.rs
 -->
 
-> Ever since you became a cyborg you've been feeling super weird, and you've been having the strangest dreams. Have you _really_ just implemented your own decentralized identity system using `cw721` NFTs? The Jump Ring looks so snazzy now, and booting it up in test mode you see your NFT avatar and `passport-token` appearing on the loading screen. You realize next time you work on the Jump Ring you'll get to test traveling through the Ring! Oh, but before all that, the Portal's compiler is still throwing an error. Fulfill this final task and the NFT identity integration will be completed.
+> Ever since you became a cyborg you've been feeling super weird, and you've been having the strangest dreams. Have you _really_ just implemented your own decentralized identity system using `cw721` NFTs? The Jump Ring looks so snazzy now, and booting it up in test mode you see your NFT avatar and `passport-token` appearing on the loading screen. You realize that next time you work on the Jump Ring you'll get to test traveling through the Ring! Oh, but before all that, the Portal's compiler is still throwing an error. Fulfill this final task and the NFT identity integration will be completed.
 
-The `initiate_jump_ring_travel` entry point function is already imported in `contract.rs`, but since its message type has been modified in `msg.rs` the Portal project doesn't [compile](https://doc.rust-lang.org/cargo/commands/cargo-build.html) yet.
+The `initiate_jump_ring_travel` entry point function is already imported in `contract.rs`, but since its message type has been modified in `msg.rs`, the Portal project doesn't [compile](https://doc.rust-lang.org/cargo/commands/cargo-build.html) yet.
 
 If we try to compile the project as is, the [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) compiler throws two errors.
 
@@ -28,13 +28,13 @@ ExecuteMsg::JumpRingTravel { to } => initiate_jump_ring_travel(to, deps, env, in
                                                                 ^^^^^^^^^^^^^^^^^ ---- an argument of type `Addr` is missing
 ```
 
-Rust's compiler sure is helpful, if a bit opinionated. Like a code whisperer that doesn't have [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)'s pitfalls 😏
+Rust's compiler sure is helpful, even if it's a bit opinionated. Like a code whisperer that doesn't have [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)'s pitfalls 😏
 
 ### Rustc
 
 [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) is the compiler for Rust provided by [Cargo](https://doc.rust-lang.org/cargo/getting-started/index.html) (and the Rust project itself).
 
-Normally, Rust programmers don't invoke [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) directly, but do it through [Cargo](https://doc.rust-lang.org/cargo/getting-started/index.html) with dependencies implemented and managed by the `Cargo.toml` file at the root of the project.
+Normally, Rust programmers don't invoke the [rustc](https://doc.rust-lang.org/rustc/what-is-rustc.html) directly, but do it through [Cargo](https://doc.rust-lang.org/cargo/getting-started/index.html) with dependencies implemented and managed by the `Cargo.toml` file located at the root of the project.
 
 Rust programs can be built using the command `cargo build`. The following are bash commands that can be executed from any folder inside your Rust project.
 

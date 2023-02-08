@@ -15,9 +15,9 @@ What's that sound? (_*a slow clap 👏 forms in the distance*_)
 
 You coded an NFT identity protocol from scratch, can you believe it? Do you feel like a CosmWasm NFT expert yet?
 
-Something beyond the scope of this lesson is creating unit tests for Portal to guarantee secure passport controls and travel restrictions are coded in `mint_passport` and `initiate_jumpring_travel` of `execute_fns.rs`. 
+Something beyond the scope of this lesson is creating unit tests for Portal to guarantee secure passport controls and travel restrictions in `mint_passport` and `initiate_jumpring_travel` of `execute_fns.rs`. 
 
-We've provided those unit tests here for you to peruse. You're probably lazy and tired after such difficult Rust lessons. I bet you won't even look them.
+We've provided those unit tests here for you to peruse but you're probably tired and lazy after such challenging Rust lessons. I bet you won't even look at them.
 
 In general we learned about:
 

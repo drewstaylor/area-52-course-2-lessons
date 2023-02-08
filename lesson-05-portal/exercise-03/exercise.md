@@ -7,11 +7,11 @@ Title: Verifying Identity With NFTs Part 3
 Filename: execute_fns.rs
 -->
 
-> Speaking of Librarians...Who wants to unit test all this new code? Sounds like the tedious sort of task a Librarian would enjoy, you'll have to hire one, or _maybe_ (and this is shocking, so brace yourself) you could write the contract unit tests yourself.
+> Speaking of Librarians...Who wants to unit test all this new code? Sounds like the tedious sort of task a Librarian would enjoy. You'll have to hire one, or _maybe_ (and this is shocking, so brace yourself) you could write the contract unit tests yourself.
 
 Our `passport-token` identity system is nearly feature complete, but at the moment ` initiate_jump_ring_travel` doesn't return useful data. 
 
-Currently its CosmWasm `Response` looks like this:
+Currently, its CosmWasm `Response` looks like this:
 
 ```rs
 Ok(Response::default())
@@ -24,7 +24,7 @@ More specifically, the [attributes](https://docs.rs/cosmwasm-std/latest/cosmwasm
 - `action`
 - `traveler`
 
-Convention dictates that `action` should always be the first [attribute](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.Response.html#method.add_attribute) of a CosmWasm `Response`, and that its value should be the name of the entry point function that was called.
+Convention dictates that `action` should always be the first [attribute](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.Response.html#method.add_attribute) in a CosmWasm `Response`, and that its value should be the name of the entry point function that was called.
 
 Our `Response` should also include the address (`traveler`) of who is stepping through the `JumpRing`. This helps limit the confusion that arises when someone suddenly disappears as they're teleported across the [Interchain](https://ibcprotocol.org/)
 
@@ -35,7 +35,7 @@ These are the final changes we'll be making to ` initiate_jump_ring_travel` in t
 1. Modify the `Response::default()` of ` initiate_jump_ring_travel` to use `new` instead of `default`, but don't get rid of the [Ok](https://doc.rust-lang.org/std/result/) Rust `Result`.
 2. On separate (indented) lines add the two new attributes using `add_attribute` calls. The attributes to be added are `action` and `traveler`.
 3. The value of the `action` attribute will be the same as the entry point function in which it appears.
-4. Get the value for the `traveler` attribute from the function arguments passed to ` initiate_jump_ring_travel`. In Rust, unused variables usually are prefixed with an underscore (`_`). The attribute value will be the only non-prefixed variable you haven't yet used. Don't forget to close the [Ok](https://doc.rust-lang.org/std/result/) Rust `Result`.
+4. Get the value for the `traveler` attribute from the function arguments passed to ` initiate_jump_ring_travel`. In Rust, unused variables are usually prefixed with an underscore (`_`). The attribute value will be the only non-prefixed variable you haven't yet used. Don't forget to close the [Ok](https://doc.rust-lang.org/std/result/) Rust `Result`.
 
 # Starter
 
