@@ -64,6 +64,11 @@ Running a project's unit tests with debugging output enabled (if you need to use
 cargo test -- --nocapture
 ```
 
+## What now?
+With your NFT avatar appearing on the loading screen you might be tempted to stop here, but the magic of IBC still beckons to you. Do you have the fortitude to unlock this forbidden knowledge and become a true CosmWasm master?
+
+# TO BE CONTINUED...
+
 # Exercise 
 
 1. Add the missing message parameter to `ExecuteMsg::JumpRingTravel`. If you're confused about what do, have a look at `ExecuteMsg::JumpRingTravel` in `msg.rs` to determine what field is missing.
