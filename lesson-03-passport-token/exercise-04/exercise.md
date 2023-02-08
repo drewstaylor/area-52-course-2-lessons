@@ -16,7 +16,7 @@ let unvalidated_addr: Addr = "archway1f395p0gg67mmfd5zcqvpnp9cxnu0hg6r9hfczq";
 let validated_addr = deps.api.addr_validate(&unvalidated_addr)?; // addr_validate always takes a reference (`&`)
 ```
 
-In the last lesson we created `cw721-soulbound`, at that time our `InstantiateMsg` looked like this:
+In the last lesson, we created `cw721-soulbound`, and at that time our `InstantiateMsg` looked like this:
 
 ```rs
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -33,15 +33,15 @@ pub struct InstantiateMsg {
 }
 ```
 
-Being the only account that can mint NFTs, `minter` has an admin-like privilege in `cw721-base` (and by extension `cw721-soulbound`). Since it can never be updated after deploying, it's probably a good idea if we validate it before saving it to the contract state.
+Being the only account that can mint NFTs, `minter` has an admin-like privilege in `cw721-base` (and by extension `cw721-soulbound`). Since it can never be updated after deployment, it's probably a good idea if we validate it before saving it to the contract state.
 
 # Exercise
 
 Validate `minter` and save it, along with some other parameters of the token collection, to the contract state.
 
 1. Create a variable called `info` and assign it a [cw721 ContractInfoResponse](https://docs.rs/cw721/0.9.2/cw721/struct.ContractInfoResponse.html).
-2. Populate the two `ContractInfoResponse` members with their corresponding values from `InstantiateMsg`, each on their own (indented) line.
-3. Save a reference to `info` to the `contract_info` key of the contract's storage. Access the `save` method via the `cw721-soulbound` type alias `Cw721MetadataContract` (e.g. `Cw721MetadataContract::default().contract_info`). The reference to `info` is the second parameter to pass to the `save` function, the first is `deps.storage`. Write everything on one line, but don't forget to capture any errors that might occur.
+2. Populate the two `ContractInfoResponse` members with their corresponding values from `InstantiateMsg`, each on its own (indented) line.
+3. Save a reference to `info` to the `contract_info` key of the contract's storage. Access the `save` method via the `cw721-soulbound` type alias `Cw721MetadataContract` (e.g. `Cw721MetadataContract::default().contract_info`). The reference to `info` is the second parameter to pass to the `save` function, the first being `deps.storage`. Write everything on one line, but don't forget to capture any errors that might occur.
 4. Create a variable called `minter` and assign it a validated minter address using `deps.api.addr_validate`. The argument to pass `addr_validate` comes from `InstantiateMsg`.
 5. Finally, save the validated minter address using `minter.save` which can be accessed from `Cw721MetadataContract::default()`. The arguments to pass to `save` are `deps.storage` and a reference to `minter`. Write everything on one line, but don't forget to capture any errors that might occur.
 

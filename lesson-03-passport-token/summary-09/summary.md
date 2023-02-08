@@ -11,12 +11,12 @@ Storyline placeholder:
 
 # Overview
 
-In this lesson we developed the token contract for an NFT collection that implements the `cw721-soulbound` package from [Lesson 2]().
+In this lesson we developed the token contract for a NFT collection that implements the `cw721-soulbound` package from [Lesson 2]().
 
 In general we learned about:
 
 - Declaring custom packages as dependencies
-- Enabling libarary features in `Cargo.toml`
+- Enabling library features in `Cargo.toml`
 - Serializing and deserializing NFT metadata with [Serde](https://serde.rs/)
 - Using [type aliases](https://doc.rust-lang.org/reference/items/type-aliases.html)
 - Writing unit tests for smart contracts
@@ -26,7 +26,7 @@ From the CosmWasm libraries we touched on:
 - `cw2` and contract migrations
 - Validating Cosmos `Addr` types with `addr_validate` from `Deps.api`
 - The `Reply` type used in the `reply` entry point
-- Using `mock_dependencies`, `mock_env`, `mock_info` from `cosmwasm_std::testing` to simulate blockchain queries and transactions
+- Using `mock_dependencies`, `mock_env`, and `mock_info` from `cosmwasm_std::testing` to simulate blockchain queries and transactions
 
 ### **SOURCE CODE**
 - <ExternalLink href="https://github.com/phi-labs-ltd/area-52-courses/">Building with NFTs repo</ExternalLink>

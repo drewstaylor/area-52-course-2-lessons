@@ -23,7 +23,7 @@ For a refresher on implementing `reply`, you can check out [this exercise](https
 
 # Exercise
 
-Add the `reply` entry point, this is the last entry point our collection contract requires.
+Add the `reply` entry point. This is the last entry point our collection contract requires.
 
 # Starter
 

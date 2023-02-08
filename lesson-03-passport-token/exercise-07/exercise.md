@@ -13,7 +13,7 @@ Storyline placeholder:
 
 [Tests](https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html) are Rust functions that verify your non-test code is functioning as expected. Test functions typically perform some setup, run the code we want to test, then use [assert](https://doc.rust-lang.org/std/macro.assert.html), or [assert_eq](https://doc.rust-lang.org/std/macro.assert_eq.html) to confirm the test results are what we expect.
 
-Writing unit tests for CosmWasm contracts is important because it allows you to prove your code is safe before users do financial transactions with it (such as buying, or trading NFTs).
+Writing unit tests for CosmWasm contracts is important because it allows you to prove that your code is safe before users perform financial transactions with it (such as buying, or trading NFTs).
 
 Tests can either be written in the same file as the code being tested, or in a separate file (especially if the test coverage is large).
 
@@ -57,14 +57,14 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 When it comes to writing your tests, avoid being lulled into a false sense of security. Below are some common issues developers face when writing tests:
 
-- Tests don't prove what they set out to (missed edge case)
-- Tests don't simulate how code would behave on the blockchain (inadequate environment)
+- Tests fail to prove what they set out to do (missed edge case)
+- Tests don't accurately simulate how code would behave on the blockchain (inadequate environment)
 - Incomplete test coverage (test cases missing)
 - Hard coded parameters not indicative of real world usage (inadequate environment)
 
 # Exercise
 
-In this exercise we'll set up a mock test environment and simulate a blockchain transaction in our unit test. The goal is to mint a `passport-token` in the test environment and verify its on-chain metadata works as expected.
+In this exercise, we'll set up a mock test environment and simulate a blockchain transaction in our unit test. The goal is to mint a `passport-token` in the test environment and verify its on-chain metadata works as expected.
 
 1. Create a mutable variable called `deps` and assign it a call to [mock_dependencies](https://docs.rs/cosmwasm-std/0.9.2/cosmwasm_std/testing/fn.mock_dependencies.html) without passing in any function arguments
 2. Create a variable called `contract` and assign it to `Cw721MetadataContract::default()`
