@@ -7,9 +7,9 @@ Title: Minting NFTs From a Contract Part 4
 Filename: execute_fns.rs
 -->
 
-> It's reassuring to see our passport-control protocols coming together now, but let's not code ahead of ourselves, there's still a messaging quirk to work out.
+> It's reassuring to see our passport-control protocols coming together, but let's not code ahead of ourselves. There's still a messaging quirk to work out.
 
-Currently, our mint is being executed on the `passport-token` contract like this
+Currently, our mint is being executed on the `passport-token` contract like this:
 
 ```rs
 let mint_resp: CosmosMsg = WasmMsg::Execute {
@@ -24,9 +24,9 @@ But the mint won't take effect until we add to the messages being executed by `m
 
 When we wrote a cross contract execution in [Course 1](https://area-52.io/starting-with-cosm-wasm/3/imbibe_potion-function-part-3) we used CosmWasm's [SubMsg](https://docs.rs/cosmwasm-std/latest/cosmwasm_std/struct.SubMsg.html). Howevever, this time we're going to use [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) of messages.
 
-[vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) is a handy type for returning responses of multiple executions. Imagine a smart contract function that calls `execute` of two different contracts, and also wants to return its own `Response`. 
+[vector](https://doc.rust-lang.org/std/vec/struct.Vec.html) is a handy type for returning responses from multiple executions. Imagine a smart contract function that calls the `execute` function of two different contracts, and also wants to return its own `Response`. 
 
-Using a [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html), that might look like this:
+Using a [vector](https://doc.rust-lang.org/std/vec/struct.Vec.html), it might look like this:
 
 ```rs
 let messages = vec![contract_resp1, contract_resp2, this_contract_resp];
@@ -38,7 +38,7 @@ Ok(Response::new().add_messages(messages))
 We're still working in the `mint_passport` entry point function, but this is the last change we need to make to it.
 
 1. Create a variable called `messages` and assign it a vector containing the `mint_resp` (use the `vec![]` macro).
-2. We have our minting being executed by `WasmMsg::Execute`, add it to the `Response`. Instead of responding with `Response::default()`, create a new response using `Response::new()` and call its `add_messages` function. Pass `add_messages` the `messages` variable (created in step 1) as a function argument. The whole `Response` should be wrapped with an [Ok](https://doc.rust-lang.org/std/result/), just as it was before.
+2. We have our minting being executed by `WasmMsg::Execute`. Add it to the `Response` and instead of responding with `Response::default()`, create a new response using `Response::new()` and call its `add_messages` function. Pass `add_messages` the `messages` variable (created in step 1) as a function argument. The entire `Response` should be wrapped with an [Ok](https://doc.rust-lang.org/std/result/), just as it was before.
 
 # Starter
 

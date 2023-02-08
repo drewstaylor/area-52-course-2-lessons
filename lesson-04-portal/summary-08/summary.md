@@ -16,7 +16,7 @@ In this lesson we added minting to the `JumpRing` contract, by including `passpo
 In general we learned about:
 
 - Rust [Generics](https://doc.rust-lang.org/rust-by-example/generics.html)
-- The Rust [Option](https://doc.rust-lang.org/std/option/) type and `Some` and `None`
+- The Rust [Option](https://doc.rust-lang.org/std/option/) type and the use of `Some` and `None`
 - The `vec![]` macro
 
 From the CosmWasm libraries we touched on:
@@ -24,7 +24,7 @@ From the CosmWasm libraries we touched on:
 - `WasmQuery::Smart` and cross-contract queries
 - `WasmMsg::Execute` and cross-contract executions
 - `MintMsg<T>` from `cw721-base` and `cw721-soulbound`
-- Using `add_message` of `cosmwasm_std::Response` to bundle multiple `Response`
+- Using `add_message` from `cosmwasm_std::Response` to bundle multiple `Response`
 
 ### **SOURCE CODE**
 - <ExternalLink href="https://github.com/phi-labs-ltd/area-52-courses/">Building with NFTs repo</ExternalLink>
