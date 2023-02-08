@@ -61,7 +61,7 @@ pub fn instantiate(
 1. Create two Rust [constants](https://doc.rust-lang.org/std/keyword.const.html) called `CONTRACT_NAME` and `CONTRACT_VERSION`, and explictly enforce their types as `&str`
 2. Set the value of `CONTRACT_NAME` to `"crates.io:passport-token"`
 3. For the value of `CONTRACT_VERSION`, use CosmWasm's `env` macro and pass it the `"CARGO_PKG_VERSION"` flag
-4. In the `instantiate` function, make a call to `cw2`'s [set_contract_version](https://docs.rs/cw2/0.13.4/cw2/fn.set_contract_version.html) function. The parameters to send to the function are the `storage` attribute from `deps`, followed by `CONTRACT_NAME` and then `CONTRACT_VERSION`
+4. In the `instantiate` function, make a call to `cw2`'s [set_contract_version](https://docs.rs/cw2/0.13.4/cw2/fn.set_contract_version.html) function. The parameters to send to it are the `storage` attribute from `deps`, followed by `CONTRACT_NAME` and then `CONTRACT_VERSION`
 
 # Starter
 ```rs
