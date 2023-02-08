@@ -7,7 +7,7 @@ Title: Preparing Portal to Become the Minter Part 1
 Filename: execute_fns.rs
 -->
 
-> With slight trepidation you run the test diagnostic. `test integration_tests::use_metadata_extension ... ok`, it worked! You watch as the **STATUS** screen on SECTION 31's Ring updates itself. Now it reads "Online" (in cybernetic-green).
+> With slight trepidation you run the diagnostic test. `test integration_tests::use_metadata_extension ... ok`, it worked! You watch as the **STATUS** screen on SECTION 31's Ring updates itself. Now it reads "Online" (in cybernetic-green).
 
 Remember the `JumpRing` portal? Looking at SECTION 31's Ring, it seems so much more sophisticated.
 
@@ -19,11 +19,11 @@ We're creating a secure (and decentralized) identity system for `Traveler` fligh
 2. Only a Portal contract (`JumpRing`) can mint passports (`Cw721MetadataContract::default().minter`)
 3. A Traveler can hold only one passport at a time
 4. `token_id`'s are wallet addresses of their owner (helpful for lookups and proofs)
-5. Only Potion contract can call the `JumpRing` Portal (since Potion enforces payment and cyberdization checks)
+5. Only the Potion contract can call the `JumpRing` Portal (since Potion enforces payment and cyberdization checks)
 
 ### A State Saving Refresher
 
-Last time we worked on Portal, we created two functions in `execute_fns.rs` to save state. Both are nearly identical, the only difference being the storage key they're saving to (`planet_name` vs `planet_sapients`).
+Last time we worked on Portal, we created two functions in `execute_fns.rs` to save state. Both are nearly identical, with the only difference being the storage key they're saving to (`planet_name` vs `planet_sapients`).
 
 ```rs
 pub fn set_planet_name(
@@ -50,9 +50,9 @@ We'll need to save a couple more items for the identity system to work. More spe
 
 Let's create the code to save the Cosmos addresses of `Imbiber` (Potion) and `passport-token`.
 
-1. Create a public function called `set_passport_contract`, its function arguments will be `contract` (`Addr` type), `deps` and `info` (the last two types can be inferred from `set_planet_name` and `set_sapient_names`)
+1. Create a public function called `set_passport_contract`, with function arguments `contract` (`Addr` type), `deps` and `info` (the last two types can be inferred from `set_planet_name` and `set_sapient_names`)
 2. The logic in the function enclosure will resemble that of `set_planet_name` and `set_sapient_names`, but the storage key to be saved will be `contract`, and the value of `"action"` in `add_attribute` will be `set_passport_contract`
-3. Create a public function called `set_potion_contract`, its function arguments will be `contract` (`Addr` type), `deps` and `info` (the last two types can be inferred from `set_planet_name` and `set_sapient_names`)
+3. Create a public function called `set_potion_contract`, with function arguments `contract` (`Addr` type), `deps` and `info` (the last two types can be inferred from `set_planet_name` and `set_sapient_names`)
 4. The logic in the function enclosure will resemble that of `set_planet_name` and `set_sapient_names`, but the storage key to be saved will be `contract`, and the value of `"action"` in `add_attribute` will be `set_potion_contract`
 
 # Starter
